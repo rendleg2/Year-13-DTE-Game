@@ -1,11 +1,8 @@
-# Godot 4+ specific ignores
-.godot/
-/android/
-
 # Godot-specific ignores
+*.gen.*
 .import/
-export.cfg
-export_presets.cfg
+.godot/
+/gen/
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -15,10 +12,58 @@ export_presets.cfg
 data_*/
 mono_crash.*.json
 
-#python
-__pycache__
-.pyc
-/addons/py4godot/cpython-3.12.4-windows64/python/Lib/__pycache__
-/addons/godot-sqlite/bin
-/addons/godot-sqlite/bin
-addons/py4godot/cpython-3.12.4-windows64/python/~pythonscript.dll
+# System/tool-specific ignores
+.directory
+*~
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+*.db
+# Do not ignore the database that is to be opened in read-only mode!
+!data_to_be_packaged.db
+
+# Compiled source #
+###################
+*.com
+*.class
+*.exe
+*.o
+*.os
+*.obj
+*.exp
+*.pdb
+*.lib
+*.bc
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Etc
+.sconsign.dblite
+demo/build
+test_backup_new.json
+test_backup_base64_new.json
+
+# VS
+vsproj/.vs/
+vsproj/Debug/
+vsproj/Release/
+vsproj/x64/
+vsproj/x86/
+vsproj/gdsqlite.vcxproj.*
+
+.vscode
+
+# Python generated
+__pycache__/
+*.pyc
