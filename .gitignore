@@ -20,3 +20,5 @@ __pycache__
 .pyc
 /addons/py4godot/cpython-3.12.4-windows64/python/Lib/__pycache__
 /addons/godot-sqlite/bin
+/addons/godot-sqlite/bin
+addons/py4godot/cpython-3.12.4-windows64/python/~pythonscript.dll
