@@ -14,3 +14,9 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+#python
+__pycache__
+.pyc
+/addons/py4godot/cpython-3.12.4-windows64/python/Lib/__pycache__
+/addons/godot-sqlite/bin
