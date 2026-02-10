@@ -1,0 +1,39 @@
+extends CharacterBody2D
+@onready var Follow_Target = $test
+var HP = 100
+var Target_Position
+var Current_Position
+var Movement_Speed = 25
+var Next_Step
+var Velocity
+@onready var navigation_agent_2d = $NavigationAgent2D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func _on_follow_follow():
+	# will set pathfind desination to player
+	if Target_Position != Follow_Target.position:
+		Target_Position = Follow_Target.position
+		navigation_agent_2d.target_position = Target_Position
+		Movement_Speed = 40
+		
+func Pathfind(delta):
+	#moves the enemy closer to the next pathfind point
+	Current_Position = self.global_position
+	Next_Step = navigation_agent_2d.get_next_path_position()
+	Velocity = Current_Position.direction_to(Next_Step) * Movement_Speed
+	if navigation_agent_2d.avoidance_enabled:
+		navigation_agent_2d.set_velocity(Velocity)
+	else:
+		_on_navigation_agent_2d_velocity_computed(Velocity)
+	move_and_slide()
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
