@@ -1,9 +1,10 @@
 extends CharacterBody2D
-@onready var Follow_Target = $test
+
+@onready var Follow_Target = $"../TestPlayer"
 var HP = 100
 var Target_Position
 var Current_Position
-var Movement_Speed = 25
+@export var Movement_Speed = 60 # exported for testing purpuses, once good value found set it in code
 var Next_Step
 var Velocity
 @onready var navigation_agent_2d = $NavigationAgent2D
@@ -11,18 +12,18 @@ var Velocity
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	_on_follow_follow()
+	Pathfind(delta)
 
 func _on_follow_follow():
 	# will set pathfind desination to player
 	if Target_Position != Follow_Target.position:
 		Target_Position = Follow_Target.position
 		navigation_agent_2d.target_position = Target_Position
-		Movement_Speed = 40
 		
 func Pathfind(delta):
 	#moves the enemy closer to the next pathfind point

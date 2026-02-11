@@ -25,7 +25,4 @@ sprite_frames = SubResource("SpriteFrames_vy2uu")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1634124390]
 
-[node name="test" type="Node2D" parent="." unique_id=1305582702]
-position = Vector2(100, 100)
-
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
