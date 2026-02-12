@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b05mm8vqi6d5s"
-path="res://.godot/imported/Python.svg-a6e65d7e2428c27c1d61fdcb1443ab9d.ctex"
+path="res://.godot/imported/Python.svg-681cb785c113434a7384dcc1fd345d19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Addons/py4godot/Python.svg"
-dest_files=["res://.godot/imported/Python.svg-a6e65d7e2428c27c1d61fdcb1443ab9d.ctex"]
+source_file="res://addons/py4godot/Python.svg"
+dest_files=["res://.godot/imported/Python.svg-681cb785c113434a7384dcc1fd345d19.ctex"]
 
 [params]
 

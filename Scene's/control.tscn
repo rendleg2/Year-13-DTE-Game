@@ -71,7 +71,3 @@ accessibility_labeled_by_nodes = Array[NodePath]([])
 accessibility_flow_to_nodes = Array[NodePath]([])
 theme_type_variation = &""
 script = ExtResource("1_1b4a8")
-test_int = 5
-test_float = 5.2
-test_bool = true
-test_vector = Vector3(1, 2, 3)
