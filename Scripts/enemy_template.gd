@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var weapon: PackedScene #select weapon
+var weaponInstance
 @onready var Target = $"../TestPlayer"
 var HP = 100
 var Target_Position = Vector2(288.0,0)
@@ -12,15 +14,17 @@ var aggro = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	navigation_agent_2d.target_position = Target_Position
-	pass # Replace with function body.
+	navigation_agent_2d.target_position = Target_Position # Delete once testing complete
+	if weapon:
+		weaponInstance = weapon.instantiate()
+		add_child(weaponInstance)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if aggro == true:
 		_on_follow_follow()
-	Pathfind(delta)
+	Pathfind(delta)# move into aggro if statement once testing complete
 
 func _on_follow_follow():
 	# will set pathfind desination to player
@@ -43,7 +47,9 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 
 
-func _on_area_2d_body_entered(body):
-	print("hi")
+func _on_area_2d_body_entered(body): # if target enters detection range, attack
 	if body == Target:
 		aggro = true
+		if weapon:
+			if weaponInstance.has_method('fire'):
+				weaponInstance.fire()
