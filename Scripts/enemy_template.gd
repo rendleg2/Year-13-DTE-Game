@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var Target = $"../TestPlayer"
 var HP = 100
-var Target_Position
+var Target_Position = Vector2(288.0,0)
 var Current_Position
 @export var Movement_Speed = 60 # exported for testing purpuses, once good value found set it in code
 var Next_Step
@@ -12,6 +12,7 @@ var aggro = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	navigation_agent_2d.target_position = Target_Position
 	pass # Replace with function body.
 	
 
@@ -19,7 +20,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if aggro == true:
 		_on_follow_follow()
-		Pathfind(delta)
+	Pathfind(delta)
 
 func _on_follow_follow():
 	# will set pathfind desination to player
@@ -43,5 +44,6 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 
 
 func _on_area_2d_body_entered(body):
+	print("hi")
 	if body == Target:
 		aggro = true
