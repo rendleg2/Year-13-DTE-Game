@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/EnemyTemplate.tscn" id="1_cqkkl"]
 [ext_resource type="PackedScene" uid="uid://ccudf166evqp" path="res://Scenes/TestPlayer.tscn" id="2_vm6n5"]
 [ext_resource type="Texture2D" uid="uid://c6x2lisc15cav" path="res://Assets/tilesheet/sandbase.png" id="3_vm6n5"]
-[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://Scenes/sand.png" id="4_13ert"]
+[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://Assets/Sprites/sand.png" id="4_13ert"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vm6n5"]
 vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
@@ -38,11 +38,11 @@ sources/0 = SubResource("TileSetAtlasSource_13ert")
 
 [node name="TestGame2d" type="Node2D" unique_id=842691389]
 
-[node name="CharacterBody2D" parent="." unique_id=896060041 instance=ExtResource("1_cqkkl")]
+[node name="Enemy Template" parent="." unique_id=896060041 instance=ExtResource("1_cqkkl")]
 position = Vector2(102, 155)
 
 [node name="TestPlayer" parent="." unique_id=1303460647 instance=ExtResource("2_vm6n5")]
-position = Vector2(384, 251)
+position = Vector2(100, 251)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=486559337]
 position = Vector2(344, 314)
