@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var weapon: PackedScene #select weapon
 var weaponInstance
-@onready var Target = $"../TestPlayer"
+@onready var Target = $"Player"
 var HP = 100
 var Target_Position = Vector2(288.0,0)
 var Current_Position
@@ -31,7 +31,7 @@ func _on_follow_follow(): # will set pathfind desination to player
 		Target_Position = Target.position
 		navigation_agent_2d.target_position = Target_Position
 		
-func Pathfind(delta): #moves the enemy closer to the next pathfind point
+func Pathfind(_delta): #moves the enemy closer to the next pathfind point
 	Current_Position = self.global_position
 	Next_Step = navigation_agent_2d.get_next_path_position()
 	Velocity = Current_Position.direction_to(Next_Step) * Movement_Speed
