@@ -4,7 +4,7 @@ extends CharacterBody2D
 var weaponInstance
 @onready var Target = $"../TestPlayer"
 var HP = 100
-var Target_Position = Vector2(288.0,0)
+var Target_Position = Vector2(320.0,-100)
 var Current_Position
 @export var Movement_Speed = 60 # exported for testing purpuses, once good value found set it in code
 var Next_Step

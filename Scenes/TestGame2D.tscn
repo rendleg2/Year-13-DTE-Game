@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ccudf166evqp" path="res://Scenes/TestPlayer.tscn" id="2_vm6n5"]
 [ext_resource type="Texture2D" uid="uid://c6x2lisc15cav" path="res://Assets/tilesheet/sandbase.png" id="3_vm6n5"]
 [ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://Assets/Sprites/sand.png" id="4_13ert"]
+[ext_resource type="Texture2D" uid="uid://dcyxgd6fp4iea" path="res://Assets/tilesheet/wallstiles.png" id="4_p0lxy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vm6n5"]
 vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
@@ -36,6 +37,18 @@ tile_size = Vector2i(32, 16)
 navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_13ert")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23om8"]
+texture = ExtResource("4_p0lxy")
+texture_region_size = Vector2i(32, 43)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -9)
+0:0/0/z_index = -1
+
+[sub_resource type="TileSet" id="TileSet_tglyr"]
+tile_shape = 1
+tile_size = Vector2i(32, 16)
+sources/0 = SubResource("TileSetAtlasSource_23om8")
+
 [node name="TestGame2d" type="Node2D" unique_id=842691389]
 
 [node name="Enemy Template" parent="." unique_id=896060041 instance=ExtResource("1_cqkkl")]
@@ -44,17 +57,23 @@ position = Vector2(102, 155)
 [node name="TestPlayer" parent="." unique_id=1303460647 instance=ExtResource("2_vm6n5")]
 position = Vector2(288, 258)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=486559337]
+[node name="TestCamera2D" type="Camera2D" parent="." unique_id=486559337]
 position = Vector2(344, 314)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=470357422]
+[node name="TestFloor" type="TileMapLayer" parent="." unique_id=470357422]
 z_index = -2
 y_sort_enabled = true
 scale = Vector2(6, 6)
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAD//wEAAAABAAEAAAD//wMAAAABAAEAAAD//wIAAAABAAEAAAD+/wMAAAABAAEAAAD//wQAAAABAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAABAAUAAAABAAEAAAACAAYAAAABAAEAAAACAAcAAAABAAEAAAADAAgAAAABAAEAAAAAAAIAAAABAAEAAAACAAIAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAACAAQAAAABAAEAAAACAAUAAAABAAEAAAABAAgAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAABAAwAAAABAAEAAAAAAAsAAAABAAEAAAAAAAwAAAABAAEAAAABAA0AAAABAAEAAAABAA4AAAABAAEAAAAAAA8AAAABAAEAAAAAAA4AAAABAAEAAAD//w0AAAABAAEAAAAAAA0AAAABAAEAAAADAAIAAAABAAEAAAAAAAoAAAABAAEAAAD//wkAAAABAAEAAAD//wgAAAABAAEAAAD//wcAAAABAAEAAAAAAAYAAAABAAEAAAD//wUAAAABAAEAAAD//wYAAAABAAEAAAD+/wcAAAABAAEAAAD+/wYAAAABAAEAAAD+/wUAAAABAAEAAAD+/wgAAAABAAEAAAD+/wkAAAABAAEAAAD//woAAAABAAEAAAD+/wQAAAABAAEAAAD9/wcAAAABAAEAAAD+/wsAAAABAAEAAAD//wwAAAABAAEAAAD//wsAAAABAAEAAAABAAoAAAABAAEAAAABAAkAAAAAAAEAAAACAAoAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAACAAkAAAAAAAEAAAACAAgAAAAAAAEAAAACAAwAAAAAAAEAAAABAAQAAAABAAEAAAAAAAUAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_p0lxy")
 
-[node name="Sand" type="Sprite2D" parent="." unique_id=1838586426]
+[node name="TestWalls" type="TileMapLayer" parent="." unique_id=706006080]
+y_sort_enabled = true
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_tglyr")
+
+[node name="Sand, placeholder" type="Sprite2D" parent="." unique_id=1838586426]
 position = Vector2(-523, 44.999996)
 scale = Vector2(24.125, 23.9375)
 texture = ExtResource("4_13ert")
