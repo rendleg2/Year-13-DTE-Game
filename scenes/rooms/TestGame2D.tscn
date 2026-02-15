@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
 [ext_resource type="Texture2D" uid="uid://c8d4hc886mla1" path="res://assets/tilesheet/floortiles.png" id="3_h0gvn"]
-[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/Entities/Player.tscn" id="4_80nl2"]
+[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="4_80nl2"]
 [ext_resource type="PackedScene" uid="uid://bt3hu65cu2b8g" path="res://scenes/UI/Dash Card.tscn" id="5_4dn0y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_13ert"]
@@ -30,7 +30,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAD//wEAAAABAAEAAAD//wMAAAABAAE
 tile_set = SubResource("TileSet_p0lxy")
 
 [node name="Enemy Template" parent="." unique_id=896060041 instance=ExtResource("1_cqkkl")]
-position = Vector2(102, 155)
+position = Vector2(84, 27)
 
 [node name="Player" parent="." unique_id=249557870 instance=ExtResource("4_80nl2")]
 position = Vector2(808, 231)

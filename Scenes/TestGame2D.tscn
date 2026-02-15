@@ -1,11 +1,12 @@
 [gd_scene format=4 uid="uid://bjxktxg3a68xo"]
 
-[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/EnemyTemplate.tscn" id="1_cqkkl"]
-[ext_resource type="PackedScene" uid="uid://ccudf166evqp" path="res://Scenes/TestPlayer.tscn" id="2_vm6n5"]
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
 [ext_resource type="Texture2D" uid="uid://c6x2lisc15cav" path="res://Assets/tilesheet/sandbase.png" id="3_vm6n5"]
-[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://Assets/Sprites/sand.png" id="4_13ert"]
-[ext_resource type="Texture2D" uid="uid://dcyxgd6fp4iea" path="res://Assets/tilesheet/wallstiles.png" id="4_p0lxy"]
-[ext_resource type="Texture2D" uid="uid://cysva1fygjep3" path="res://Assets/tilesheet/wallstiles - Copy.png" id="5_23om8"]
+[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://assets/Sprites/sand.png" id="4_13ert"]
+[ext_resource type="Texture2D" uid="uid://d1hakuusrf86g" path="res://Assets/tilesheet/wallstiles.png" id="4_p0lxy"]
+[ext_resource type="Texture2D" uid="uid://cysva1fygjep3" path="res://assets/tilesheet/wallstiles - Copy.png" id="5_23om8"]
+[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="6_ayoh6"]
+[ext_resource type="PackedScene" uid="uid://bt3hu65cu2b8g" path="res://scenes/UI/Dash Card.tscn" id="7_xmvhh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vm6n5"]
 vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
@@ -40,10 +41,16 @@ sources/0 = SubResource("TileSetAtlasSource_13ert")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23om8"]
 texture = ExtResource("4_p0lxy")
-texture_region_size = Vector2i(32, 43)
+texture_region_size = Vector2i(32, 35)
 0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -9)
+0:0/0/texture_origin = Vector2i(0, -6)
 0:0/0/z_index = -1
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -6)
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -6)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -6)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tglyr"]
 texture = ExtResource("5_23om8")
@@ -62,12 +69,6 @@ sources/1 = SubResource("TileSetAtlasSource_tglyr")
 [node name="Enemy Template" parent="." unique_id=896060041 instance=ExtResource("1_cqkkl")]
 position = Vector2(102, 155)
 
-[node name="TestPlayer" parent="." unique_id=1303460647 instance=ExtResource("2_vm6n5")]
-position = Vector2(288, 258)
-
-[node name="TestCamera2D" type="Camera2D" parent="." unique_id=486559337]
-position = Vector2(344, 314)
-
 [node name="TestFloor" type="TileMapLayer" parent="." unique_id=470357422]
 z_index = -2
 y_sort_enabled = true
@@ -78,10 +79,19 @@ tile_set = SubResource("TileSet_p0lxy")
 [node name="TestWalls" type="TileMapLayer" parent="." unique_id=706006080]
 y_sort_enabled = true
 scale = Vector2(6, 6)
-tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAACAAIAAQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD//wUAAAAAAAAAAAAAAAYAAAABAAAAAAD//wYAAAACAAAAAAD//wsAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_tglyr")
 
 [node name="Sand, placeholder" type="Sprite2D" parent="." unique_id=1838586426]
 position = Vector2(-523, 44.999996)
 scale = Vector2(24.125, 23.9375)
 texture = ExtResource("4_13ert")
+
+[node name="Player" parent="." unique_id=249557870 instance=ExtResource("6_ayoh6")]
+position = Vector2(432, 466)
+
+[node name="Dash Card" parent="." unique_id=310080377 instance=ExtResource("7_xmvhh")]
+offset_left = 503.0
+offset_top = 202.0
+offset_right = 503.0
+offset_bottom = 202.0
