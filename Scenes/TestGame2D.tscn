@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c6x2lisc15cav" path="res://Assets/tilesheet/sandbase.png" id="3_vm6n5"]
 [ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://Assets/Sprites/sand.png" id="4_13ert"]
 [ext_resource type="Texture2D" uid="uid://dcyxgd6fp4iea" path="res://Assets/tilesheet/wallstiles.png" id="4_p0lxy"]
+[ext_resource type="Texture2D" uid="uid://cysva1fygjep3" path="res://Assets/tilesheet/wallstiles - Copy.png" id="5_23om8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vm6n5"]
 vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
@@ -44,10 +45,17 @@ texture_region_size = Vector2i(32, 43)
 0:0/0/texture_origin = Vector2i(0, -9)
 0:0/0/z_index = -1
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tglyr"]
+texture = ExtResource("5_23om8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -4)
+
 [sub_resource type="TileSet" id="TileSet_tglyr"]
 tile_shape = 1
 tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_23om8")
+sources/1 = SubResource("TileSetAtlasSource_tglyr")
 
 [node name="TestGame2d" type="Node2D" unique_id=842691389]
 
@@ -70,7 +78,7 @@ tile_set = SubResource("TileSet_p0lxy")
 [node name="TestWalls" type="TileMapLayer" parent="." unique_id=706006080]
 y_sort_enabled = true
 scale = Vector2(6, 6)
-tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAACAAIAAQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_tglyr")
 
 [node name="Sand, placeholder" type="Sprite2D" parent="." unique_id=1838586426]
