@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
 [ext_resource type="Texture2D" uid="uid://c6x2lisc15cav" path="res://Assets/tilesheet/sandbase.png" id="3_vm6n5"]
-[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://assets/Sprites/sand.png" id="4_13ert"]
-[ext_resource type="Texture2D" uid="uid://d1hakuusrf86g" path="res://Assets/tilesheet/wallstiles.png" id="4_p0lxy"]
+[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://assets/sprites/sand.png" id="4_13ert"]
+[ext_resource type="Texture2D" uid="uid://d1hakuusrf86g" path="res://assets/tilesheet/wallstiles.png" id="4_p0lxy"]
 [ext_resource type="Texture2D" uid="uid://cysva1fygjep3" path="res://assets/tilesheet/wallstiles - Copy.png" id="5_23om8"]
 [ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="6_ayoh6"]
 [ext_resource type="PackedScene" uid="uid://bt3hu65cu2b8g" path="res://scenes/UI/Dash Card.tscn" id="7_xmvhh"]
