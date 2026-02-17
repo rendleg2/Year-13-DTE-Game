@@ -1,68 +1,10 @@
 [gd_scene format=4 uid="uid://bjxktxg3a68xo"]
 
 [ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
-[ext_resource type="Texture2D" uid="uid://c6x2lisc15cav" path="res://Assets/tilesheet/sandbase.png" id="3_vm6n5"]
-[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://assets/sprites/sand.png" id="4_13ert"]
-[ext_resource type="Texture2D" uid="uid://d1hakuusrf86g" path="res://assets/tilesheet/wallstiles.png" id="4_p0lxy"]
-[ext_resource type="Texture2D" uid="uid://cysva1fygjep3" path="res://assets/tilesheet/wallstiles - Copy.png" id="5_23om8"]
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="2_c1wwk"]
+[ext_resource type="Script" uid="uid://rttlrdxfdah" path="res://scripts/game/ConfigureNavigationLayer.gd" id="3_6tun1"]
 [ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="6_ayoh6"]
 [ext_resource type="PackedScene" uid="uid://bt3hu65cu2b8g" path="res://scenes/UI/Dash Card.tscn" id="7_xmvhh"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_vm6n5"]
-vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)])
-agent_radius = 0.0
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_13ert"]
-vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)])
-agent_radius = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_13ert"]
-texture = ExtResource("3_vm6n5")
-margins = Vector2i(2, 16)
-separation = Vector2i(2, 0)
-texture_region_size = Vector2i(32, 24)
-1:1/0 = 0
-1:1/0/texture_origin = Vector2i(0, -3)
-1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_13ert")
-0:1/0 = 0
-0:1/0/texture_origin = Vector2i(0, -3)
-0:1/0/y_sort_origin = -3
-0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vm6n5")
-
-[sub_resource type="TileSet" id="TileSet_p0lxy"]
-tile_shape = 1
-tile_size = Vector2i(32, 16)
-navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_13ert")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_23om8"]
-texture = ExtResource("4_p0lxy")
-texture_region_size = Vector2i(32, 35)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -6)
-0:0/0/z_index = -1
-1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, -6)
-2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, -6)
-3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, -6)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tglyr"]
-texture = ExtResource("5_23om8")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, -4)
-
-[sub_resource type="TileSet" id="TileSet_tglyr"]
-tile_shape = 1
-tile_size = Vector2i(32, 16)
-sources/0 = SubResource("TileSetAtlasSource_23om8")
-sources/1 = SubResource("TileSetAtlasSource_tglyr")
 
 [node name="TestGame2d" type="Node2D" unique_id=842691389]
 
@@ -73,19 +15,15 @@ position = Vector2(102, 155)
 z_index = -2
 y_sort_enabled = true
 scale = Vector2(6, 6)
-tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAD//wEAAAABAAEAAAD//wMAAAABAAEAAAD//wIAAAABAAEAAAD+/wMAAAABAAEAAAD//wQAAAABAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAABAAUAAAABAAEAAAACAAYAAAABAAEAAAACAAcAAAABAAEAAAADAAgAAAABAAEAAAAAAAIAAAABAAEAAAACAAIAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAACAAQAAAABAAEAAAACAAUAAAABAAEAAAABAAgAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAABAAwAAAABAAEAAAAAAAsAAAABAAEAAAAAAAwAAAABAAEAAAABAA0AAAABAAEAAAABAA4AAAABAAEAAAAAAA8AAAABAAEAAAAAAA4AAAABAAEAAAD//w0AAAABAAEAAAAAAA0AAAABAAEAAAADAAIAAAABAAEAAAAAAAoAAAABAAEAAAD//wkAAAABAAEAAAD//wgAAAABAAEAAAD//wcAAAABAAEAAAAAAAYAAAABAAEAAAD//wUAAAABAAEAAAD//wYAAAABAAEAAAD+/wcAAAABAAEAAAD+/wYAAAABAAEAAAD+/wUAAAABAAEAAAD+/wgAAAABAAEAAAD+/wkAAAABAAEAAAD//woAAAABAAEAAAD+/wQAAAABAAEAAAD9/wcAAAABAAEAAAD+/wsAAAABAAEAAAD//wwAAAABAAEAAAD//wsAAAABAAEAAAABAAoAAAABAAEAAAABAAkAAAAAAAEAAAACAAoAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAACAAkAAAAAAAEAAAACAAgAAAAAAAEAAAACAAwAAAAAAAEAAAABAAQAAAABAAEAAAAAAAUAAAABAAEAAAA=")
-tile_set = SubResource("TileSet_p0lxy")
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAD//wEAAAABAAEAAAD//wMAAAABAAEAAAD//wIAAAABAAEAAAD+/wMAAAABAAEAAAD//wQAAAABAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAABAAUAAAABAAEAAAACAAYAAAABAAEAAAACAAcAAAABAAEAAAADAAgAAAABAAEAAAAAAAIAAAABAAEAAAACAAIAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAACAAQAAAABAAEAAAACAAUAAAABAAEAAAABAAgAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAABAAwAAAABAAEAAAAAAAsAAAABAAEAAAAAAAwAAAABAAEAAAABAA0AAAABAAEAAAABAA4AAAABAAEAAAAAAA8AAAABAAEAAAAAAA4AAAABAAEAAAD//w0AAAABAAEAAAAAAA0AAAABAAEAAAADAAIAAAABAAEAAAAAAAoAAAABAAEAAAD//wkAAAABAAEAAAD//wgAAAABAAEAAAD//wcAAAABAAEAAAAAAAYAAAABAAEAAAD//wUAAAABAAEAAAD//wYAAAABAAEAAAD+/wcAAAABAAEAAAD+/wYAAAABAAEAAAD+/wUAAAABAAEAAAD+/wgAAAABAAEAAAD+/wkAAAABAAEAAAD//woAAAABAAEAAAD+/wQAAAABAAEAAAD9/wcAAAABAAEAAAD+/wsAAAABAAEAAAD//wwAAAABAAEAAAD//wsAAAABAAEAAAABAAoAAAABAAEAAAABAAkAAAAAAAEAAAACAAoAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAACAAkAAAAAAAEAAAACAAgAAAAAAAEAAAACAAwAAAAAAAEAAAABAAQAAAABAAEAAAAAAAUAAAABAAEAAAACAP//AQADAAAAAAADAAAAAQADAAAAAAAEAAQAAQADAAAAAAA=")
+tile_set = ExtResource("2_c1wwk")
+script = ExtResource("3_6tun1")
 
 [node name="TestWalls" type="TileMapLayer" parent="." unique_id=706006080]
 y_sort_enabled = true
 scale = Vector2(6, 6)
-tile_map_data = PackedByteArray("AAD//wUAAAAAAAAAAAAAAAYAAAABAAAAAAD//wYAAAACAAAAAAD//wsAAAADAAAAAAA=")
-tile_set = SubResource("TileSet_tglyr")
-
-[node name="Sand, placeholder" type="Sprite2D" parent="." unique_id=1838586426]
-position = Vector2(-523, 44.999996)
-scale = Vector2(24.125, 23.9375)
-texture = ExtResource("4_13ert")
+tile_map_data = PackedByteArray("AAD//wcAAQADAAAAAAABAAYAAQADAAAAAAAAAAAAAQACAAAAAAD//wEAAQACAAAAAAD//wIAAQACAAAAAAD+/wMAAQACAAAAAAD+/wQAAQADAAAAAAA=")
+tile_set = ExtResource("2_c1wwk")
 
 [node name="Player" parent="." unique_id=249557870 instance=ExtResource("6_ayoh6")]
 position = Vector2(432, 466)

@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 @export var weapon: PackedScene #select weapon
 var weaponInstance
-@onready var Target = $"Player"
+@onready var Target = $"../Player"
 var HP = 100
-var Target_Position = Vector2(320.0,-100)
+var Target_Position
 var Current_Position
 @export var Movement_Speed = 60 # exported for testing purpuses, once good value found set it in code
 var Next_Step
@@ -14,7 +14,7 @@ var aggro = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: #spawn in the enemys weapon
-	navigation_agent_2d.target_position = Target_Position # Delete once testing complete
+	#navigation_agent_2d.target_position = Target_Position # Delete once testing complete
 	if weapon:
 		weaponInstance = weapon.instantiate()
 		add_child(weaponInstance)
@@ -24,7 +24,7 @@ func _ready() -> void: #spawn in the enemys weapon
 func _process(delta: float) -> void:
 	if aggro == true:
 		_on_follow_follow()
-	Pathfind(delta)# move into aggro if statement once testing complete
+		Pathfind(delta)# move into aggro if statement once testing complete
 
 func _on_follow_follow(): # will set pathfind desination to player
 	if Target_Position != Target.position:
