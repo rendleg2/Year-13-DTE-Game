@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cea21xdfh17tj"
-path="res://.godot/imported/icon.svg-00a55f41757400f7387d4069be498893.ctex"
+uid="uid://d1hakuusrf86g"
+path="res://.godot/imported/wallstiles.png-0d549472b93f415f887bd09a81179902.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-00a55f41757400f7387d4069be498893.ctex"]
+source_file="res://assets/tilesheet/wallstiles.png"
+dest_files=["res://.godot/imported/wallstiles.png-0d549472b93f415f887bd09a81179902.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
