@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b05mm8vqi6d5s"
-path="res://.godot/imported/Python.svg-681cb785c113434a7384dcc1fd345d19.ctex"
+uid="uid://cvmq8la3bjc2j"
+path="res://.godot/imported/base.png-85122fa4c15f5931885337ea3d861fb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/py4godot/Python.svg"
-dest_files=["res://.godot/imported/Python.svg-681cb785c113434a7384dcc1fd345d19.ctex"]
+source_file="res://Assets/tilesheet/base.png"
+dest_files=["res://.godot/imported/base.png-85122fa4c15f5931885337ea3d861fb3.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
