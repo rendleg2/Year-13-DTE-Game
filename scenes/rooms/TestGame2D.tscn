@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://bjxktxg3a68xo"]
 
 [ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
-[ext_resource type="Texture2D" uid="uid://c8d4hc886mla1" path="res://assets/tilesheet/floortiles.png" id="3_h0gvn"]
+[ext_resource type="Texture2D" uid="uid://c8d4hc886mla1" path="res://Assets/tilesheet/floortiles.png" id="3_h0gvn"]
 [ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="4_80nl2"]
 [ext_resource type="PackedScene" uid="uid://bt3hu65cu2b8g" path="res://scenes/UI/Dash Card.tscn" id="5_4dn0y"]
-[ext_resource type="Texture2D" uid="uid://hdaua1epmehu" path="res://assets/tilesheet/wall.png" id="5_xffw4"]
+[ext_resource type="Texture2D" uid="uid://hdaua1epmehu" path="res://Assets/tilesheet/wall.png" id="5_xffw4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_13ert"]
 texture = ExtResource("3_h0gvn")
@@ -59,5 +59,5 @@ offset_bottom = -143.0
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1540834358]
 y_sort_enabled = true
 scale = Vector2(6, 6)
-tile_map_data = PackedByteArray("AAABAAYAAAAAAAAAAAABAAcAAAAEAAAAAAAAAAcAAAACAAAAAAAAAAgAAAAEAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAcAAAACAAAAAAACAAYAAAAAAAAAAAACAAcAAAABAAAAAAABAAgAAAACAAAAAAACAAgAAAAAAAAAAAABAAkAAAACAAAAAAACAAoAAAAAAAAAAAACAAkAAAABAAAAAAADAAgAAAABAAAAAAAAAAkAAAACAAAAAAABAAoAAAACAAAAAAABAAsAAAACAAAAAAACAAsAAAABAAAAAAADAAoAAAABAAAAAAADAAkAAAABAAAAAAACAAwAAAAEAAAAAAD+/wEAAAAEAAAAAAD+/wAAAAABAAAAAAD//wAAAAACAAAAAAD+/wIAAAACAAAAAAD//wIAAAABAAAAAAD+/wMAAAADAAAAAAADAAwAAAABAAAAAAADAA0AAAABAAAAAAAEAA4AAAABAAAAAAAEAA8AAAABAAAAAAADAAsAAAACAAAAAAAEAAoAAAACAAAAAAAEAAkAAAACAAAAAAAFAAgAAAACAAAAAAAEAAgAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_80nl2")
