@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8d4hc886mla1"
-path="res://.godot/imported/floortiles.png-2049b305a9e5f6a8b973f46f22263694.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://5lxo7b8g4vj4"
+valid=false
 
 [deps]
 
-source_file="res://assets/tilesheet/floortiles.png"
-dest_files=["res://.godot/imported/floortiles.png-2049b305a9e5f6a8b973f46f22263694.ctex"]
+source_file="res://assets/tilesheet/wallstiles (2).png"
 
 [params]
 
