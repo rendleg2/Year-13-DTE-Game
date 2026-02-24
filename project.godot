@@ -16,7 +16,7 @@ config/icon="res://Assets/Sprites/icon.svg"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg", "res://addons/py4godot/plugin.cfg")
+enabled=PackedStringArray("res://addons/py4godot/plugin.cfg")
 
 [physics]
 
