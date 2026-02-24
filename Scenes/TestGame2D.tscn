@@ -1,0 +1,35 @@
+[gd_scene format=4 uid="uid://bjxktxg3a68xo"]
+
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="2_c1wwk"]
+[ext_resource type="Script" uid="uid://rttlrdxfdah" path="res://scripts/game/ConfigureNavigationLayer.gd" id="3_6tun1"]
+[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="6_ayoh6"]
+[ext_resource type="PackedScene" uid="uid://bt3hu65cu2b8g" path="res://scenes/UI/Dash Card.tscn" id="7_xmvhh"]
+
+[node name="TestGame2d" type="Node2D" unique_id=842691389]
+
+[node name="Enemy Template" parent="." unique_id=896060041 instance=ExtResource("1_cqkkl")]
+position = Vector2(102, 155)
+
+[node name="TestFloor" type="TileMapLayer" parent="." unique_id=470357422]
+z_index = -2
+y_sort_enabled = true
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAD//wEAAAABAAEAAAD//wMAAAABAAEAAAD//wIAAAABAAEAAAD+/wMAAAABAAEAAAD//wQAAAABAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAABAAUAAAABAAEAAAACAAYAAAABAAEAAAACAAcAAAABAAEAAAADAAgAAAABAAEAAAAAAAIAAAABAAEAAAACAAIAAAABAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAABAAEAAAACAAQAAAABAAEAAAACAAUAAAABAAEAAAABAAgAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAABAAwAAAABAAEAAAAAAAsAAAABAAEAAAAAAAwAAAABAAEAAAABAA0AAAABAAEAAAABAA4AAAABAAEAAAAAAA8AAAABAAEAAAAAAA4AAAABAAEAAAD//w0AAAABAAEAAAAAAA0AAAABAAEAAAADAAIAAAABAAEAAAAAAAoAAAABAAEAAAD//wkAAAABAAEAAAD//wgAAAABAAEAAAD//wcAAAABAAEAAAAAAAYAAAABAAEAAAD//wUAAAABAAEAAAD//wYAAAABAAEAAAD+/wcAAAABAAEAAAD+/wYAAAABAAEAAAD+/wUAAAABAAEAAAD+/wgAAAABAAEAAAD+/wkAAAABAAEAAAD//woAAAABAAEAAAD+/wQAAAABAAEAAAD9/wcAAAABAAEAAAD+/wsAAAABAAEAAAD//wwAAAABAAEAAAD//wsAAAABAAEAAAABAAoAAAABAAEAAAABAAkAAAAAAAEAAAACAAoAAAAAAAEAAAABAAsAAAAAAAEAAAACAAsAAAAAAAEAAAACAAkAAAAAAAEAAAACAAgAAAAAAAEAAAACAAwAAAAAAAEAAAABAAQAAAABAAEAAAAAAAUAAAABAAEAAAACAP//AQADAAAAAAADAAAAAQADAAAAAAAEAAQAAQADAAAAAAA=")
+tile_set = ExtResource("2_c1wwk")
+script = ExtResource("3_6tun1")
+
+[node name="TestWalls" type="TileMapLayer" parent="." unique_id=706006080]
+y_sort_enabled = true
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAD//wcAAQADAAAAAAABAAYAAQADAAAAAAAAAAAAAQACAAAAAAD//wEAAQACAAAAAAD//wIAAQACAAAAAAD+/wMAAQACAAAAAAD+/wQAAQADAAAAAAA=")
+tile_set = ExtResource("2_c1wwk")
+
+[node name="Player" parent="." unique_id=249557870 instance=ExtResource("6_ayoh6")]
+position = Vector2(432, 466)
+
+[node name="Dash Card" parent="." unique_id=310080377 instance=ExtResource("7_xmvhh")]
+offset_left = 503.0
+offset_top = 202.0
+offset_right = 503.0
+offset_bottom = 202.0

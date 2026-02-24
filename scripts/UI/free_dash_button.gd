@@ -6,7 +6,7 @@ func _ready():
 func _on_button_pressed():
 	var player_stats = _find_player()
 	if player_stats != null:
-		player_stats.ability_speed *= 6
+		player_stats.ability_speed *= 1
 		player_stats.free_dash = true
 		print("Boop! Free dash enabled. Ability speed now: ", player_stats.ability_speed)
 		self.disabled = true  # Stops clicks after first
