@@ -2,16 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvmq8la3bjc2j"
-path="res://.godot/imported/base.png-85122fa4c15f5931885337ea3d861fb3.ctex"
-metadata={
-"vram_texture": false
-}
+uid="uid://5lxo7b8g4vj4"
+valid=false
 
 [deps]
 
-source_file="res://Assets/tilesheet/base.png"
-dest_files=["res://.godot/imported/base.png-85122fa4c15f5931885337ea3d861fb3.ctex"]
+source_file="res://assets/tilesheet/wallstiles (2).png"
 
 [params]
 

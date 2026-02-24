@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bt3hu65cu2b8g"]
 
-[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="1_833p8"]
-[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://assets/sprites/sand.png" id="2_n0bw1"]
-[ext_resource type="Script" uid="uid://76ch6g3r5dek" path="res://scripts/UI/free_dash_button.gd" id="3_833p8"]
+[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://Assets/Sprites/icon.svg" id="1_833p8"]
+[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://Assets/Sprites/sand.png" id="2_n0bw1"]
+[ext_resource type="Script" uid="uid://cqgtjo1wv0g1s" path="res://scripts/Cards/Card format.gd" id="3_833p8"]
 
 [node name="Dash Card" type="Control" unique_id=310080377]
 layout_mode = 3

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cvrbiyqm8pn28"]
 
 [ext_resource type="Script" uid="uid://cj0ncxwxkwekf" path="res://scripts/game/player.gd" id="1_vm2lv"]
-[ext_resource type="Texture2D" uid="uid://b1av2tvdn5dgs" path="res://assets/sprites/486904f7-ad6a-469e-b4fa-727c505187cb.webp" id="2_k5qh4"]
+[ext_resource type="Texture2D" uid="uid://b1av2tvdn5dgs" path="res://Assets/Sprites/486904f7-ad6a-469e-b4fa-727c505187cb.webp" id="2_k5qh4"]
+[ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://scenes/entities/Bullet.tscn" id="3_24gqh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7et6"]
 radius = 81.055534
@@ -44,6 +45,8 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=249557870]
 script = ExtResource("1_vm2lv")
+bullet_scene = ExtResource("3_24gqh")
+bullet_size = 8.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1237092590]
 position = Vector2(-1, 1)
