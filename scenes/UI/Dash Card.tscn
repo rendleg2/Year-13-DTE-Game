@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bt3hu65cu2b8g"]
+
+[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://Assets/Sprites/icon.svg" id="1_833p8"]
+[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://Assets/Sprites/sand.png" id="2_n0bw1"]
+[ext_resource type="Script" uid="uid://cqgtjo1wv0g1s" path="res://scripts/Cards/Card format.gd" id="3_833p8"]
+
+[node name="Dash Card" type="Control" unique_id=310080377]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1310370209]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_833p8")
+texture_pressed = ExtResource("2_n0bw1")
+script = ExtResource("3_833p8")

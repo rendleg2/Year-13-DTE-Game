@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dop6knc2phnwv"]
+
+[ext_resource type="TileSet" uid="uid://7vhpumv5yog1" path="res://assets/tilesheet/test_map_generator_rooms.tres" id="1_wgt8k"]
+[ext_resource type="Script" uid="uid://o5mu7tlp6jps" path="res://scripts/game/map_generator.gd" id="2_52cxc"]
+
+[node name="TestMapGeneration" type="Node2D" unique_id=1767438260]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1829954891]
+tile_set = ExtResource("1_wgt8k")
+script = ExtResource("2_52cxc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1036221553]
+zoom = Vector2(0.5, 0.5)
