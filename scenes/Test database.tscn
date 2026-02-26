@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://bqo2u52eb0kyx"]
+[gd_scene format=3 uid="uid://6u1gmenoe3jw"]
 
-[ext_resource type="Script" path="res://Scene's/control.py" id="1_1b4a8"]
+[ext_resource type="Script" path="res://scripts/Database/Player_card_databse.py" id="1_yjivs"]
 
-[node name="Control" type="Control" unique_id=1813548645]
+[node name="TestDatabase" type="Control" unique_id=408039087]
 unique_name_in_owner = false
 process_mode = 0
 process_priority = 0
@@ -70,4 +70,4 @@ accessibility_described_by_nodes = Array[NodePath]([])
 accessibility_labeled_by_nodes = Array[NodePath]([])
 accessibility_flow_to_nodes = Array[NodePath]([])
 theme_type_variation = &""
-script = ExtResource("1_1b4a8")
+script = ExtResource("1_yjivs")
