@@ -10,4 +10,4 @@ tile_set = ExtResource("1_wgt8k")
 script = ExtResource("2_52cxc")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1036221553]
-zoom = Vector2(0.3, 0.3)
+zoom = Vector2(0.5, 0.5)

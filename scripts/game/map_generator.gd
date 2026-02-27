@@ -1,7 +1,23 @@
 extends TileMapLayer
 
 class_name TreacherousMapGenerator
-
+@onready var rooms = {
+	1: tile_set.get_pattern(0),
+	2: tile_set.get_pattern(1),
+	3: tile_set.get_pattern(2),
+	4: tile_set.get_pattern(3),
+	5: tile_set.get_pattern(4),
+	6: tile_set.get_pattern(5),
+	#7: tile_set.get_pattern(6),
+	8: tile_set.get_pattern(7),
+	9: tile_set.get_pattern(8),
+	10: tile_set.get_pattern(9),
+	#11: tile_set.get_pattern(10),
+	12: tile_set.get_pattern(11),
+	#13: tile_set.get_pattern(12),
+	#14: tile_set.get_pattern(13),
+	#15: tile_set.get_pattern(14),
+}
 
 class GeneratorInstance:
 	## The current active cells that the algorithm iterates through
@@ -24,7 +40,7 @@ class GeneratorInstance:
 	## Value: array with the following contsts as indexes
 	var cell_data = {}
 	
-	var start_id: int = 15
+	var start_id: int = 1
 	var start_position: Vector2i = Vector2i.ZERO
 	var expansion_requests: int = 0
 	var map_size: int = 100
@@ -67,15 +83,15 @@ var room_id_to_directions = {
 	4: [4], 
 	5: [1, 4], 
 	6: [2, 4], 
-	7: [1, 2, 4], 
+	#7: [1, 2, 4], 
 	8: [8], 
 	9: [1, 8], 
 	10: [2, 8], 
-	11: [1, 2, 8], 
+	#11: [1, 2, 8], 
 	12: [4, 8], 
-	13: [1, 4, 8], 
-	14: [2, 4, 8], 
-	15: [1, 2, 4, 8]
+	#13: [1, 4, 8], 
+	#14: [2, 4, 8], 
+	#15: [1, 2, 4, 8]
 	}
 
 var direction_to_coords = {
@@ -110,8 +126,9 @@ func _process(_delta):
 ## Initialzes the algorithm from the origin
 func start():
 	generator.map_size = map_size
-	set_cell(generator.start_position, 0, Vector2i(generator.start_id, 0))
-	generator.cell_data[generator.start_position] = [0, null, null, [], []]
+	#set_cell(generator.start_position, 0, Vector2i(generator.start_id, 0))
+	set_pattern(generator.start_position, rooms[generator.start_id])
+	generator.cell_data[generator.start_position] = [0, null, null, [], [], 1]
 	generator.current_map_size += 1
 	mark_cells_to_fill(generator.start_position)
 	
@@ -189,22 +206,24 @@ func fill_cell(cell):
 func spawn_room(cell_to_fill: Vector2i, room_selection: Array):
 	var select_random: int = rng.randi_range(0, room_selection.size() - 1)
 	var selected_room: int = room_selection[select_random]
+	generator.cell_data[cell_to_fill].append(selected_room)
 	if selected_room == generator.cell_data[cell_to_fill][PARENT_DIRECTION]:
 		generator.closing_rooms.append(cell_to_fill)
-	set_cell(cell_to_fill, 0, Vector2i(selected_room, 0))
+	#set_cell(cell_to_fill, 0, Vector2i(selected_room, 0))
+	set_pattern(cell_to_fill, rooms[selected_room])
 
 # GET WALL OPENINGS
 # Input: position of cell
 # Output: array containing all unoccupied von neuman neighbors, expressed as int bit flags
 func get_wall_openings(cell: Vector2i) -> Array:
 	var wall_openings: Array = []
-	if get_cell_atlas_coords(cell + Vector2i.UP) == Vector2i(-1, -1):
+	if !generator.cell_data.has(cell + Vector2i.UP):
 		wall_openings.append(1)
-	if get_cell_atlas_coords(cell + Vector2i.RIGHT) == Vector2i(-1, -1):
+	if !generator.cell_data.has(cell + Vector2i.RIGHT):
 		wall_openings.append(2)
-	if get_cell_atlas_coords(cell + Vector2i.DOWN) == Vector2i(-1, -1):
+	if !generator.cell_data.has(cell + Vector2i.DOWN):
 		wall_openings.append(4)
-	if get_cell_atlas_coords(cell + Vector2i.LEFT) == Vector2i(-1, -1):
+	if !generator.cell_data.has(cell + Vector2i.LEFT):
 		wall_openings.append(8)
 	return wall_openings
 
@@ -212,7 +231,7 @@ func get_wall_openings(cell: Vector2i) -> Array:
 # Input: position of cell
 # Output: list of cells to fill according to the cell's open branches, excluding the branch to parent
 func get_cells_to_fill(cell: Vector2i) -> Array:
-	var room_id: int = get_cell_atlas_coords(cell).x
+	var room_id: int = generator.cell_data[cell][5]
 	var open_directions: Array = room_id_to_directions[room_id]
 	var cells_to_fill: Array = convert_directions_to_cells_coords(open_directions, cell)
 	#exclude parent direction from producible directions if it has a parent
@@ -284,7 +303,8 @@ func get_possible_rooms(input_set: Array, number_to_append: int) -> Array:
 		var sum: int = 0
 		for number in subset:
 			sum += number
-		output_set.append(sum)
+		if rooms.has(sum):
+			output_set.append(sum)
 	return output_set
 
 # MARK CELLS TO FILL
@@ -296,6 +316,7 @@ func mark_cells_to_fill(cell: Vector2i):
 	store_cell_data(cells_to_fill, cell)
 	for cell_to_fill in cells_to_fill:
 		set_cell(cell_to_fill, 0, Vector2i.ZERO)
+		#set_pattern(cell_to_fill, rooms[1])
 		generator.rooms_expected_next_iteration += 1
 		update_neighbor_rooms(cell_to_fill)
 		generator.next_active_cells.append(cell_to_fill)
@@ -311,6 +332,10 @@ func mark_cells_to_fill(cell: Vector2i):
 # MANIPULATE ROOM SELECTION
 # all methods to manipulate rooom selection goes here
 func manipulate_room_selection(cell: Vector2i, room_selection: Array):
+	for room_id in room_selection:
+		if room_id not in rooms:
+			room_selection.erase(room_id)
+			
 	# DEFAULT: Closes the map if the map size is already achieved
 	var parent_direction: int = generator.cell_data[cell][PARENT_DIRECTION]
 	if generator.current_map_size + generator.rooms_expected_next_iteration >= generator.map_size:
@@ -380,15 +405,27 @@ func expand_map():
 	if generator.closing_rooms.has(room_to_expand):
 		generator.closing_rooms.erase(room_to_expand)
 	
-	var room_id: int = get_cell_atlas_coords(room_to_expand).x
+	var room_id: int = generator.cell_data[room_to_expand][5]
 	var expandable_directions: Array = generator.cell_data[room_to_expand][OPEN_DIRECTIONS]
 	var selected_expand_direction: int = select_random_element(expandable_directions)
 	var expanded_room: int = room_id + selected_expand_direction
-	set_cell(room_to_expand, 0, Vector2i(expanded_room, 0))
 	
+	if rooms.has(expanded_room):
+		set_pattern(room_to_expand, rooms[expanded_room])
+		generator.cell_data[room_to_expand][5] = expanded_room
+	else:
+		# If the expansion would create a T-junction, don't expand this room
+		return
+#	set_cell(room_to_expand, 0, Vector2i(expanded_room, 0))
+	print(expanded_room)
+	
+	set_pattern(room_to_expand, rooms[expanded_room])
+
+		
 	var expand_location: Vector2i = convert_directions_to_cells_coords([selected_expand_direction], room_to_expand)[0]
 	store_cell_data([expand_location], room_to_expand)
 	set_cell(expand_location, 0, Vector2i(0, 0))
+	#set_pattern(expand_location, rooms[1])
 	generator.rooms_expected_next_iteration += 1
 	update_neighbor_rooms(expand_location)
 	generator.next_active_cells.append(expand_location)

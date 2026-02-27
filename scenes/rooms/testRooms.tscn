@@ -1,0 +1,7 @@
+[gd_scene format=4 uid="uid://bmqk4eoljtqcr"]
+
+[ext_resource type="TileSet" uid="uid://7vhpumv5yog1" path="res://assets/tilesheet/test_map_generator_rooms.tres" id="1_lhdyl"]
+
+[node name="TestRooms" type="TileMapLayer" unique_id=48343965]
+tile_map_data = PackedByteArray("AAAPAAAAAAAQAAAAAAAAAAAAAAABAAAAAAABAAAAAAACAAAAAAACAAAAAAADAAAAAAADAAAAAAAEAAAAAAAEAAAAAAAFAAAAAAAFAAAAAAAGAAAAAAAGAAAAAAAHAAAAAAAHAAAAAAAIAAAAAAAIAAAAAAAJAAAAAAAJAAAAAAAKAAAAAAAKAAAAAAALAAAAAAALAAAAAAAMAAAAAAAMAAAAAAANAAAAAAANAAAAAAAOAAAAAAAOAAAAAAAPAAAAAAA=")
+tile_set = ExtResource("1_lhdyl")
