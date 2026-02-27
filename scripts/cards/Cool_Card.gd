@@ -1,5 +1,5 @@
 extends TextureButton
-class_name Card_Template
+class_name Cool_Card
 
 @export_category("Hover")
 @export var hover_scale: Vector2 = Vector2(1.1, 1.1)
@@ -52,16 +52,16 @@ func _on_button_pressed() -> void:
 	var player_stats = _find_player()
 	if player_stats != null:
 		
-		#player_stats.free_dash = true
-		#player_stats.auto_fire_active = true
+		player_stats.free_dash = true
+		player_stats.auto_fire_active = true
 		
-		#player_stats.speed *= 
+		player_stats.speed *= 2
 		#player_stats.ability_speed += 
 		#player_stats.ability_duration += 
 		#player_stats.ability_cooldown += 
 	
-		#player_stats.bullet_spread += 
-		#player_stats.bullet_count += 
+		player_stats.bullet_spread += 2
+		player_stats.bullet_count += 5
 		#player_stats.bullet_cooldown = 
 		#player_stats.bullet_speed += 
 		#player_stats.bullet_damage += 

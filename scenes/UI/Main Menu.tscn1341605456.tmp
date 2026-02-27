@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bh6bvig2tbyxk"]
+
+[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="1_lk408"]
+[ext_resource type="Script" uid="uid://q3mibu3dooq" path="res://scripts/UI/Start Game.gd" id="2_lk408"]
+[ext_resource type="Script" uid="uid://qdu2rm0lcxkl" path="res://scripts/UI/Rendle_Button.gd" id="3_bjdgx"]
+
+[node name="Main Menu" type="Control" unique_id=1033264865]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 5.0
+offset_right = -1.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Rendle_Button" type="TextureButton" parent="." unique_id=636171983]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 73.0
+offset_right = 630.0
+offset_bottom = 201.0
+texture_normal = ExtResource("1_lk408")
+script = ExtResource("3_bjdgx")
+metadata/_custom_type_script = "uid://cd74qfgfivj76"
+
+[node name="Start_Button" type="TextureButton" parent="." unique_id=902574867]
+layout_mode = 0
+offset_left = 684.0
+offset_top = 73.0
+offset_right = 812.0
+offset_bottom = 201.0
+texture_normal = ExtResource("1_lk408")
+script = ExtResource("2_lk408")
+metadata/_custom_type_script = "uid://cd74qfgfivj76"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=139653280]
+position = Vector2(576, 323)

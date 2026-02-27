@@ -92,7 +92,7 @@ func _ready():
 	rng.set_seed(randi())
 	start()
 
-func _input(event):
+func _input(_event):
 	pass
 
 func _process(_delta):

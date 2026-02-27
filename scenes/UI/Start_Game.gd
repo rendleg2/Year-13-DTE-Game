@@ -1,5 +1,5 @@
 extends TextureButton
-class_name CustomAnimatedButton
+class_name Start_Game
 
 @export_category("Hover")
 @export var hover_scale: Vector2 = Vector2(1.1, 1.1)
@@ -18,7 +18,7 @@ class_name CustomAnimatedButton
 @export var press_animation: String = "press"
 
 @export_category("Scene Navigation")
-@export var scene_change: String = "res://scenes/rooms/TestGame2D.tscn" #the scene button change to
+@export var scene_change: String = "res://scenes/rooms/TestGame2D.tscn" #the scene change
 
 var animation_tween: Tween
 
