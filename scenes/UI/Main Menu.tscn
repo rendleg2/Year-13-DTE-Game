@@ -1,0 +1,340 @@
+[gd_scene format=3 uid="uid://bh6bvig2tbyxk"]
+
+[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="1_lk408"]
+[ext_resource type="Script" uid="uid://cd74qfgfivj76" path="res://scripts/UI/animated_button.gd" id="2_lk408"]
+
+[sub_resource type="GDScript" id="GDScript_o2jor"]
+script/source = "extends TextureButton
+class_name TestGame2d_Button
+
+@export_category(\"Hover\")
+@export var hover_scale: Vector2 = Vector2(1.1, 1.1)
+@export var hover_animation_length: float = 0.1
+@export var un_hover_animation_length: float = 0.1
+
+@export_category(\"Press\")
+@export var press_scale: Vector2 = Vector2(0.95, 0.95)
+@export var press_animation_length_1: float = 0.1
+@export var press_animation_length_2: float = 0.1
+
+@export_category(\"Frame Animation\")
+@export var animated_sprite: AnimatedSprite2D
+@export var idle_animation: String = \"idle\"
+@export var hover_animation: String = \"hover\"
+@export var press_animation: String = \"press\"
+
+@export_category(\"Scene Navigation\")
+@export var scene_change: String = \"res://scenes/rooms/TestGame2D.tscn\" #the scene button change to
+
+var animation_tween: Tween
+
+func _ready() -> void:
+	pressed.connect(_on_button_pressed)
+	mouse_entered.connect(_button_hover)
+	mouse_exited.connect(_button_un_hover)
+	
+	resized.connect(_update_pivot)
+	_update_pivot()
+
+	if animated_sprite:
+		animated_sprite.centered = true
+		_update_sprite_position()
+
+		if idle_animation and animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(idle_animation):
+			animated_sprite.play(idle_animation)
+
+func _update_pivot() -> void:
+	pivot_offset = size / 2
+	_update_sprite_position()
+
+func _update_sprite_position() -> void:
+	if animated_sprite:
+		animated_sprite.position = size / 2
+
+func _on_button_pressed() -> void:
+	_button_press()
+
+	await get_tree().create_timer(0.15).timeout
+	get_tree().change_scene_to_file(scene_change)
+
+func _button_press() -> void:
+	if animation_tween: 
+		animation_tween.kill()
+	animation_tween = create_tween().set_trans(Tween.TRANS_SINE)
+	animation_tween.tween_property(self, \"scale\", press_scale, press_animation_length_1)
+	animation_tween.chain().tween_property(self, \"scale\", hover_scale, press_animation_length_2)
+	
+	if animated_sprite and press_animation:
+		if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(press_animation):
+			animated_sprite.play(press_animation)
+
+func _button_hover() -> void:
+	if animation_tween:
+		animation_tween.kill()
+	animation_tween = create_tween().set_trans(Tween.TRANS_SINE)
+	animation_tween.tween_property(self, \"scale\", hover_scale, hover_animation_length)
+
+	if animated_sprite and hover_animation:
+		if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(hover_animation):
+			animated_sprite.play(hover_animation)
+
+func _button_un_hover() -> void:
+	if animation_tween:
+		animation_tween.kill()
+	animation_tween = create_tween().set_trans(Tween.TRANS_SINE)
+	animation_tween.tween_property(self, \"scale\", Vector2.ONE, un_hover_animation_length)
+
+	if animated_sprite and idle_animation:
+		if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(idle_animation):
+			animated_sprite.play(idle_animation)
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lk408"]
+load_path = "res://.godot/imported/test.png-8281fbd1a03fe86da3e52ced71c15fd4.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alr21"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(499, 0, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oplvo"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(531, 0, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cjm2"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(563, 0, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2akwl"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(595, 0, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hg6w"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(627, 0, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxkyf"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(659, 0, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e667"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(499, 79, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4of38"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(531, 79, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwibf"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(563, 79, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk51f"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(595, 79, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mkts"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(627, 79, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k36yk"]
+atlas = SubResource("CompressedTexture2D_lk408")
+region = Rect2(659, 79, 32, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk408"]
+atlas = ExtResource("1_lk408")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjdgx"]
+atlas = ExtResource("1_lk408")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea5no"]
+atlas = ExtResource("1_lk408")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwtjo"]
+atlas = ExtResource("1_lk408")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br2wr"]
+atlas = ExtResource("1_lk408")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nkes"]
+atlas = ExtResource("1_lk408")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmw4l"]
+atlas = ExtResource("1_lk408")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxyte"]
+atlas = ExtResource("1_lk408")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yah2f"]
+atlas = ExtResource("1_lk408")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0uet"]
+atlas = ExtResource("1_lk408")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk88w"]
+atlas = ExtResource("1_lk408")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1q3u"]
+atlas = ExtResource("1_lk408")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwxlt"]
+atlas = ExtResource("1_lk408")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pn3v"]
+atlas = ExtResource("1_lk408")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_but57"]
+atlas = ExtResource("1_lk408")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnqlo"]
+atlas = ExtResource("1_lk408")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_alr21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alr21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oplvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cjm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2akwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hg6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxkyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3e667")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4of38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwibf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk51f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mkts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k36yk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lk408")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk408")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjdgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea5no")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwtjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br2wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nkes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmw4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxyte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yah2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0uet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk88w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1q3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwxlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pn3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_but57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnqlo")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Main Menu" type="Control" unique_id=1033264865]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=139653280]
+position = Vector2(576, 323)
+
+[node name="TestGame2d_Button" type="TextureButton" parent="Camera2D" unique_id=636171983]
+offset_left = -105.0
+offset_top = -220.0
+offset_right = 23.0
+offset_bottom = -92.0
+script = SubResource("GDScript_o2jor")
+metadata/_custom_type_script = "uid://cd74qfgfivj76"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D/TestGame2d_Button" unique_id=1354645245]
+position = Vector2(104, 93)
+sprite_frames = SubResource("SpriteFrames_alr21")
+animation = &"new_animation"
+
+[node name="CustomAnimatedButton" type="TextureButton" parent="." unique_id=682621767]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_lk408")
+metadata/_custom_type_script = "uid://cd74qfgfivj76"

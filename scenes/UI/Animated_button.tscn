@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b6o0u73hiv2lp"]
+
+[ext_resource type="Script" uid="uid://cd74qfgfivj76" path="res://scripts/UI/animated_button.gd" id="1_y1qn5"]
+
+[node name="AnimatedButton" type="TextureButton" unique_id=790405576]
+offset_left = 508.0
+offset_top = 190.0
+offset_right = 548.0
+offset_bottom = 230.0
+script = ExtResource("1_y1qn5")

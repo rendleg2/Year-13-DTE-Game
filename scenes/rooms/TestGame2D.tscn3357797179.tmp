@@ -56,31 +56,11 @@ class_name Cool_Card
 @export var press_animation: String = \"press\"
 
 @export_category(\"Scene Navigation\")
-@export var scene_change: String = \"\"
-
-@export_category(\"Card Upgrades\")
-@export var speed_upgrade: float = 2.0
-@export var enable_free_dash: bool = true
-@export var enable_auto_fire: bool = true
-
-@export var ability_speed_upgrade: float = 2.0
-@export var ability_duration_upgrade: float = 2.0
-@export var ability_cooldown_upgrade: float = 0.0
-
-@export var bullet_spread_upgrade: float = 0.2
-@export var bullet_count_upgrade: int = 20
-@export var bullet_cooldown_upgrade: float = 0.1
-@export var bullet_speed_upgrade: float = 2.0
-@export var bullet_damage_upgrade: float = 2.0
-@export var bullet_range_upgrade: float = 2.0
-@export var bullet_size_upgrade: float = 1.0
-
+@export var scene_change: String = \"\" #the scene button change to
 
 var animation_tween: Tween
 
 func _ready() -> void:
-	mouse_filter = MOUSE_FILTER_STOP
-	
 	pressed.connect(_on_button_pressed)
 	mouse_entered.connect(_button_hover)
 	mouse_exited.connect(_button_un_hover)
@@ -106,33 +86,27 @@ func _update_sprite_position() -> void:
 func _on_button_pressed() -> void:
 	_button_press()
 	var player_stats = _find_player()
-	if player_stats != null:
+	if player_stats != null: # If i need to explain how this works to anyone that person is gonna no more more
 		
-		player_stats.free_dash = enable_free_dash
-		player_stats.auto_fire_active = enable_auto_fire
+		#player_stats.speed *= 2  
 		
-		player_stats.speed += speed_upgrade
-		player_stats.ability_speed += ability_speed_upgrade
-		player_stats.ability_duration += ability_duration_upgrade
-		player_stats.ability_cooldown += ability_cooldown_upgrade
-	
-		player_stats.bullet_spread += bullet_spread_upgrade
-		player_stats.bullet_count += bullet_count_upgrade
-		player_stats.bullet_cooldown += bullet_cooldown_upgrade
-		player_stats.bullet_speed += bullet_speed_upgrade
-		player_stats.bullet_damage += bullet_damage_upgrade
-		player_stats.bullet_range += bullet_range_upgrade
-		player_stats.bullet_size += bullet_size_upgrade
+		#player_stats.ability_speed *= 2  
+		#player_stats.ability_duration *= 2  
+		#player_stats.ability_cooldown *= 0
+		
+		#player_stats.bullet_size *= 222^14
+		#player_stats.bullet_speed *= 2 
+		#player_stats.bullet_damage *= 2  
+		#player_stats.bullet_range *= 2  
+		#player_stats.free_dash = true  # This allows you to move while dashing
 
-		self.disabled = true
-		modulate = Color(0.0, 0.603, 0.24, 1.0)
-		print(\"Button smack - Upgrades applied!\")
+		self.disabled = true  # allows only 1 click # it if u wana make funny button
+		print(\"Button smack\")
 	else:
-		print(\"BRICK\")
+		print(\"Player needs to put in the same scene\")
 
-	if scene_change != \"\":
-		await get_tree().create_timer(0.15).timeout
-		get_tree().change_scene_to_file(scene_change)
+	await get_tree().create_timer(0.15).timeout
+	get_tree().change_scene_to_file(scene_change)
 
 func _button_press() -> void:
 	if animation_tween: 
@@ -172,17 +146,6 @@ func _find_player() -> Node:
 	return null
 "
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xffw4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_etjxl")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="TestGame2d" type="Node2D" unique_id=842691389]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=470357422]
@@ -198,7 +161,7 @@ position = Vector2(84, 27)
 
 [node name="Player" parent="." unique_id=249557870 instance=ExtResource("4_80nl2")]
 position = Vector2(690, 267)
-bullet_size = 1.0
+bullet_size = 8.84
 bullet_range = 1000.0
 
 [node name="Card_Template" parent="." unique_id=1041810067 instance=ExtResource("4_xffw4")]
@@ -217,10 +180,7 @@ offset_top = -1.0
 offset_right = 998.0
 offset_bottom = 123.0
 script = SubResource("GDScript_xffw4")
-bullet_spread_upgrade = 0.2
-bullet_count_upgrade = 20
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Cool_Card" unique_id=2049298968]
-position = Vector2(65.750015, 60.75)
-scale = Vector2(9.093749, 7.9062495)
-sprite_frames = SubResource("SpriteFrames_xffw4")
+[node name="Icon" type="Sprite2D" parent="Cool_Card" unique_id=1314970739]
+position = Vector2(61, 67)
+texture = ExtResource("5_8duyk")
