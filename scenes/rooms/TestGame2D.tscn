@@ -1,12 +1,24 @@
 [gd_scene format=4 uid="uid://bjxktxg3a68xo"]
 
-[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
 [ext_resource type="Texture2D" uid="uid://c8d4hc886mla1" path="res://assets/tilesheet/floortiles.png" id="3_h0gvn"]
-[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="4_80nl2"]
-[ext_resource type="PackedScene" uid="uid://opswl0ugdyye" path="res://scenes/UI/Card_Template.tscn" id="4_xffw4"]
+[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://Scenes/entities/Player.tscn" id="4_80nl2"]
+[ext_resource type="PackedScene" uid="uid://opswl0ugdyye" path="res://Scenes/UI/Card_Template.tscn" id="4_xffw4"]
 [ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="5_8duyk"]
 [ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://assets/sprites/sand.png" id="6_etjxl"]
 [ext_resource type="Script" uid="uid://dohmupp1v5j3e" path="res://scripts/cards/Cool_Card.gd" id="7_8duyk"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_0obsn"]
+vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)])
+agent_radius = 0.0
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_pbhgw"]
+vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_13ert"]
 texture = ExtResource("3_h0gvn")
@@ -14,7 +26,9 @@ margins = Vector2i(2, 16)
 separation = Vector2i(2, 0)
 texture_region_size = Vector2i(32, 24)
 1:1/0 = 0
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pbhgw")
 0:1/0 = 0
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_0obsn")
 
 [sub_resource type="TileSet" id="TileSet_p0lxy"]
 tile_shape = 1

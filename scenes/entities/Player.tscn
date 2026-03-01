@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cvrbiyqm8pn28"]
 
 [ext_resource type="Script" uid="uid://cj0ncxwxkwekf" path="res://scripts/game/player.gd" id="1_vm2lv"]
-[ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://scenes/entities/Bullet.tscn" id="3_24gqh"]
+[ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://Scenes/entities/Bullet.tscn" id="3_24gqh"]
 [ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="3_yjynp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7et6"]
-radius = 81.055534
+radius = 15.033297
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1g85"]
 atlas = ExtResource("3_yjynp")
