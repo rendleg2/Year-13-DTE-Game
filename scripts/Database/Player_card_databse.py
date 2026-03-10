@@ -4,7 +4,7 @@ from py4godot.classes import gdclass
 from py4godot.classes.core import Vector3
 from py4godot.classes.Control import Control
 import sqlite3
-
+from employee import Employee
 
 @gdclass
 class test_database(Control):
@@ -20,6 +20,13 @@ class test_database(Control):
 		#	last text,
 		#	pay integer
 		#	)""")
+		
+		emp_1 = Employee('John', 'Doe', 80000)
+		emp_2 = Employee('Jane', 'Doe', 90000)
+		
+		print(emp_1.first)
+		print(emp_1.last)
+		print(emp_1.pay)
 		
 		#c.execute("INSERT INTO employees VALUES ('corey', 'schafer', 50000)")
 		
