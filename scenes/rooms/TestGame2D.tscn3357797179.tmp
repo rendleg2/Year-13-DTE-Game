@@ -1,0 +1,186 @@
+[gd_scene format=4 uid="uid://bjxktxg3a68xo"]
+
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
+[ext_resource type="Texture2D" uid="uid://c8d4hc886mla1" path="res://assets/tilesheet/floortiles.png" id="3_h0gvn"]
+[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="4_80nl2"]
+[ext_resource type="PackedScene" uid="uid://opswl0ugdyye" path="res://scenes/UI/Card_Template.tscn" id="4_xffw4"]
+[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="5_8duyk"]
+[ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://assets/sprites/sand.png" id="6_etjxl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_13ert"]
+texture = ExtResource("3_h0gvn")
+margins = Vector2i(2, 16)
+separation = Vector2i(2, 0)
+texture_region_size = Vector2i(32, 24)
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p0lxy"]
+tile_shape = 1
+tile_size = Vector2i(32, 16)
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_13ert")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4tjr7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8duyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_etjxl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_xffw4"]
+script/source = "extends TextureButton
+class_name Cool_Card
+
+@export_category(\"Hover\")
+@export var hover_scale: Vector2 = Vector2(1.1, 1.1)
+@export var hover_animation_length: float = 0.1
+@export var un_hover_animation_length: float = 0.1
+
+@export_category(\"Press\")
+@export var press_scale: Vector2 = Vector2(0.95, 0.95)
+@export var press_animation_length_1: float = 0.1
+@export var press_animation_length_2: float = 0.1
+
+@export_category(\"Frame Animation\")
+@export var animated_sprite: AnimatedSprite2D
+@export var idle_animation: String = \"idle\"
+@export var hover_animation: String = \"hover\"
+@export var press_animation: String = \"press\"
+
+@export_category(\"Scene Navigation\")
+@export var scene_change: String = \"\" #the scene button change to
+
+var animation_tween: Tween
+
+func _ready() -> void:
+	pressed.connect(_on_button_pressed)
+	mouse_entered.connect(_button_hover)
+	mouse_exited.connect(_button_un_hover)
+	
+	resized.connect(_update_pivot)
+	_update_pivot()
+
+	if animated_sprite:
+		animated_sprite.centered = true
+		_update_sprite_position()
+
+		if idle_animation and animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(idle_animation):
+			animated_sprite.play(idle_animation)
+
+func _update_pivot() -> void:
+	pivot_offset = size / 2
+	_update_sprite_position()
+
+func _update_sprite_position() -> void:
+	if animated_sprite:
+		animated_sprite.position = size / 2
+
+func _on_button_pressed() -> void:
+	_button_press()
+	var player_stats = _find_player()
+	if player_stats != null: # If i need to explain how this works to anyone that person is gonna no more more
+		
+		#player_stats.speed *= 2  
+		
+		#player_stats.ability_speed *= 2  
+		#player_stats.ability_duration *= 2  
+		#player_stats.ability_cooldown *= 0
+		
+		#player_stats.bullet_size *= 222^14
+		#player_stats.bullet_speed *= 2 
+		#player_stats.bullet_damage *= 2  
+		#player_stats.bullet_range *= 2  
+		#player_stats.free_dash = true  # This allows you to move while dashing
+
+		self.disabled = true  # allows only 1 click # it if u wana make funny button
+		print(\"Button smack\")
+	else:
+		print(\"Player needs to put in the same scene\")
+
+	await get_tree().create_timer(0.15).timeout
+	get_tree().change_scene_to_file(scene_change)
+
+func _button_press() -> void:
+	if animation_tween: 
+		animation_tween.kill()
+	animation_tween = create_tween().set_trans(Tween.TRANS_SINE)
+	animation_tween.tween_property(self, \"scale\", press_scale, press_animation_length_1)
+	animation_tween.chain().tween_property(self, \"scale\", hover_scale, press_animation_length_2)
+	
+	if animated_sprite and press_animation:
+		if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(press_animation):
+			animated_sprite.play(press_animation)
+
+func _button_hover() -> void:
+	if animation_tween:
+		animation_tween.kill()
+	animation_tween = create_tween().set_trans(Tween.TRANS_SINE)
+	animation_tween.tween_property(self, \"scale\", hover_scale, hover_animation_length)
+
+	if animated_sprite and hover_animation:
+		if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(hover_animation):
+			animated_sprite.play(hover_animation)
+
+func _button_un_hover() -> void:
+	if animation_tween:
+		animation_tween.kill()
+	animation_tween = create_tween().set_trans(Tween.TRANS_SINE)
+	animation_tween.tween_property(self, \"scale\", Vector2.ONE, un_hover_animation_length)
+
+	if animated_sprite and idle_animation:
+		if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(idle_animation):
+			animated_sprite.play(idle_animation)
+
+func _find_player() -> Node:
+	var players = get_tree().get_nodes_in_group(\"Cards\")
+	if players.size() > 0:
+		return players[0]
+	return null
+"
+
+[node name="TestGame2d" type="Node2D" unique_id=842691389]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=470357422]
+z_index = -2
+y_sort_enabled = true
+position = Vector2(106.00001, -86)
+scale = Vector2(6, 6)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAD//wEAAAABAAEAAAD//wMAAAABAAEAAAD//wIAAAABAAEAAAD+/wMAAAABAAEAAAD//wQAAAABAAEAAAABAAUAAAAAAAEAAAACAAYAAAABAAEAAAACAAcAAAAAAAEAAAADAAgAAAAAAAEAAAAAAAIAAAABAAEAAAACAAIAAAAAAAEAAAABAAMAAAABAAEAAAACAAMAAAABAAEAAAADAAMAAAAAAAEAAAACAAQAAAAAAAEAAAACAAUAAAAAAAEAAAABAAgAAAAAAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAABAAwAAAABAAEAAAAAAAsAAAABAAEAAAAAAAwAAAABAAEAAAABAA0AAAABAAEAAAABAA4AAAABAAEAAAAAAA8AAAABAAEAAAAAAA4AAAABAAEAAAD//w0AAAABAAEAAAAAAA0AAAABAAEAAAADAAIAAAABAAEAAAAAAAoAAAABAAEAAAD//wkAAAABAAEAAAD//wgAAAABAAEAAAD//wcAAAABAAEAAAAAAAYAAAABAAEAAAD//wUAAAABAAEAAAD//wYAAAABAAEAAAD+/wcAAAABAAEAAAD+/wYAAAABAAEAAAD+/wUAAAABAAEAAAD+/wgAAAABAAEAAAD+/wkAAAABAAEAAAD//woAAAABAAEAAAD+/wQAAAABAAEAAAD9/wcAAAABAAEAAAD+/wsAAAABAAEAAAD//wwAAAABAAEAAAD//wsAAAABAAEAAAABAAoAAAABAAEAAAABAAkAAAAAAAEAAAACAAoAAAABAAEAAAABAAsAAAABAAEAAAACAAsAAAABAAEAAAACAAkAAAABAAEAAAACAAgAAAABAAEAAAACAAwAAAABAAEAAAAAAAUAAAABAAEAAAAEAAoAAAAAAAEAAAAEAAgAAAABAAEAAAADAAYAAAAAAAEAAAADAAUAAAAAAAEAAAADAAQAAAAAAAEAAAADAAoAAAABAAEAAAADAAkAAAABAAEAAAADAAcAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAUAAAABAAEAAAAFAAQAAAABAAEAAAAEAAMAAAABAAEAAAAEAAQAAAAAAAEAAAAEAAIAAAABAAEAAAADAAEAAAABAAEAAAACAAEAAAABAAEAAAACAAAAAAABAAEAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAAAAAEAAAABAAEAAAABAAIAAAAAAAEAAAABAAEAAAAAAAEAAAADAAAAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAABAAYAAAAAAAEAAAAEAAAAAAABAAEAAAADAP//AAABAAEAAAAEAP7/AAABAAEAAAADAP3/AAABAAEAAAAEAAEAAAABAAEAAAAFAAIAAAABAAEAAAAFAAEAAAABAAEAAAAFAAAAAAABAAEAAAAFAP//AAABAAEAAAAFAP7/AAABAAEAAAAEAP3/AAABAAEAAAADAP7/AAABAAEAAAAEAP//AAABAAEAAAACAP//AAABAAEAAAACAP3/AAABAAEAAAADAPz/AAABAAEAAAACAPv/AAABAAEAAAACAPz/AAABAAEAAAABAPv/AAABAAEAAAABAPz/AAABAAEAAAABAP3/AAABAAEAAAACAP7/AAABAAEAAAAAAP3/AAABAAEAAAAAAP7/AAABAAEAAAD/////AAABAAEAAAAAAP//AAABAAEAAAABAP7/AAABAAEAAAAAAPz/AAABAAEAAAD///3/AAABAAEAAAD///7/AAABAAEAAAABAAQAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_p0lxy")
+
+[node name="Enemy Template" parent="." unique_id=896060041 instance=ExtResource("1_cqkkl")]
+position = Vector2(84, 27)
+
+[node name="Player" parent="." unique_id=249557870 instance=ExtResource("4_80nl2")]
+position = Vector2(690, 267)
+bullet_size = 8.84
+bullet_range = 1000.0
+
+[node name="Card_Template" parent="." unique_id=1041810067 instance=ExtResource("4_xffw4")]
+offset_left = 611.0
+offset_top = 4.0
+offset_right = 734.0
+offset_bottom = 128.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Card_Template" unique_id=923171511]
+position = Vector2(63, 62)
+sprite_frames = SubResource("SpriteFrames_4tjr7")
+
+[node name="Cool_Card" parent="." unique_id=1354767353 instance=ExtResource("4_xffw4")]
+offset_left = 870.0
+offset_top = -1.0
+offset_right = 998.0
+offset_bottom = 123.0
+script = SubResource("GDScript_xffw4")
+
+[node name="Icon" type="Sprite2D" parent="Cool_Card" unique_id=1314970739]
+position = Vector2(61, 67)
+texture = ExtResource("5_8duyk")

@@ -1,21 +1,61 @@
 [gd_scene format=3 uid="uid://cvrbiyqm8pn28"]
 
 [ext_resource type="Script" uid="uid://cj0ncxwxkwekf" path="res://scripts/game/player.gd" id="1_vm2lv"]
-[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="2_e8cle"]
+[ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://Scenes/entities/Bullet.tscn" id="3_24gqh"]
+[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="3_yjynp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7et6"]
-radius = 25.70992
+radius = 15.033297
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1g85"]
+atlas = ExtResource("3_yjynp")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jddb"]
+atlas = ExtResource("3_yjynp")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfoco"]
+atlas = ExtResource("3_yjynp")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h683u"]
+atlas = ExtResource("3_yjynp")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvws8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1g85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jddb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfoco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h683u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 120.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=249557870]
 script = ExtResource("1_vm2lv")
+bullet_scene = ExtResource("3_24gqh")
+bullet_size = 8.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1237092590]
 position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_o7et6")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1279737256]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1811137290]
+scale = Vector2(1, 0.99710983)
+sprite_frames = SubResource("SpriteFrames_xvws8")
+autoplay = "default"
+frame_progress = 0.21840028
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=41205236]
-position = Vector2(-1, 1)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_e8cle")
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1279737256]

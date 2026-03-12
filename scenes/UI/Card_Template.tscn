@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://opswl0ugdyye"]
+
+[ext_resource type="Script" uid="uid://b0qks2jh6lw3m" path="res://scripts/cards/Card_Template.gd" id="1_bncpo"]
+
+[node name="Card_Template" type="TextureButton" unique_id=1041810067]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bncpo")

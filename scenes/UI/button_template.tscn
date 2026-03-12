@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cu4aclsgjhqjb"]
+
+[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="1_jnwkj"]
+[ext_resource type="Script" uid="uid://c2marpov2evqa" path="res://scripts/UI/Button_Template.gd" id="2_0tmy6"]
+
+[node name="Button_Template" type="TextureButton" unique_id=790405576]
+offset_left = 512.0
+offset_top = 219.0
+offset_right = 640.0
+offset_bottom = 347.0
+texture_normal = ExtResource("1_jnwkj")
+script = ExtResource("2_0tmy6")
