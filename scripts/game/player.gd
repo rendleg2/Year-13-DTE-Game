@@ -32,7 +32,7 @@ func _physics_process(_delta):
 		cooldown_timer = ability_cooldown
 		if not free_dash:
 			dash_direction = input_direction.normalized()
-
+	
 	# Determines speed
 	var current_speed = speed * ability_speed if ability_active else speed
 
@@ -41,7 +41,7 @@ func _physics_process(_delta):
 		velocity = dash_direction * current_speed  # Locked dash
 	else:
 		velocity = input_direction * current_speed  # Normal movement or free dash
-
+	
 	# Update ability timer
 	if ability_active:
 		ability_timer -= _delta

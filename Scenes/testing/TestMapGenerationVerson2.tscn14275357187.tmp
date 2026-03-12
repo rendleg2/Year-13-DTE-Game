@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://baen6qqfnun14"]
+
+[ext_resource type="Script" uid="uid://bpmq0pcigl1wm" path="res://scripts/game/map_generation_verson_2.gd" id="1_847g5"]
+[ext_resource type="PackedScene" uid="uid://bbm1d42c2cjf" path="res://Scenes/rooms/room4wayTest.tscn" id="2_eab3g"]
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="3_jva5r"]
+
+[node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149]
+script = ExtResource("1_847g5")
+rooms = Dictionary[int, PackedScene]({
+1: ExtResource("2_eab3g"),
+2: null,
+3: null,
+4: null,
+5: null,
+6: null,
+7: null,
+8: null,
+9: null,
+10: null,
+11: null,
+12: null,
+13: null,
+14: null,
+15: null
+})
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2111238492]
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=231492416]
+y_sort_enabled = true
+scale = Vector2(3, 3)
+tile_set = ExtResource("3_jva5r")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=1419597422]
+y_sort_enabled = true
+scale = Vector2(3, 3)
+tile_set = ExtResource("3_jva5r")

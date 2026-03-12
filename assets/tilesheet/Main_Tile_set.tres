@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c6x2lisc15cav" path="res://Assets/tilesheet/sandbase.png" id="1_k3em8"]
 [ext_resource type="Texture2D" uid="uid://d1hakuusrf86g" path="res://assets/tilesheet/wallstiles.png" id="2_nnpnk"]
+[ext_resource type="Texture2D" uid="uid://3hmqge5oqve0" path="res://assets/tilesheet/Arrows.png" id="3_b7d0c"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vm6n5"]
 vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
@@ -51,10 +52,26 @@ texture_region_size = Vector2i(32, 35)
 3:0/0/z_index = 1
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixg8y"]
+texture = ExtResource("3_b7d0c")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = "up"
+1:0/0 = 0
+1:0/0/custom_data_0 = "down"
+2:0/0 = 0
+2:0/0/custom_data_0 = "left"
+3:0/0 = 0
+3:0/0/custom_data_0 = "right"
+
 [resource]
 tile_shape = 1
+tile_layout = 5
 tile_size = Vector2i(32, 16)
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
+custom_data_layer_0/name = "door"
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_13ert")
 sources/1 = SubResource("TileSetAtlasSource_b7d0c")
+sources/2 = SubResource("TileSetAtlasSource_ixg8y")
