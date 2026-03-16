@@ -4,7 +4,8 @@ from py4godot.classes import gdclass
 from py4godot.classes.core import Vector3
 from py4godot.classes.Control import Control
 import sqlite3
-from employee import Employee
+from scripts.Database.employee import Employee
+
 
 @gdclass
 class test_database(Control):
@@ -24,15 +25,22 @@ class test_database(Control):
 		emp_1 = Employee('John', 'Doe', 80000)
 		emp_2 = Employee('Jane', 'Doe', 90000)
 		
-		print(emp_1.first)
-		print(emp_1.last)
-		print(emp_1.pay)
+		#print(emp_1.first)
+		#print(emp_1.last)
+		#print(emp_1.pay,)
 		
-		#c.execute("INSERT INTO employees VALUES ('corey', 'schafer', 50000)")
+		c.execute("INSERT INTO employees VALUES (?, ?, ?)", (emp_1.first, emp_1.last, emp_1.pay))
+		
+		conn.commit()
+		
+		c.execute("INSERT INTO employees VALUES (:first, :last, :pay)", {'first': emp_2.first, 'last': emp_2.last, 'pay': emp_2.pay}),
+		
+		conn.commit()
 		
 		c.execute("SELECT * FROM employees WHERE last='Schafer'")
 		
 		print(c.fetchone())
+		
 		conn.commit()
 		
 		conn.close()
