@@ -18,10 +18,39 @@ var placed_rooms = []
 	15: null
 	}
 
-var rooms_data: Dictionary[int, Dictionary] = {}
+var rooms_data: Dictionary[int, Dictionary] = {
+	0: 
+		{
+		"instance": null, 
+		"size": Vector2i.ZERO, 
+		"floor_pattern": null, 
+		"wall_pattern": null, 
+		"door_coords_left": [Vector2i.ZERO, Vector2i.ZERO], 
+		"door_coords_right": [Vector2i.ZERO, Vector2i.ZERO], 
+		"door_coords_down": [Vector2i.ZERO, Vector2i.ZERO], 
+		"door_coords_up": [Vector2i.ZERO, Vector2i.ZERO], 
+		},
+	}
+
+
 
 func _ready():
-	#remove empty varibles
+	print("""
+	PLAN:
+	Place spawn room
+	placedrooms = [[cords, id, free doors], [cords, id, free doors]]
+	go through list, 
+	select first room, 
+	first door cord, 
+	find room that fits
+	place room
+	delete free door thats nolonger free, if free door empty, delete the hole nested list
+	move on
+	
+	Posiblititys, precalculate what rooms can connect to what
+
+	""")
+	##Create rooms_data
 	for i in range(1, rooms.size()+1):
 		if rooms[i] == null:
 			rooms.erase(i)
@@ -40,32 +69,46 @@ func _ready():
 			var size = pattern_floor.get_size()
 			# Get all coordinates that actually have a tile on them
 			
-			var door_empty: Array[Vector2i] = []#hah ur stupid
-			var door_dir: Array[String] = []
+			var door_empty_left: Array[Vector2i] = []
+			var door_empty_right: Array[Vector2i] = []
+			var door_empty_down: Array[Vector2i] = []
+			var door_empty_up: Array[Vector2i] = []
 			
 			for coords in used_cells_floor:
 				# Get the data from the tile at this specific coordinate
 				var data = Floor_new.get_cell_tile_data(coords)
 
 				if data:
-					if data.get_custom_data("door") != "":
-						door_empty.append(coords)
-						door_dir.append(data.get_custom_data("door"))
-			rooms_data[i] = {"instance": instance, "size": size, "floor": pattern_floor, "wall": pattern_wall, "door_coords": door_empty, "dir": door_dir}
+					data = data.get_custom_data("door")
+					if data != "":
+						if data == "up":
+							door_empty_up.append(coords)
+						elif data == "down":
+							door_empty_down.append(coords)
+						elif data == "left":
+							door_empty_left.append(coords)
+						elif data == "right":
+							door_empty_right.append(coords)
+						
+			rooms_data[i] = {
+				"instance": instance,
+				"size": size, 
+				"floor": pattern_floor, 
+				"wall": pattern_wall, 
+				"door_coords_left": door_empty_left, 
+				"door_empty_right": door_empty_right, 
+				"door_empty_down": door_empty_down, 
+				"door_empty_up": door_empty_up
+				}
+
 	##spawn start room
-	#spawn_room(1, Vector2(0, 0))
-	$Walls.set_pattern(Vector2(0, 0), rooms_data[1]["wall"])
-	$Floor.set_pattern(Vector2(0, 0), rooms_data[1]["floor"])
+	spawn_room(1, Vector2(0, 0))
 	
 	##Spawn all the rooms
-	for i in range(0, 300):
-		await get_tree().create_timer(0.1).timeout
-		place_all_rooms()
-	
-	for i in rooms_data:
-		for x in rooms_data[i]["dir"]:
-			if x == "left":
-				print("left door")
+	#for i in range(0, 300):
+	#	await get_tree().create_timer(0.1).timeout
+	#	place_all_rooms()
+	place_all_rooms()
 
 func place_all_rooms():
 	var results = find_unused_doors()
@@ -80,12 +123,23 @@ func place_all_rooms():
 		var size = instance.get_pattern(used_cells_floor).get_size()
 		if door_dir[i] == "right":
 			
-			#spawn room on west side
-			spawn_room(1, Vector2(door_empty[i].x+1, door_empty[i].y-(size.x/2)))
+			for x in rooms_data:
+				print(x)
+				for y in rooms_data[x]["door_coords_left"]:
+					print(y, "y")
+					print(Vector2i(y.x+size.x, y.y), "y")
+					print(placed_rooms)
+					print("door ", Vector2i(door_empty[i].x+1, door_empty[i].y))
+					if Vector2i(y.x+size.x, y.y) == Vector2i(door_empty[i].x+1, door_empty[i].y):
+						print("work")
 
-			#remove the unused door tile
-			$Floor.set_cell(Vector2i(door_empty[i].x, door_empty[i].y), 0, Vector2i(1, 1))
-			$Floor.set_cell(Vector2i(door_empty[i].x+1, door_empty[i].y), 0, Vector2i(1, 1))
+			## for finding door matching, use room_data + size of room, for placing room, use global door cords
+						#spawn room on west side
+						spawn_room(1, Vector2(door_empty[i].x+1, door_empty[i].y-(size.x/2)))
+
+						#remove the unused door tile
+						$Floor.set_cell(Vector2i(door_empty[i].x, door_empty[i].y), 0, Vector2i(1, 1))
+						$Floor.set_cell(Vector2i(door_empty[i].x+1, door_empty[i].y), 0, Vector2i(1, 1))
 		
 		elif door_dir[i] == "up":
 			
@@ -116,31 +170,12 @@ func place_all_rooms():
 		instance.queue_free()
 
 func spawn_room(room_id, cords):
-	var instance = rooms[room_id].instantiate()
-	add_child(instance)
-	
-	var Walls_new = instance.find_child("Walls") as TileMapLayer
-	var Floor_new = instance.find_child("Floor") as TileMapLayer
-	
-	#Get every used coordinate in that room
-	var used_cells_walls = Walls_new.get_used_cells()
-	var used_cells_floor = Floor_new.get_used_cells()
-	
-	#Create a Pattern containing the room
-	var pattern_wall: TileMapPattern = Walls_new.get_pattern(used_cells_walls)
-	var pattern_floor: TileMapPattern = Floor_new.get_pattern(used_cells_floor)
-	
 	#Add to main tileMapLayer
-	$Walls.set_pattern(cords, pattern_wall)
-	$Floor.set_pattern(cords, pattern_floor)
-	
-	#Delete instance
-	Walls_new.queue_free()
-	Floor_new.queue_free()
-	
+	$Walls.set_pattern(cords, rooms_data[room_id]["wall"])
+	$Floor.set_pattern(cords, rooms_data[room_id]["floor"])
+
 	placed_rooms.append(cords)
-
-
+	placed_rooms.append(room_id) ## delete when door gone
 
 func find_unused_doors():
 	var door_empty: Array[Vector2i] = []

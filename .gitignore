@@ -67,3 +67,5 @@ vsproj/gdsqlite.vcxproj.*
 # Python generated
 __pycache__/
 *.pyc
+addons/py4godot/cpython-3.12.4-windows64/python/~pythonscript.dll
+addons/godot-sqlite/bin/~libgdsqlite.windows.template_debug.x86_64.dll
