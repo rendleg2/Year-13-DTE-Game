@@ -15,6 +15,10 @@ run/main_scene="uid://bh6bvig2tbyxk"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/py4godot/plugin.cfg")
+
 [input]
 
 left={
