@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://baen6qqfnun14"]
 
-[ext_resource type="Script" uid="uid://bpmq0pcigl1wm" path="res://scripts/game/map_generation_verson_2.gd" id="1_847g5"]
+[ext_resource type="Script" uid="uid://4ssp7a0no5n" path="res://Scenes/testing/test_map_generation_verson_ai.gd" id="1_jva5r"]
+[ext_resource type="PackedScene" uid="uid://bo53t6tjuv580" path="res://Scenes/rooms/deadEndTest.tscn" id="2_3n2nr"]
 [ext_resource type="PackedScene" uid="uid://bbm1d42c2cjf" path="res://Scenes/rooms/room4wayTest.tscn" id="2_eab3g"]
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="3_jva5r"]
 [ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://Scenes/entities/Player.tscn" id="4_irqvm"]
 
 [node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149]
-script = ExtResource("1_847g5")
+script = ExtResource("1_jva5r")
 rooms = Dictionary[int, PackedScene]({
-1: ExtResource("2_eab3g"),
-2: null,
+1: ExtResource("2_3n2nr"),
+2: ExtResource("2_eab3g"),
 3: null,
 4: null,
 5: null,

@@ -108,12 +108,119 @@ func _ready():
 			
 	
 	##Spawn all the rooms
-	#for i in range(0, 300):
+	#for i in range(0, 3):
 	#	await get_tree().create_timer(0.1).timeout
 	#	place_all_rooms()
 	place_all_rooms()
 
+func spawn_room(room_id, cords):
+	#Add to main tileMapLayer
+	$Walls.set_pattern(cords, rooms_data[room_id]["wall_pattern"])
+	$Floor.set_pattern(cords, rooms_data[room_id]["floor_pattern"])
+	var unused_doors = []
+	for x in ["left", "right", "up", "down"]:
+		for i in range(0, len(rooms_data[room_id]["door_coords_" + x])):
+			unused_doors.append(x)
+	#unused_doors.append(5 if 1 == 1 else 2)
+
+	placed_rooms.append([cords, room_id, unused_doors])
+
+func find_unused_doors():
+	var door_empty: Array[Vector2i] = []
+	var door_dir: Array[String] = []
+	# Get all coordinates that actually have a tile on them
+	var used_cells = $Floor.get_used_cells() 
+	
+	for coords in used_cells:
+		# Get the data from the tile at this specific coordinate
+		var data = $Floor.get_cell_tile_data(coords)
+		if data:
+			if data.get_custom_data("door") != "":
+				door_empty.append(coords)
+				door_dir.append(data.get_custom_data("door"))
+	return [door_empty, door_dir]
+
+
 func place_all_rooms():
+	# Dictionary to map opposing doors for easy matching
+	var opposite_doors = {
+		"left": "right",
+		"right": "left",
+		"up": "down",
+		"down": "up"
+	}
+
+	# Dictionary to define the coordinate offset to connect two doors
+	# e.g., connecting a 'right' door means moving 1 tile to the right (+1, 0)
+	var door_offsets = {
+		"right": Vector2i(1, 0),
+		"left": Vector2i(-1, 0),
+		"up": Vector2i(0, -1),
+		"down": Vector2i(0, 1)
+	}
+	
+	# We will loop through rooms we've already placed to branch off them
+	for placed_room in placed_rooms:
+		print(placed_rooms)
+		if len(placed_rooms) > 700:
+			print(len(placed_rooms))
+			break
+		var room_pos = placed_room[0] # Global position where room was placed
+		var room_id = placed_room[1]  
+		var open_doors = placed_room[2] # Array of un-connected door directions
+		
+		# Let's say we want to attach a standard room (ID 1)
+		var next_room_id = randi_range(1,2)
+		
+		# Iterate backwards so we can safely remove doors from the array as we use them
+		for z in range(open_doors.size() - 1, -1, -1):
+			var current_door_dir = open_doors[z]
+			var required_matching_door = opposite_doors[current_door_dir]
+			
+			# 1. Find the local coordinate of the door we are trying to branch OUT of
+			# Note: Assuming index [0] for simplicity, you might want to pick randomly if a room has multiple "left" doors
+			var local_exit_door = rooms_data[room_id]["door_coords_" + current_door_dir][0]
+			var global_exit_door = room_pos + Vector2(local_exit_door)
+			
+			# 2. Calculate exactly where the NEW door needs to be to connect properly
+			var target_new_door_global = global_exit_door + Vector2(door_offsets[current_door_dir])
+			
+			# 3. Check if the next room actually has the required matching door
+			var next_room_doors = rooms_data[next_room_id]["door_coords_" + required_matching_door]
+			if next_room_doors.size() > 0:
+				# 4. Grab the local coordinate of the door on the NEW room
+				var new_room_local_entrance = next_room_doors[0]
+				
+				# 5. THE MAGIC FORMULA: Where does the new room's top-left corner need to go?
+				var new_room_spawn_pos = target_new_door_global - Vector2(new_room_local_entrance)
+				
+				# Spawn the room!
+				spawn_room(next_room_id, new_room_spawn_pos)
+				
+				# Remove the door we just used from the current room's open list
+				open_doors.remove_at(z)
+					
+				# Remove the used door from the CURRENT room's array so we don't branch from it again
+				placed_rooms[i][2].remove_at(z)
+					
+				# --- NEW CODE: FIX THE GHOST DOOR ---
+				# The room we just spawned is now the last item in placed_rooms: placed_rooms[-1]
+				# We need to find the entrance door it used and remove it from its 'unused' list.
+				var new_room_unused_doors = placed_rooms[-1][2]
+				var entrance_door_index = new_room_unused_doors.find(needed_door_dir)
+				
+				if entrance_door_index != -1:
+					new_room_unused_doors.remove_at(entrance_door_index)
+					# ------------------------------------
+					
+					# Break out of the 'x' loop so we don't spawn 50 rooms on the same door
+					break
+				# Optionally: Overwrite the door tiles with regular floor tiles here
+				$Floor.set_cell(global_exit_door, 0, Vector2i(1, 1))
+				$Floor.set_cell(target_new_door_global, 0, Vector2i(1, 1))
+				break
+
+func place_all_rooms2():
 	
 					## for finding door matching, use room_data + size of room, for placing room, use global door cords
 	for i in len(placed_rooms):
@@ -150,82 +257,3 @@ func place_all_rooms():
 							placed_rooms[i+1][2][rooms_data[x]["door_coords_left"].rfind(Vector2i(rooms_data[placed_rooms[i][1]]["door_coords_left"][0].x, rooms_data[placed_rooms[i][1]]["door_coords_left"][0].y))] = null
 							
 							## replace right with left and left with right
-					for open_door in rooms_data[x]["door_coords_left"]:
-						if len(rooms_data[i]["door_coords_right"]) <= 1:
-							print("open_door ", open_door)
-
-							#print(placed_rooms) 
-							print("matching door ", Vector2i(rooms_data[placed_rooms[i][1]]["door_coords_right"][0].x-size.x+1, rooms_data[placed_rooms[i][1]]["door_coords_right"][0].y))
-							
-							if Vector2i(open_door.x, open_door.y) == Vector2i(rooms_data[placed_rooms[i][1]]["door_coords_right"][0].x-size.x+1, rooms_data[placed_rooms[i][1]]["door_coords_right"][0].y):
-								print("work")
-
-
-								#spawn room on right side
-								spawn_room(1, Vector2i(rooms_data[placed_rooms[i][1]]["door_coords_right"][0].x+size.x, rooms_data[placed_rooms[i][1]]["door_coords_right"][0].y - (size.y/2)))
-
-								#remove the unused door tile 
-								$Floor.set_cell(Vector2i(rooms_data[placed_rooms[i][1]]["door_coords_right"][0].x+size.x, rooms_data[placed_rooms[i][1]]["door_coords_right"][0].y), 0, Vector2i(1, 1))
-								$Floor.set_cell(Vector2i(rooms_data[placed_rooms[i][1]]["door_coords_right"][0].x+size.x-1, rooms_data[placed_rooms[i][1]]["door_coords_right"][0].y), 0, Vector2i(1, 1))
-								print(rooms_data[x]["door_coords_left"])
-								print(rooms_data[placed_rooms[i][1]]["door_coords_left"][0])
-								
-								print(rooms_data[x]["door_coords_left"].rfind(Vector2i(rooms_data[placed_rooms[i][1]]["door_coords_left"][0].x, rooms_data[placed_rooms[i][1]]["door_coords_left"][0].y))+len(rooms_data[x]["door_coords_right"]))
-								print(placed_rooms[i][2][rooms_data[x]["door_coords_left"].rfind(Vector2i(rooms_data[placed_rooms[i][1]]["door_coords_left"][0].x, rooms_data[placed_rooms[i][1]]["door_coords_left"][0].y))+len(rooms_data[x]["door_coords_right"])])
-								placed_rooms[i][2][ rooms_data[x]["door_coords_left"].rfind(Vector2i(rooms_data[ placed_rooms[i][1] ]["door_coords_left"][0].x, rooms_data[ placed_rooms[i][1] ] ["door_coords_left"][0].y))+len(rooms_data[x]["door_coords_right"])] = null
-								placed_rooms[i+1][2][rooms_data[x]["door_coords_right"].rfind(Vector2i(rooms_data[placed_rooms[i][1]]["door_coords_right"][0].x, rooms_data[placed_rooms[i][1]]["door_coords_right"][0].y))] = null
-								print(placed_rooms)
-			#elif door_dir[i] == "up":
-				
-				#spawn room on west side
-			#	spawn_room(1, Vector2(door_empty[i].x-(size.x/2), door_empty[i].y-(size.x)))
-
-				#remove the unused door tile
-			#	$Floor.set_cell(Vector2i(door_empty[i].x, door_empty[i].y), 0, Vector2i(1, 1))
-			#	$Floor.set_cell(Vector2i(door_empty[i].x, door_empty[i].y-1), 0, Vector2i(1, 1))
-				
-			#elif door_dir[i] == "down":
-				
-				#spawn room on west side
-			#	spawn_room(1, Vector2(door_empty[i].x-(size.x/2), door_empty[i].y+1))
-
-				#remove the unused door tile
-			#	$Floor.set_cell(Vector2i(door_empty[i].x, door_empty[i].y), 0, Vector2i(1, 1))
-			#	$Floor.set_cell(Vector2i(door_empty[i].x, door_empty[i].y+1), 0, Vector2i(1, 1))
-			
-			#elif door_dir[i] == "left":
-				
-				#spawn room on west side
-				#spawn_room(1, Vector2(door_empty[i].x-(size.x), door_empty[i].y-(size.x/2)))
-
-				#remove the unused door tile
-				#$Floor.set_cell(Vector2i(door_empty[i].x, door_empty[i].y), 0, Vector2i(1, 1))
-				#$Floor.set_cell(Vector2i(door_empty[i].x-1, door_empty[i].y), 0, Vector2i(1, 1))
-			#instance.queue_free()
-
-func spawn_room(room_id, cords):
-	#Add to main tileMapLayer
-	$Walls.set_pattern(cords, rooms_data[room_id]["wall_pattern"])
-	$Floor.set_pattern(cords, rooms_data[room_id]["floor_pattern"])
-	var unused_doors = []
-	for x in ["left", "right", "up", "down"]:
-		for i in range(0, len(rooms_data[room_id]["door_coords_" + x])):
-			unused_doors.append(x)
-	#unused_doors.append(5 if 1 == 1 else 2)
-
-	placed_rooms.append([cords, room_id, unused_doors])
-
-func find_unused_doors():
-	var door_empty: Array[Vector2i] = []
-	var door_dir: Array[String] = []
-	# Get all coordinates that actually have a tile on them
-	var used_cells = $Floor.get_used_cells() 
-	
-	for coords in used_cells:
-		# Get the data from the tile at this specific coordinate
-		var data = $Floor.get_cell_tile_data(coords)
-		if data:
-			if data.get_custom_data("door") != "":
-				door_empty.append(coords)
-				door_dir.append(data.get_custom_data("door"))
-	return [door_empty, door_dir]
