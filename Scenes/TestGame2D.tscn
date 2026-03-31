@@ -4,7 +4,6 @@
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="2_c1wwk"]
 [ext_resource type="Script" uid="uid://rttlrdxfdah" path="res://scripts/game/ConfigureNavigationLayer.gd" id="3_6tun1"]
 [ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="6_ayoh6"]
-[ext_resource type="PackedScene" uid="uid://bt3hu65cu2b8g" path="res://scenes/UI/Dash Card.tscn" id="7_xmvhh"]
 
 [node name="TestGame2d" type="Node2D" unique_id=842691389]
 
@@ -27,9 +26,3 @@ tile_set = ExtResource("2_c1wwk")
 
 [node name="Player" parent="." unique_id=249557870 instance=ExtResource("6_ayoh6")]
 position = Vector2(432, 466)
-
-[node name="Dash Card" parent="." unique_id=310080377 instance=ExtResource("7_xmvhh")]
-offset_left = 503.0
-offset_top = 202.0
-offset_right = 503.0
-offset_bottom = 202.0
