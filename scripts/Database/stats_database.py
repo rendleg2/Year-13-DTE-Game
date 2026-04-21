@@ -26,4 +26,7 @@ class stats_database(Node):
 				self.cursor.execute("UPDATE stats SET health = ? WHERE id = 1", (new_health_value,))
 				self.conn.commit()
 				print(f"Database Updated: Health is now {new_health_value}")
+		def get_health(self) ->int:
+			"""Call this to load the health from the database"""
+			self.cursor.execute("Select health from stats where id = 1")
 			
