@@ -1,30 +1,41 @@
 [gd_scene format=3 uid="uid://baen6qqfnun14"]
 
-[ext_resource type="Script" uid="uid://b7ii01pgtow5f" path="res://Scenes/testing/test_map_generation_verson_3.gd" id="1_jva5r"]
+[ext_resource type="Script" uid="uid://b3avb38xmviaj" path="res://scripts/game/map_generation_verson_3.gd" id="1_3n2nr"]
 [ext_resource type="PackedScene" uid="uid://bo53t6tjuv580" path="res://Scenes/rooms/deadEndTest.tscn" id="2_3n2nr"]
 [ext_resource type="PackedScene" uid="uid://bbm1d42c2cjf" path="res://Scenes/rooms/room4wayTest.tscn" id="2_eab3g"]
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="3_jva5r"]
 [ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://Scenes/entities/Player.tscn" id="4_irqvm"]
 
-[node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149 node_paths=PackedStringArray("hallway_tilemap")]
-script = ExtResource("1_jva5r")
-hallway_tilemap = NodePath("Halls")
-room_attempts = 100
-room_templates = Array[PackedScene]([ExtResource("2_eab3g"), ExtResource("2_3n2nr")])
-winding_percent = 0
+[node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149]
+script = ExtResource("1_3n2nr")
+rooms = Dictionary[int, PackedScene]({
+1: ExtResource("2_3n2nr"),
+2: ExtResource("2_eab3g"),
+3: null,
+4: null,
+5: null,
+6: null,
+7: null,
+8: null,
+9: null,
+10: null,
+11: null,
+12: null,
+13: null,
+14: null,
+15: null
+})
 
 [node name="Floor" type="TileMapLayer" parent="." unique_id=231492416]
 y_sort_enabled = true
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0)
 tile_set = ExtResource("3_jva5r")
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=1419597422]
 y_sort_enabled = true
+scale = Vector2(3, 3)
 tile_set = ExtResource("3_jva5r")
 
 [node name="Player" parent="." unique_id=249557870 instance=ExtResource("4_irqvm")]
-z_index = 1
 position = Vector2(52, 139)
-collision_mask = 0
-
-[node name="Halls" type="TileMapLayer" parent="." unique_id=364997100]
-tile_set = ExtResource("3_jva5r")

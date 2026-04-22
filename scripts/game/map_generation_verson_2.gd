@@ -229,3 +229,4 @@ func find_unused_doors():
 				door_empty.append(coords)
 				door_dir.append(data.get_custom_data("door"))
 	return [door_empty, door_dir]
+	

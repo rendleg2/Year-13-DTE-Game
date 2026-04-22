@@ -201,7 +201,7 @@ func place_all_rooms():
 				open_doors.remove_at(z)
 					
 				# Remove the used door from the CURRENT room's array so we don't branch from it again
-				placed_rooms[i][2].remove_at(z)
+				placed_rooms[z][2].remove_at(z)
 					
 				# --- NEW CODE: FIX THE GHOST DOOR ---
 				# The room we just spawned is now the last item in placed_rooms: placed_rooms[-1]
