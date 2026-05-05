@@ -11,13 +11,13 @@ script = ExtResource("1_jva5r")
 hallway_tilemap = NodePath("Halls")
 room_attempts = 100
 room_templates = Array[PackedScene]([ExtResource("2_eab3g"), ExtResource("2_3n2nr")])
-winding_percent = 0
 
 [node name="Floor" type="TileMapLayer" parent="." unique_id=231492416]
 y_sort_enabled = true
 tile_set = ExtResource("3_jva5r")
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=1419597422]
+z_index = 1
 y_sort_enabled = true
 tile_set = ExtResource("3_jva5r")
 
