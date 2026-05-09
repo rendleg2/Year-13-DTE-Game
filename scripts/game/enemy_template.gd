@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var weapon: PackedScene #select weapon
 var weaponInstance
-@onready var Target = $"../Player"
+@onready var Target = $"../../Player"
 var HP = 100
 var Target_Position
 var Current_Position
