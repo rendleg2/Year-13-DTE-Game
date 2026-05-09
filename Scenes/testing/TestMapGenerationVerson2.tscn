@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://baen6qqfnun14"]
 
-[ext_resource type="Script" uid="uid://b7ii01pgtow5f" path="res://Scenes/testing/test_map_generation_verson_3.gd" id="1_jva5r"]
-[ext_resource type="PackedScene" uid="uid://bo53t6tjuv580" path="res://Scenes/rooms/deadEndTest.tscn" id="2_3n2nr"]
-[ext_resource type="PackedScene" uid="uid://bbm1d42c2cjf" path="res://Scenes/rooms/room4wayTest.tscn" id="2_eab3g"]
-[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="3_jva5r"]
-[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://Scenes/entities/Player.tscn" id="4_irqvm"]
+[ext_resource type="Script" uid="uid://bgp7y4huemjys" path="res://scripts/game/procedual_generation.gd" id="1_1hbkc"]
+[ext_resource type="PackedScene" uid="uid://bo53t6tjuv580" path="res://scenes/rooms/deadEndTest.tscn" id="2_3n2nr"]
+[ext_resource type="PackedScene" uid="uid://bbm1d42c2cjf" path="res://scenes/rooms/room4wayTest.tscn" id="2_eab3g"]
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://Assets/tilesheet/Main_Tile_set.tres" id="3_jva5r"]
+[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="4_irqvm"]
 
-[node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149 node_paths=PackedStringArray("hallway_tilemap")]
-script = ExtResource("1_jva5r")
-hallway_tilemap = NodePath("Halls")
-room_attempts = 100
-room_templates = Array[PackedScene]([ExtResource("2_eab3g"), ExtResource("2_3n2nr")])
+[node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149]
+script = ExtResource("1_1hbkc")
+start_rooms = Array[PackedScene]([ExtResource("2_3n2nr")])
+end_rooms = Array[PackedScene]([ExtResource("2_eab3g")])
+room_scenes = Array[PackedScene]([ExtResource("2_eab3g"), ExtResource("2_3n2nr")])
 
 [node name="Floor" type="TileMapLayer" parent="." unique_id=231492416]
 y_sort_enabled = true
