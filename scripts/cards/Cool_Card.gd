@@ -60,8 +60,8 @@ func _on_button_pressed() -> void:
 		#player_stats.ability_duration += 
 		#player_stats.ability_cooldown += 
 	
-		player_stats.bullet_spread += 2
-		player_stats.bullet_count += 5
+		player_stats.bullet_spread += 20
+		player_stats.bullet_count += 2
 		#player_stats.bullet_cooldown = 
 		#player_stats.bullet_speed += 
 		#player_stats.bullet_damage += 

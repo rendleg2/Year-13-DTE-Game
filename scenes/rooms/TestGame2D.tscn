@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://bjxktxg3a68xo"]
 
-[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="1_cqkkl"]
 [ext_resource type="Texture2D" uid="uid://c8d4hc886mla1" path="res://assets/tilesheet/floortiles.png" id="3_h0gvn"]
-[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://Scenes/entities/Player.tscn" id="4_80nl2"]
-[ext_resource type="PackedScene" uid="uid://opswl0ugdyye" path="res://Scenes/UI/Card_Template.tscn" id="4_xffw4"]
+[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="4_80nl2"]
+[ext_resource type="PackedScene" uid="uid://opswl0ugdyye" path="res://scenes/UI/Card_Template.tscn" id="4_xffw4"]
 [ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="5_8duyk"]
 [ext_resource type="Texture2D" uid="uid://1j244iifpckk" path="res://assets/sprites/sand.png" id="6_etjxl"]
 [ext_resource type="Script" uid="uid://dohmupp1v5j3e" path="res://scripts/cards/Cool_Card.gd" id="7_8duyk"]
@@ -76,8 +76,6 @@ position = Vector2(84, 27)
 
 [node name="Player" parent="." unique_id=249557870 instance=ExtResource("4_80nl2")]
 position = Vector2(690, 267)
-bullet_size = 1.0
-bullet_range = 1000.0
 
 [node name="Card_Template" parent="." unique_id=1041810067 instance=ExtResource("4_xffw4")]
 offset_left = 611.0

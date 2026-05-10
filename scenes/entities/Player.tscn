@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvrbiyqm8pn28"]
 
 [ext_resource type="Script" uid="uid://cj0ncxwxkwekf" path="res://scripts/game/player.gd" id="1_vm2lv"]
+[ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://scenes/entities/Bullet.tscn" id="2_24gqh"]
 [ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="3_yjynp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7et6"]
@@ -44,6 +45,12 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=249557870]
 script = ExtResource("1_vm2lv")
+ability_duration = 0.05
+fire_rate = 0.1
+bullet_scene = ExtResource("2_24gqh")
+bullet_size = 1.25
+bullet_speed = 1000.0
+bullet_spread = -2.33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1237092590]
 position = Vector2(-1, 1)
@@ -56,3 +63,4 @@ autoplay = "default"
 frame_progress = 0.21840028
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1279737256]
+position_smoothing_enabled = true
