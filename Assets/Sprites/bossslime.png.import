@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1224207wrp1c"
-path="res://.godot/imported/floortiles.png-7afb103181a48863217a74664827edcd.ctex"
+uid="uid://cdf2xuvshim73"
+path="res://.godot/imported/bossslime.png-6fde826c015d4e2dafd04e5323344e0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tilesheet/floortiles.png"
-dest_files=["res://.godot/imported/floortiles.png-7afb103181a48863217a74664827edcd.ctex"]
+source_file="res://Assets/Sprites/bossslime.png"
+dest_files=["res://.godot/imported/bossslime.png-6fde826c015d4e2dafd04e5323344e0d.ctex"]
 
 [params]
 
