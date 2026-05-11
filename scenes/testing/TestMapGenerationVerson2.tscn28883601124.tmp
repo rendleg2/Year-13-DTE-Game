@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://baen6qqfnun14"]
+
+[ext_resource type="Script" uid="uid://bgp7y4huemjys" path="res://scripts/game/procedual_generation.gd" id="1_1hbkc"]
+[ext_resource type="PackedScene" uid="uid://brsa54khmnao3" path="res://scenes/rooms/start_end_room.tscn" id="2_w86qf"]
+[ext_resource type="PackedScene" uid="uid://dvvmefu7sxi83" path="res://scenes/rooms/Corridors/(1, 0)_(0, 1)_corridor.tscn" id="3_cx8ss"]
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://Assets/tilesheet/Main_Tile_set.tres" id="3_jva5r"]
+[ext_resource type="PackedScene" uid="uid://dokbbdbqswk2v" path="res://scenes/rooms/Corridors/(-1, 0)_(0, -1)_corridor.tscn" id="4_8hypp"]
+[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="4_irqvm"]
+[ext_resource type="PackedScene" uid="uid://b0v037fer7wv2" path="res://scenes/rooms/Corridors/(0, -1)_(0, 1)_corridor.tscn" id="5_ugvp8"]
+[ext_resource type="PackedScene" uid="uid://cfdtw0xqu3j34" path="res://scenes/rooms/Corridors/(1, 0)_(0, -1)_corridor2.tscn" id="6_cfwyj"]
+[ext_resource type="PackedScene" uid="uid://cawmscpkrwdpe" path="res://scenes/rooms/Corridors/(-1, 0)_(0, 1)_corridor2.tscn" id="7_hsbbs"]
+[ext_resource type="PackedScene" uid="uid://bmrdygp545hu0" path="res://scenes/rooms/Corridors/(-1, 0)_(1, 0)_corridor.tscn" id="8_ixnjd"]
+[ext_resource type="PackedScene" uid="uid://c35jlawcuiaxv" path="res://scenes/rooms/(-1, 0)_(1, 0)_(0, -1)_(0, 1).tscn" id="9_8hypp"]
+
+[node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149]
+script = ExtResource("1_1hbkc")
+start_rooms = Array[PackedScene]([ExtResource("2_w86qf")])
+end_rooms = Array[PackedScene]([ExtResource("2_w86qf")])
+room_scenes = Array[PackedScene]([ExtResource("3_cx8ss"), ExtResource("4_8hypp"), ExtResource("5_ugvp8"), ExtResource("6_cfwyj"), ExtResource("7_hsbbs"), ExtResource("8_ixnjd"), ExtResource("9_8hypp")])
+rooms_grid_size_start = Vector2i(10, 10)
+max_attempts = 100
+max_windingness = 100
+room_size = 11
+
+[node name="all_room_data" type="Node2D" parent="." unique_id=522288729]
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=231492416]
+y_sort_enabled = true
+tile_set = ExtResource("3_jva5r")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=1419597422]
+z_index = 1
+y_sort_enabled = true
+tile_set = ExtResource("3_jva5r")
+
+[node name="Player" parent="." unique_id=249557870 instance=ExtResource("4_irqvm")]
+z_index = 1
+position = Vector2(52, 139)
+collision_mask = 0
+
+[node name="Halls" type="TileMapLayer" parent="." unique_id=364997100]
+tile_set = ExtResource("3_jva5r")

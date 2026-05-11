@@ -1,0 +1,30 @@
+[gd_scene format=4 uid="uid://dvvmefu7sxi83"]
+
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://Assets/tilesheet/Main_Tile_set.tres" id="1_qfo7f"]
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="2_3wkof"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mtbwm"]
+vertices = PackedVector2Array(97, 116, 112, 124, 95, 132, 81, 124, 65, 131, 17, 107, 16, 60, 112, 108, -64, 132, -79, 124, -65, 117, -50, 125, -33, 132, -80, 108)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 0, 3), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 11, 10, 13, 6, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(17, 107, -33, 132, -50, 125, -64, 132, -79, 124, -65, 117, -80, 108, 16, 60, 112, 108, 97, 116, 112, 124, 95, 132, 81, 124, 65, 131)])
+agent_radius = 0.0
+
+[node name="Upup" type="Node2D" unique_id=1980715701]
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=372418699]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAEAAQAAAABAAEAAAAEAAUAAAABAAEAAAAEAAYAAAABAAEAAAAFAAQAAAABAAEAAAAFAAUAAAABAAEAAAAFAAYAAAABAAEAAAAGAAQAAAABAAEAAAAGAAUAAAABAAEAAAAGAAYAAAABAAEAAAAHAAQAAAABAAEAAAAHAAUAAAABAAEAAAAHAAYAAAABAAEAAAAIAAQAAAABAAEAAAAIAAUAAAABAAEAAAAIAAYAAAABAAEAAAAJAAQAAAABAAEAAAAJAAUAAAABAAEAAAAJAAYAAAABAAEAAAAKAAQAAAABAAEAAAAKAAUAAAABAAEAAAAKAAYAAAABAAEAAAAEAAcAAAABAAEAAAAEAAgAAAABAAEAAAAEAAkAAAABAAEAAAAEAAoAAAABAAEAAAAFAAcAAAABAAEAAAAFAAgAAAABAAEAAAAFAAkAAAABAAEAAAAFAAoAAAABAAEAAAAGAAcAAAABAAEAAAAGAAgAAAABAAEAAAAGAAkAAAABAAEAAAAGAAoAAAABAAEAAAAAAAAABQAAAAAAAAA=")
+tile_set = ExtResource("1_qfo7f")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=1534722905]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAHAAcAAQAGAAAAAAADAAQAAQAGAAAAAAADAAUAAQAGAAAAAAADAAYAAQAGAAAAAAADAAcAAQAGAAAAAAAIAAMAAQAGAAAAAAAJAAMAAQAGAAAAAAAKAAMAAQAGAAAAAAAKAAQAAQAGAAAAAAAKAAYAAQAGAAAAAAAKAAcAAQAGAAAAAAAIAAcAAQAGAAAAAAAJAAcAAQAGAAAAAAADAAMAAQAGAAAAAAAEAAMAAQAGAAAAAAAFAAMAAQAGAAAAAAAGAAMAAQAGAAAAAAAHAAMAAQAGAAAAAAADAAgAAQAGAAAAAAADAAkAAQAGAAAAAAADAAoAAQAGAAAAAAAEAAoAAQAGAAAAAAAGAAoAAQAGAAAAAAAHAAoAAQAGAAAAAAAHAAgAAQAGAAAAAAAHAAkAAQAGAAAAAAAAAAAAAQABAAEAAAA=")
+tile_set = ExtResource("1_qfo7f")
+
+[node name="room_data" type="Node2D" parent="." unique_id=1258144003]
+
+[node name="Enemy Template" parent="room_data" unique_id=896060041 instance=ExtResource("2_3wkof")]
+position = Vector2(19, 77)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="room_data" unique_id=2080651291]
+navigation_polygon = SubResource("NavigationPolygon_mtbwm")
