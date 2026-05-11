@@ -1,9 +1,10 @@
 [gd_resource type="TileSet" format=3 uid="uid://l1h8ugkslp6e"]
 
-[ext_resource type="Texture2D" uid="uid://c8d4hc886mla1" path="res://Assets/tilesheet/floortiles.png" id="1_fnafi"]
+[ext_resource type="Texture2D" uid="uid://1224207wrp1c" path="res://Assets/tilesheet/floortiles.png" id="1_fnafi"]
 [ext_resource type="Texture2D" uid="uid://d1hakuusrf86g" path="res://Assets/tilesheet/wallstiles.png" id="2_nnpnk"]
 [ext_resource type="Texture2D" uid="uid://3hmqge5oqve0" path="res://Assets/tilesheet/Arrows.png" id="3_b7d0c"]
 [ext_resource type="Texture2D" uid="uid://q8qykf8fm0fq" path="res://Assets/tilesheet/Untitled.png" id="4_ixg8y"]
+[ext_resource type="Texture2D" uid="uid://b8yltjbamg41o" path="res://Assets/tilesheet/minimap.png" id="4_ng21y"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fnafi"]
 
@@ -68,6 +69,26 @@ texture_region_size = Vector2i(32, 32)
 texture = ExtResource("1_fnafi")
 texture_region_size = Vector2i(32, 16)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hc05l"]
+texture = ExtResource("4_ng21y")
+separation = Vector2i(1, 0)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nnpnk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7d0c"]
@@ -104,3 +125,4 @@ sources/2 = SubResource("TileSetAtlasSource_ixg8y")
 sources/5 = SubResource("TileSetAtlasSource_b7d0c")
 sources/1 = SubResource("TileSetAtlasSource_3eppe")
 sources/3 = SubResource("TileSetAtlasSource_ng21y")
+sources/4 = SubResource("TileSetAtlasSource_hc05l")

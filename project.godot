@@ -15,6 +15,10 @@ run/main_scene="uid://bjxktxg3a68xo"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
+[autoload]
+
+GlobalVaribles="*uid://bokg7xc1rxom1"
+
 [input]
 
 left={

@@ -8,6 +8,7 @@ extends Node2D
 @export var max_windingness: int = 30
 @export var room_size: int = 10
 
+
 var bitwise = {
 		Vector2i.DOWN: 1,
 		Vector2i.UP: 2,
@@ -17,15 +18,20 @@ var bitwise = {
 
 var start_coords = Vector2i.ZERO
 var end_coords = Vector2i.ZERO
-var rooms_grid = []
+var rooms_grid = GlobalVaribles.room_grid
 
 @onready var rooms_grid_size = rooms_grid_size_start
 
 var used_tiles = []
 
+
 var path_taken = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalVaribles.map_loaded = false
+	GlobalVaribles.room_grid = []
+	GlobalVaribles.start_coord = Vector2i.ZERO
+	GlobalVaribles.end_coord = Vector2i.ZERO
 	for x in range(0, rooms_grid_size.x):
 		rooms_grid.append([])
 		for y in range(0, rooms_grid_size.y):
@@ -66,7 +72,11 @@ func _ready() -> void:
 	#rooms_grid[start_coords.x][start_coords.y] = start_rooms[randi_range(0, len(start_rooms) - 1)]
 	#rooms_grid[end_coords.x][end_coords.y] = end_rooms[randi_range(0, len(end_rooms) - 1)]
 	$Player.global_position = $Floor.map_to_local(Vector2i(start_coords.x*room_size+5, start_coords.y*room_size+5))
-	print($Player.position)
+	print($Player.position)	
+	GlobalVaribles.room_grid = rooms_grid
+	GlobalVaribles.start_coord = start_coords
+	GlobalVaribles.end_coord = end_coords
+	GlobalVaribles.map_loaded = true
 
 func off_shoot_rooms():
 	var dir = []
@@ -197,7 +207,7 @@ func path_bitwise(start_coords_2, end_coords_2, max_attempts_2):
 		if end_coords_2 == null and len(dir) == 0:
 			print("broke: ", attempts)
 			if attempts !=0:
-				rooms_grid[current_coords.x][current_coords.y] = bitwise[last_move]
+				rooms_grid[current_coords.x][current_coords.y] = bitwise[move]
 			break
 		elif len(dir) == 0:
 			if path_taken.size() == 0:
@@ -243,10 +253,10 @@ func path_bitwise(start_coords_2, end_coords_2, max_attempts_2):
 		print("sucsess")
 		#print(path_taken)
 	else:
-		rooms_grid[current_coords.x][current_coords.y] = bitwise[last_move]
+		rooms_grid[current_coords.x][current_coords.y] = bitwise[-move]
 		print("extra path hit end of road")
 
 #command .exe / work = true == yes = no bc I said yes and it works so yes - work # real!! #its working - print work
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _physics_process(delta: float) -> void:
+	GlobalVaribles.player_pos = Vector2i($Floor.local_to_map($Player.global_position)/room_size)

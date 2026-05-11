@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://hcuovfu03yl2" path="res://scenes/rooms/Corridors/11.tscn" id="9_ixnjd"]
 [ext_resource type="PackedScene" uid="uid://sj36lig0qxxt" path="res://scenes/rooms/Corridors/13.tscn" id="11_cjm58"]
 [ext_resource type="PackedScene" uid="uid://blh0ufixxw77j" path="res://scenes/rooms/Corridors/14.tscn" id="13_ixnjd"]
+[ext_resource type="PackedScene" uid="uid://dth5d7dto4j23" path="res://scenes/UI/Mini_map.tscn" id="16_cjm58"]
 
 [node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149]
 script = ExtResource("1_1hbkc")
@@ -41,6 +42,9 @@ tile_set = ExtResource("3_jva5r")
 z_index = 1
 position = Vector2(52, 139)
 collision_mask = 0
+
+[node name="MiniMap" parent="Player" unique_id=762029457 instance=ExtResource("16_cjm58")]
+position = Vector2(100, 0)
 
 [node name="Halls" type="TileMapLayer" parent="." unique_id=364997100]
 tile_set = ExtResource("3_jva5r")
