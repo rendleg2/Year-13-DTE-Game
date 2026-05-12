@@ -39,9 +39,7 @@ y_sort_enabled = true
 tile_set = ExtResource("3_jva5r")
 
 [node name="Player" parent="." unique_id=249557870 instance=ExtResource("4_irqvm")]
-z_index = 1
 position = Vector2(52, 139)
-collision_mask = 0
 bullet_speed = 100.0
 
 [node name="MiniMap" parent="Player" unique_id=762029457 instance=ExtResource("16_cjm58")]

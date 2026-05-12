@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var weapon: PackedScene #select weapon
+@export var weapon: PackedScene = load("res://Scenes/entities/Bullet.tscn") #select weapon
 var weaponInstance
 @onready var Target = $"../../Player"
 var HP = 100
@@ -11,17 +11,20 @@ var Next_Step
 var Velocity
 var aggro = false
 @onready var navigation_agent_2d = $NavigationAgent2D
+var can_shoot = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: #spawn in the enemys weapon
-	if weapon:
-		weaponInstance = weapon.instantiate()
-		add_child(weaponInstance)
+	pass
+	#if weapon:
+	#	weaponInstance = weapon.instantiate()
+	#	add_child(weaponInstance)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if aggro == true:
+		shoot()
 		_on_follow_follow()
 		Pathfind(delta)
 
@@ -46,6 +49,20 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 func _on_area_2d_body_entered(body): # if target enters detection range, attack
 	if body == Target:
 		aggro = true
-		if weapon:
-			if weaponInstance.has_method('fire'):
-				weaponInstance.fire()
+		$Timer.start()
+
+func shoot():
+	if can_shoot == true:
+		can_shoot = false
+		var bullet = weapon.instantiate()
+		bullet.global_position = global_position
+
+		var dir = (Target.position - self.global_position).angle()
+		var spread = 0
+		#dir = dir.rotated(spread)
+		bullet.rotation = dir
+		get_tree().current_scene.add_child(bullet)
+
+
+func _on_timer_timeout():
+	can_shoot = true

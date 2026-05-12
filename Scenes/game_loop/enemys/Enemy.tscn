@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://bl440ciqsmgst"]
+[gd_scene format=3 uid="uid://batc8plb1m52p"]
 
-[ext_resource type="Script" uid="uid://dpx37j3431ev5" path="res://scripts/game/enemy_template.gd" id="1_g4dba"]
+[ext_resource type="Script" uid="uid://dpx37j3431ev5" path="res://scripts/game/enemy_template.gd" id="1_i7xd6"]
+[ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://Scenes/entities/Bullet.tscn" id="2_xcuin"]
 
 [sub_resource type="Gradient" id="Gradient_g4dba"]
 
@@ -17,7 +18,8 @@ radius = 20.024984
 
 [node name="Enemy Template" type="CharacterBody2D" unique_id=896060041]
 motion_mode = 1
-script = ExtResource("1_g4dba")
+script = ExtResource("1_i7xd6")
+weapon = ExtResource("2_xcuin")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2011793184]
 scale = Vector2(0.1953125, 27.75)
@@ -39,9 +41,5 @@ debug_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1450318759]
 shape = SubResource("CircleShape2D_joqk6")
 
-[node name="Timer" type="Timer" parent="." unique_id=942976417]
-wait_time = 0.25
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
