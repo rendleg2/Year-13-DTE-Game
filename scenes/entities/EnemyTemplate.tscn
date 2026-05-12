@@ -1,13 +1,50 @@
 [gd_scene format=3 uid="uid://bl440ciqsmgst"]
 
 [ext_resource type="Script" uid="uid://dpx37j3431ev5" path="res://scripts/game/enemy_template.gd" id="1_g4dba"]
+[ext_resource type="Texture2D" uid="uid://bu54w7pyggya" path="res://assets/tilesheet/enemyslime.temp.png" id="2_te406"]
 
-[sub_resource type="Gradient" id="Gradient_g4dba"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u3al"]
+atlas = ExtResource("2_te406")
+region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_p4to8"]
-gradient = SubResource("Gradient_g4dba")
+[sub_resource type="AtlasTexture" id="AtlasTexture_fylyv"]
+atlas = ExtResource("2_te406")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8jqv"]
+atlas = ExtResource("2_te406")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcl4g"]
+atlas = ExtResource("2_te406")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2uys6"]
+atlas = ExtResource("2_te406")
+region = Rect2(0, 128, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vy2uu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u3al")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fylyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8jqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcl4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2uys6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4dba"]
 radius = 47.296936
@@ -16,12 +53,9 @@ radius = 47.296936
 radius = 20.024984
 
 [node name="Enemy Template" type="CharacterBody2D" unique_id=896060041]
+y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_g4dba")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2011793184]
-scale = Vector2(0.1953125, 27.75)
-texture = SubResource("GradientTexture1D_p4to8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759928974]
 sprite_frames = SubResource("SpriteFrames_vy2uu")

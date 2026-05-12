@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cvrbiyqm8pn28"]
 
 [ext_resource type="Script" uid="uid://cj0ncxwxkwekf" path="res://scripts/game/player.gd" id="1_vm2lv"]
-[ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://scenes/entities/Bullet.tscn" id="2_24gqh"]
-[ext_resource type="Texture2D" uid="uid://bbktnl4mbp1pk" path="res://assets/tilesheet/slime.png" id="3_24gqh"]
+[ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://Scenes/entities/Bullet.tscn" id="2_24gqh"]
+[ext_resource type="Texture2D" uid="uid://bn72e4rknxvwb" path="res://assets/tilesheet/slime.png" id="3_24gqh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7et6"]
 radius = 5.3851647
@@ -50,6 +50,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve" id="Curve_kcm4n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_p3bqa"]
+texture_mode = 1
+curve = SubResource("Curve_kcm4n")
+
 [node name="Player" type="CharacterBody2D" unique_id=249557870]
 script = ExtResource("1_vm2lv")
 bullet_scene = ExtResource("2_24gqh")
@@ -72,3 +80,9 @@ position = Vector2(-0.75, 1.25)
 scale = Vector2(0.359375, 0.359375)
 sprite_frames = SubResource("SpriteFrames_xq0cc")
 autoplay = "default"
+
+[node name="Backround" type="Sprite2D" parent="." unique_id=793243492]
+z_index = -1
+position = Vector2(-9.536743e-06, 3.5)
+scale = Vector2(1.5, 221.00002)
+texture = SubResource("CurveTexture_p3bqa")

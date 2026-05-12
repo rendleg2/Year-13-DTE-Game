@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://baen6qqfnun14"]
 
 [ext_resource type="Script" uid="uid://bgp7y4huemjys" path="res://scripts/game/procedual_generation.gd" id="1_1hbkc"]
-[ext_resource type="PackedScene" uid="uid://brsa54khmnao3" path="res://Scenes/rooms/start_end_room.tscn" id="2_w86qf"]
+[ext_resource type="PackedScene" uid="uid://brsa54khmnao3" path="res://Scenes/rooms/start/start_room.tscn" id="2_w86qf"]
 [ext_resource type="PackedScene" uid="uid://dvvmefu7sxi83" path="res://Scenes/rooms/Corridors/9.tscn" id="3_cx8ss"]
 [ext_resource type="PackedScene" uid="uid://u501rwx83ykb" path="res://Scenes/rooms/Corridors/3.tscn" id="3_hsbbs"]
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="3_jva5r"]

@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://b4a0y5tpcllgv"]
 
 [ext_resource type="Script" uid="uid://bgp7y4huemjys" path="res://scripts/game/procedual_generation.gd" id="1_cp4sw"]
-[ext_resource type="PackedScene" uid="uid://brsa54khmnao3" path="res://Scenes/rooms/start_end_room.tscn" id="2_qyfdw"]
+[ext_resource type="PackedScene" uid="uid://brsa54khmnao3" path="res://Scenes/rooms/start/start_room.tscn" id="2_qyfdw"]
 [ext_resource type="PackedScene" uid="uid://u501rwx83ykb" path="res://Scenes/rooms/Corridors/3.tscn" id="3_eys1y"]
+[ext_resource type="PackedScene" uid="uid://bdi7651tyu3kn" path="res://Scenes/rooms/end/1.tscn" id="3_kcfww"]
 [ext_resource type="PackedScene" uid="uid://cawmscpkrwdpe" path="res://Scenes/rooms/Corridors/5.tscn" id="4_gss0k"]
 [ext_resource type="PackedScene" uid="uid://dokbbdbqswk2v" path="res://Scenes/rooms/Corridors/6.tscn" id="5_aat86"]
 [ext_resource type="PackedScene" uid="uid://b0v037fer7wv2" path="res://Scenes/rooms/Corridors/7.tscn" id="6_8wiwl"]
@@ -20,10 +21,10 @@
 [node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149]
 script = ExtResource("1_cp4sw")
 start_rooms = Array[PackedScene]([ExtResource("2_qyfdw")])
-end_rooms = Array[PackedScene]([ExtResource("2_qyfdw")])
+end_rooms = Array[PackedScene]([ExtResource("3_kcfww")])
 room_scenes = Array[PackedScene]([ExtResource("3_eys1y"), ExtResource("4_gss0k"), ExtResource("5_aat86"), ExtResource("6_8wiwl"), ExtResource("7_t6h3e"), ExtResource("8_45jcm"), ExtResource("9_xe7wt"), ExtResource("10_8msd1"), ExtResource("11_3ra5k"), ExtResource("12_nei0f"), ExtResource("13_ouesx")])
-rooms_grid_size_start = Vector2i(10, 10)
-max_attempts = 100
+rooms_grid_size_start = Vector2i(100, 100)
+max_attempts = 10000
 max_windingness = 75
 room_size = 11
 
@@ -38,9 +39,8 @@ y_sort_enabled = true
 tile_set = ExtResource("14_j6mur")
 
 [node name="Player" parent="." unique_id=249557870 instance=ExtResource("15_mcifw")]
-z_index = 1
+y_sort_enabled = true
 position = Vector2(52, 139)
-collision_mask = 0
 bullet_speed = 100.0
 
 [node name="MiniMap" parent="Player" unique_id=762029457 instance=ExtResource("16_318ss")]

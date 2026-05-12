@@ -104,3 +104,6 @@ func reset_after_shop():
 	cooldown_timer = 0.0
 	can_ability = true
 	velocity = Vector2.ZERO
+	
+func player():
+	pass

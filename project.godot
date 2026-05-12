@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Year-13-DTE-Game"
-run/main_scene="uid://bjxktxg3a68xo"
+run/main_scene="uid://bh6bvig2tbyxk"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.7137857, 0.25823423, 0.2902128, 1)
 config/icon="res://assets/sprites/icon.svg"
 
 [autoload]

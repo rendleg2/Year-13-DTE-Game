@@ -27,6 +27,8 @@ func _physics_process(delta: float) -> void:
 		shoot()
 		_on_follow_follow()
 		Pathfind(delta)
+	if HP < 1:
+		queue_free()
 
 func _on_follow_follow(): # will set pathfind desination to player
 	if Target_Position != Target.position:
@@ -61,8 +63,11 @@ func shoot():
 		var spread = 0
 		#dir = dir.rotated(spread)
 		bullet.rotation = dir
+		bullet.team = "enemy"
 		get_tree().current_scene.add_child(bullet)
 
+func hit(damege):
+	HP -= damege
 
 func _on_timer_timeout():
 	can_shoot = true

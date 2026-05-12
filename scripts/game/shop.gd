@@ -63,3 +63,6 @@ func on_card_picked(card):
 
 	if player:
 		player.reset_after_shop()
+	for i in 10:
+		await get_tree().physics_frame
+	get_tree().change_scene_to_file(str("res://Scenes/game_loop/map_generator.tscn"))

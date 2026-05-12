@@ -29,11 +29,6 @@ var used_tiles = []
 var path_taken = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var uid_string = "uid://c82j4l3r4k4n2"
-	var uid_int = ResourceUID.text_to_id(uid_string)
-	var file_path = ResourceUID.get_id_path(uid_int)
-	print(file_path) # Output: res://scripts/player.gd
-
 	await get_tree().physics_frame
 	GlobalVaribles.map_loaded = false
 	GlobalVaribles.room_grid = []

@@ -229,3 +229,5 @@ shape = SubResource("RectangleShape2D_62288")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1565721974]
 environment = SubResource("Environment_62288")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
