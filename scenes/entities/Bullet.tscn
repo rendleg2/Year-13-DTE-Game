@@ -193,6 +193,7 @@ color_ramp = SubResource("GradientTexture1D_2y60i")
 size = Vector2(8, 7.999999)
 
 [sub_resource type="Environment" id="Environment_62288"]
+resource_local_to_scene = true
 background_mode = 3
 glow_enabled = true
 glow_strength = 2.0

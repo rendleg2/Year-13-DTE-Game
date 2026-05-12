@@ -16,29 +16,34 @@ func setup(dir: Vector2):
 	rotation = direction.angle()
 
 func _ready():
+	pass
 	# prevents instant self-collision on spawn
-	await get_tree().process_frame
-	can_hit = true
+	#await get_tree().process_frame
+	#can_hit = true
 
 func _physics_process(delta):
-
-	global_position += direction * speed * delta
+	
+	self.global_position += direction * speed * delta
 
 	distance_travelled += speed * delta
 
 	if distance_travelled >= max_range:
 		queue_free()
 
-func _on_body_entered(body):
+func _on_body_entered(body) -> void:
 
-	if not can_hit:
-		return
-
+	#if not can_hit:
+	#	return
+	
 	if body == null:
 		return
 
-	if body.has_method("get_team") and body.get_team() == team:
+	if team != "player" and body.has_method("Pathfind"):
 		return
+
+	if team == "player" and body.has_method("player"):
+		return
+
 
 	if body.has_method("hit"):
 		body.hit(damage)

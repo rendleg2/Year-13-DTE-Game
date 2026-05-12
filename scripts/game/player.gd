@@ -128,3 +128,6 @@ func save_to_global():
 
 	Global.auto_fire_active = auto_fire_active
 	Global.free_dash = free_dash
+
+func player():
+	pass

@@ -66,10 +66,11 @@ func shoot():
 		var bullet = weapon.instantiate()
 		bullet.global_position = global_position
 
-		var dir = (Target.global_position - self.global_position).angle()
-		var spread = 0
-		bullet.rotation = dir
+		var dir = (Target.global_position - self.global_position)#.angle()
+		bullet.speed = 400
+		#bullet.rotation = dir
 		bullet.team = "enemy"
+		bullet.setup(dir)
 		get_tree().current_scene.add_child(bullet)
 
 func hit(damage):
