@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn72e4rknxvwb"
-path="res://.godot/imported/slime.png-39c200e1e237f49b0441e6cadd037c11.ctex"
+uid="uid://bqcxjn8wm1fno"
+path="res://.godot/imported/heathbar.png-08eed23a31323bdbb9c261b69f02cc36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesheet/slime.png"
-dest_files=["res://.godot/imported/slime.png-39c200e1e237f49b0441e6cadd037c11.ctex"]
+source_file="res://assets/hud/heathbar.png"
+dest_files=["res://.godot/imported/heathbar.png-08eed23a31323bdbb9c261b69f02cc36.ctex"]
 
 [params]
 

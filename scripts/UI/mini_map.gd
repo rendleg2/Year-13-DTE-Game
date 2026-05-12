@@ -3,6 +3,8 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().physics_frame
+	await get_tree().physics_frame
 	var rooms_grid = GlobalVaribles.room_grid
 	while GlobalVaribles.map_loaded == false:
 		await get_tree().create_timer(1.0).timeout
