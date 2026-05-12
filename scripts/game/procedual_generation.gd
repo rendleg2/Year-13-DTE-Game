@@ -60,7 +60,6 @@ func _ready() -> void:
 	print(x, " ", y, " end")
 	end_coords = Vector2i(x, y)
 	
-	rooms_grid[start_coords.x][start_coords.y] = 0
 	
 	#create initial path
 	path_bitwise(start_coords, end_coords, max_attempts)
@@ -68,14 +67,16 @@ func _ready() -> void:
 	for i in range(0, len(end_rooms)):
 		if end_rooms[i].resource_path.get_file().get_basename() == str(rooms_grid[end_coords.x][end_coords.y]):
 			stamp_room(i, Vector2i(end_coords.x*room_size, end_coords.y*room_size), 2)
-	rooms_grid[end_coords.x][end_coords.y] = 0
-	await off_shoot_rooms()
-	place_rooms_bitwise()
-	#place_rooms()
 	for i in range(0, len(start_rooms)):
 		if start_rooms[i].resource_path.get_file().get_basename() == str(rooms_grid[start_coords.x][start_coords.y]):
 			stamp_room(i, Vector2i(start_coords.x*room_size, start_coords.y*room_size), 1)
 
+	rooms_grid[end_coords.x][end_coords.y] = 0
+	rooms_grid[start_coords.x][start_coords.y] = 0
+	await off_shoot_rooms()
+	place_rooms_bitwise()
+	#place_rooms()
+	
 	
 	#rooms_grid[start_coords.x][start_coords.y] = start_rooms[randi_range(0, len(start_rooms) - 1)]
 	#rooms_grid[end_coords.x][end_coords.y] = end_rooms[randi_range(0, len(end_rooms) - 1)]
