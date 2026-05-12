@@ -77,7 +77,7 @@ zoom = Vector2(3, 3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1403824900]
 position = Vector2(-0.75, 1.25)
-scale = Vector2(0.359375, 0.359375)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_xq0cc")
 autoplay = "default"
 

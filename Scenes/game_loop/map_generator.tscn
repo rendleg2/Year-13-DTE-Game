@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://b4a0y5tpcllgv"]
 
 [ext_resource type="Script" uid="uid://bgp7y4huemjys" path="res://scripts/game/procedual_generation.gd" id="1_cp4sw"]
-[ext_resource type="PackedScene" uid="uid://brsa54khmnao3" path="res://Scenes/rooms/start/start_room.tscn" id="2_qyfdw"]
+[ext_resource type="PackedScene" uid="uid://34qb3oj62oxl" path="res://Scenes/rooms/start/1.tscn" id="2_xvaj8"]
 [ext_resource type="PackedScene" uid="uid://u501rwx83ykb" path="res://Scenes/rooms/Corridors/3.tscn" id="3_eys1y"]
-[ext_resource type="PackedScene" uid="uid://bdi7651tyu3kn" path="res://Scenes/rooms/end/1.tscn" id="3_kcfww"]
+[ext_resource type="PackedScene" uid="uid://dgwoa1rnawo8r" path="res://Scenes/rooms/start/2.tscn" id="3_giikr"]
+[ext_resource type="PackedScene" uid="uid://l2re5643nmmd" path="res://Scenes/rooms/end/1.tscn" id="3_kcfww"]
+[ext_resource type="PackedScene" uid="uid://bk14c1hnfj6cs" path="res://Scenes/rooms/start/4.tscn" id="4_7pj78"]
 [ext_resource type="PackedScene" uid="uid://cawmscpkrwdpe" path="res://Scenes/rooms/Corridors/5.tscn" id="4_gss0k"]
 [ext_resource type="PackedScene" uid="uid://dokbbdbqswk2v" path="res://Scenes/rooms/Corridors/6.tscn" id="5_aat86"]
+[ext_resource type="PackedScene" uid="uid://cj6c0iynyd8fr" path="res://Scenes/rooms/start/8.tscn" id="5_jmo5r"]
 [ext_resource type="PackedScene" uid="uid://b0v037fer7wv2" path="res://Scenes/rooms/Corridors/7.tscn" id="6_8wiwl"]
+[ext_resource type="PackedScene" uid="uid://b8npunm0riyug" path="res://Scenes/rooms/end/2.tscn" id="7_dldp2"]
 [ext_resource type="PackedScene" uid="uid://dvvmefu7sxi83" path="res://Scenes/rooms/Corridors/9.tscn" id="7_t6h3e"]
 [ext_resource type="PackedScene" uid="uid://cfdtw0xqu3j34" path="res://Scenes/rooms/Corridors/10.tscn" id="8_45jcm"]
+[ext_resource type="PackedScene" uid="uid://ded03f1w4dgbv" path="res://Scenes/rooms/end/4.tscn" id="8_jnqpe"]
+[ext_resource type="PackedScene" uid="uid://dkhr6mwtbtq70" path="res://Scenes/rooms/end/8.tscn" id="9_t8r3y"]
 [ext_resource type="PackedScene" uid="uid://hcuovfu03yl2" path="res://Scenes/rooms/Corridors/11.tscn" id="9_xe7wt"]
 [ext_resource type="PackedScene" uid="uid://bmrdygp545hu0" path="res://Scenes/rooms/Corridors/12.tscn" id="10_8msd1"]
 [ext_resource type="PackedScene" uid="uid://sj36lig0qxxt" path="res://Scenes/rooms/Corridors/13.tscn" id="11_3ra5k"]
@@ -16,17 +22,21 @@
 [ext_resource type="PackedScene" uid="uid://blh0ufixxw77j" path="res://Scenes/rooms/Corridors/14.tscn" id="13_ouesx"]
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="14_j6mur"]
 [ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://Scenes/entities/Player.tscn" id="15_mcifw"]
+[ext_resource type="PackedScene" uid="uid://dxcrra4g1up1w" path="res://Scenes/rooms/Corridors/1.tscn" id="15_o40j1"]
 [ext_resource type="PackedScene" uid="uid://dth5d7dto4j23" path="res://Scenes/UI/Mini_map.tscn" id="16_318ss"]
+[ext_resource type="PackedScene" uid="uid://5ry85que6n00" path="res://Scenes/rooms/Corridors/2.tscn" id="16_lkks7"]
+[ext_resource type="PackedScene" uid="uid://bl0y4723vjqcn" path="res://Scenes/rooms/Corridors/4.tscn" id="17_kutdf"]
+[ext_resource type="PackedScene" uid="uid://cnsivl2puddyl" path="res://Scenes/rooms/Corridors/8.tscn" id="18_154fx"]
 
 [node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149]
 script = ExtResource("1_cp4sw")
-start_rooms = Array[PackedScene]([ExtResource("2_qyfdw")])
-end_rooms = Array[PackedScene]([ExtResource("3_kcfww")])
-room_scenes = Array[PackedScene]([ExtResource("3_eys1y"), ExtResource("4_gss0k"), ExtResource("5_aat86"), ExtResource("6_8wiwl"), ExtResource("7_t6h3e"), ExtResource("8_45jcm"), ExtResource("9_xe7wt"), ExtResource("10_8msd1"), ExtResource("11_3ra5k"), ExtResource("12_nei0f"), ExtResource("13_ouesx")])
+start_rooms = Array[PackedScene]([ExtResource("2_xvaj8"), ExtResource("3_giikr"), ExtResource("4_7pj78"), ExtResource("5_jmo5r")])
+end_rooms = Array[PackedScene]([ExtResource("3_kcfww"), ExtResource("7_dldp2"), ExtResource("8_jnqpe"), ExtResource("9_t8r3y")])
+room_scenes = Array[PackedScene]([ExtResource("3_eys1y"), ExtResource("4_gss0k"), ExtResource("5_aat86"), ExtResource("6_8wiwl"), ExtResource("7_t6h3e"), ExtResource("8_45jcm"), ExtResource("9_xe7wt"), ExtResource("10_8msd1"), ExtResource("11_3ra5k"), ExtResource("12_nei0f"), ExtResource("13_ouesx"), ExtResource("15_o40j1"), ExtResource("16_lkks7"), ExtResource("17_kutdf"), ExtResource("18_154fx")])
 rooms_grid_size_start = Vector2i(10, 10)
 max_attempts = 100
 max_windingness = 75
-room_size = 11
+room_size = 21
 
 [node name="all_room_data" type="Node2D" parent="." unique_id=522288729]
 

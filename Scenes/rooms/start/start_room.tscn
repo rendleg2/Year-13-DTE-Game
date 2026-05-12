@@ -1,7 +1,7 @@
-[gd_scene format=4 uid="uid://brsa54khmnao3"]
+[gd_scene format=4 uid="uid://bgqoiwu3ug8xa"]
 
-[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://Assets/tilesheet/Main_Tile_set.tres" id="1_dnvdm"]
-[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="2_qbilf"]
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_dnvdm"]
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="2_qbilf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hgr5b"]
 vertices = PackedVector2Array(-64, 132, -79, 124, -64, 117, -48, 124, 96, 116, 112, 124, 96, 132, 81, 124, 97, 52, 160, 84, -128, 84, -64, 52, -47, 44, -80, 44, -63, 35, 95, 35, 112, 44, 80, 43, 16, 157, 16, 11)

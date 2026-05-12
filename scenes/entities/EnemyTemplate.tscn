@@ -50,7 +50,7 @@ animations = [{
 radius = 47.296936
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_joqk6"]
-radius = 20.024984
+radius = 6.0
 
 [node name="Enemy Template" type="CharacterBody2D" unique_id=896060041]
 y_sort_enabled = true
@@ -58,6 +58,7 @@ motion_mode = 1
 script = ExtResource("1_g4dba")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759928974]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vy2uu")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1193334922]

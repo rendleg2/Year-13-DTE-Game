@@ -65,12 +65,18 @@ func _ready() -> void:
 	#create initial path
 	path_bitwise(start_coords, end_coords, max_attempts)
 	#place the rooms onto playable area
+	for i in range(0, len(end_rooms)):
+		if end_rooms[i].resource_path.get_file().get_basename() == str(rooms_grid[end_coords.x][end_coords.y]):
+			stamp_room(i, Vector2i(end_coords.x*room_size, end_coords.y*room_size), 2)
 	rooms_grid[end_coords.x][end_coords.y] = 0
 	await off_shoot_rooms()
 	place_rooms_bitwise()
 	#place_rooms()
-	stamp_room(0, Vector2i(start_coords.x*room_size, start_coords.y*room_size), 1)
-	stamp_room(0, Vector2i(end_coords.x*room_size, end_coords.y*room_size), 2)
+	for i in range(0, len(start_rooms)):
+		if start_rooms[i].resource_path.get_file().get_basename() == str(rooms_grid[start_coords.x][start_coords.y]):
+			stamp_room(i, Vector2i(start_coords.x*room_size, start_coords.y*room_size), 1)
+
+	
 	#rooms_grid[start_coords.x][start_coords.y] = start_rooms[randi_range(0, len(start_rooms) - 1)]
 	#rooms_grid[end_coords.x][end_coords.y] = end_rooms[randi_range(0, len(end_rooms) - 1)]
 	$Player.global_position = $Floor.map_to_local(Vector2i(start_coords.x*room_size+5, start_coords.y*room_size+5))
@@ -180,8 +186,7 @@ func stamp_room(id, coord, type):
 	$Walls.set_pattern(coord, wall.get_pattern(wall.get_used_cells()))
 	room.queue_free()
 
-func path_bitwise(start_coords_2, end_coords_2, max_attempts_2):
-	
+func path_bitwise(start_coords_2, end_coords_2, max_attempts_2):	
 	var dir = []
 	var current_coords = start_coords_2
 	var last_coords = Vector2i.ZERO
@@ -235,7 +240,9 @@ func path_bitwise(start_coords_2, end_coords_2, max_attempts_2):
 				move = dir.pick_random()
 			
 			new += move
-			
+			if start_coords == start_coords_2 and attempts == 0:
+				print("changed: ", move)
+				rooms_grid[start_coords.x][start_coords.y] = bitwise[move]
 			#saving the move
 			if attempts > 0:
 				path_taken.append([last_move,move])
@@ -243,7 +250,8 @@ func path_bitwise(start_coords_2, end_coords_2, max_attempts_2):
 				rooms_grid[last_coords.x][last_coords.y] = bitwise[last_move] + bitwise[move]
 			else:
 				last_move=-move
-
+			
+			
 			current_coords = new
 		#print(new, " ", move)
 	
@@ -252,6 +260,7 @@ func path_bitwise(start_coords_2, end_coords_2, max_attempts_2):
 		print("fail")
 	elif current_coords == end_coords_2:
 		#print(rooms_grid)
+		rooms_grid[current_coords.x][current_coords.y] = bitwise[-move]
 		print("sucsess")
 		#print(path_taken)
 	else:
