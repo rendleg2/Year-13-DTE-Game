@@ -2,34 +2,45 @@ extends Area2D
 
 var speed: float = 400.0
 var damage: float = 10.0
-var bullet_range: float = 500.0
-var direction: Vector2 = Vector2.ZERO
-var start_position: Vector2
+var max_range: float = 500.0
 
-var team = "player"
+var team: String = "player"
+
+var direction: Vector2 = Vector2.ZERO
+var distance_travelled: float = 0.0
+
+var can_hit: bool = false
+
+func setup(dir: Vector2):
+	direction = dir.normalized()
+	rotation = direction.angle()
 
 func _ready():
-	start_position = global_position
-	direction = Vector2.RIGHT.rotated(rotation)
+	# prevents instant self-collision on spawn
+	await get_tree().process_frame
+	can_hit = true
 
-func _process(delta):
-	position += direction * speed * delta
+func _physics_process(delta):
 
-	if global_position.distance_to(start_position) >= bullet_range:
+	global_position += direction * speed * delta
+
+	distance_travelled += speed * delta
+
+	if distance_travelled >= max_range:
 		queue_free()
 
-func set_size(size_value):
-	scale = Vector2.ONE * size_value
-
-
 func _on_body_entered(body):
-	if team == "player":
-		if not body.has_method("player"):
-			if body.has_method("hit"):
-				body.hit(damage)
-			queue_free() 
-	else:
-		if not body.has_method("Pathfind"):
-			if body.has_method("hit") and not body.has_method("Pathfind"):
-				body.hit(damage)
-			queue_free()
+
+	if not can_hit:
+		return
+
+	if body == null:
+		return
+
+	if body.has_method("get_team") and body.get_team() == team:
+		return
+
+	if body.has_method("hit"):
+		body.hit(damage)
+
+	queue_free()

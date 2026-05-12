@@ -6,6 +6,7 @@
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_bncpo")
+size_multiplier = 3.0
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=575964276]
 layout_mode = 0

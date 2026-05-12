@@ -19,6 +19,7 @@ config/icon="res://assets/sprites/icon.svg"
 [autoload]
 
 GlobalVaribles="*uid://bokg7xc1rxom1"
+Global="*uid://cft0xl0l1ksyn"
 
 [display]
 

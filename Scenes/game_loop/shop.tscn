@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://tioe5fmnprxw"]
 
 [ext_resource type="Script" uid="uid://cwdfsvdi2h3en" path="res://scripts/game/shop.gd" id="1_viryw"]
+[ext_resource type="PackedScene" uid="uid://opswl0ugdyye" path="res://scenes/UI/Card_Template.tscn" id="2_ly6vv"]
 
 [node name="Shop" type="CanvasLayer" unique_id=156240637]
 script = ExtResource("1_viryw")
+card_scene = ExtResource("2_ly6vv")
 
 [node name="Container" type="HBoxContainer" parent="." unique_id=122726717]
-offset_left = 166.0
-offset_top = 41.0
-offset_right = 324.0
-offset_bottom = 128.0
+offset_left = 96.0
+offset_top = 134.0
+offset_right = 459.0
+offset_bottom = 286.0
+mouse_filter = 2
 theme_override_constants/separation = 40
 alignment = 1

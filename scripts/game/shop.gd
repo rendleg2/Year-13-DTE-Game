@@ -1,32 +1,41 @@
 extends CanvasLayer
 
 @export var card_scene: PackedScene
+
 @onready var container = $Container
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var state = get_tree().get_first_node_in_group("gamestate")
 
 var upgrades = [
-		{"effects": 
-			[{"type": "speed", "value": 25},
-			{"type": "bullet_damage", "value": 5}],
-		"image": "res://assets/tilesheet/aaa.png"},
-		
-		{"effects": 
-			[{"type": "auto_fire_toggle"},
-			{"type": "free_dash_toggle"}],
-		"image": "res://assets/tilesheet/bossslime.png"}
-		]
+	{
+		"effects": [
+			{"type": "speed", "value": 25},
+			{"type": "bullet_damage", "value": 5}
+		],
+		"image": "res://assets/tilesheet/healthupgrade.png"
+	},
+
+	{
+		"effects": [
+			{"type": "auto_fire_toggle"},
+			{"type": "free_dash_toggle"}
+		],
+		"image": "res://assets/tilesheet/healthupgrade.png"
+	},
+
+	{
+		"effects": [
+			{"type": "bullet_count", "value": 20},
+			{"type": "bullet_spread", "value": 20}
+		],
+		"image": "res://assets/tilesheet/healthupgrade.png"
+	}
+]
 
 func _ready():
 	await get_tree().process_frame
 	open_shop()
 
 func open_shop():
-
-	print("SHOP OPENED")
-
-	if card_scene == null:
-		print("ERROR: card_scene not assigned")
-		return
 
 	visible = true
 	get_tree().paused = true
@@ -37,22 +46,16 @@ func open_shop():
 	var picks = upgrades.duplicate()
 	picks.shuffle()
 
-	if picks.size() > 3:
-		picks = picks.slice(0, 3)
-
-	for item in picks:
+	for i in range(min(3, picks.size())):
 
 		var card = card_scene.instantiate()
 
-		card.data = item
-		card.player = player
+		card.data = picks[i]
 		card.shop = self
 
 		container.add_child(card)
 
 func on_card_picked(card):
-
-	print("CARD PICKED")
 
 	for c in container.get_children():
 		if c != card:
@@ -61,8 +64,8 @@ func on_card_picked(card):
 	visible = false
 	get_tree().paused = false
 
-	if player:
-		player.reset_after_shop()
-	for i in 10:
-		await get_tree().physics_frame
-	get_tree().change_scene_to_file(str("res://Scenes/game_loop/map_generator.tscn"))
+	if state:
+		state.save_to_player()
+
+	await get_tree().create_timer(0.2).timeout
+	get_tree().change_scene_to_file("res://Scenes/game_loop/map_generator.tscn")

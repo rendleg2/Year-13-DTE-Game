@@ -19,37 +19,44 @@ func _ready() -> void: #spawn in the enemys weapon
 	#if weapon:
 	#	weaponInstance = weapon.instantiate()
 	#	add_child(weaponInstance)
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+
+	if HP <= 0:
+		die()
+		return
+
 	if aggro == true:
 		shoot()
 		_on_follow_follow()
 		Pathfind(delta)
-	if HP < 1:
-		queue_free()
 
 func _on_follow_follow(): # will set pathfind desination to player
-	if Target_Position != Target.position:
-		Target_Position = Target.position
+	if Target == null:
+		return
+
+	if Target_Position != Target.global_position:
+		Target_Position = Target.global_position
 		navigation_agent_2d.target_position = Target_Position
-		
+
 func Pathfind(_delta): #moves the enemy closer to the next pathfind point
 	Current_Position = self.global_position
 	Next_Step = navigation_agent_2d.get_next_path_position()
 	Velocity = Current_Position.direction_to(Next_Step) * Movement_Speed
+
 	if navigation_agent_2d.avoidance_enabled:
 		navigation_agent_2d.set_velocity(Velocity)
 	else:
 		_on_navigation_agent_2d_velocity_computed(Velocity)
+
 	move_and_slide()
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 
 func _on_area_2d_body_entered(body): # if target enters detection range, attack
-	if body == Target:
+	if body != null and body.is_in_group("player"):
 		aggro = true
 		$Timer.start()
 
@@ -59,15 +66,20 @@ func shoot():
 		var bullet = weapon.instantiate()
 		bullet.global_position = global_position
 
-		var dir = (Target.position - self.global_position).angle()
+		var dir = (Target.global_position - self.global_position).angle()
 		var spread = 0
-		#dir = dir.rotated(spread)
 		bullet.rotation = dir
 		bullet.team = "enemy"
 		get_tree().current_scene.add_child(bullet)
 
-func hit(damege):
-	HP -= damege
+func hit(damage):
+	HP -= damage
+
+	if HP <= 0:
+		die()
+
+func die():
+	queue_free()
 
 func _on_timer_timeout():
 	can_shoot = true

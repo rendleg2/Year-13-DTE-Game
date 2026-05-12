@@ -1,11 +1,5 @@
 extends Node
 
-var room_grid = []
-var start_coord = Vector2i.ZERO
-var end_coord = Vector2i.ZERO
-var player_pos = Vector2i.ZERO
-var map_loaded = false
-
 var speed: float = 200.0
 var ability_speed: float = 12.0
 var ability_duration: float = 0.2
@@ -20,3 +14,19 @@ var bullet_spread: float = 0.0
 
 var auto_fire_active: bool = false
 var free_dash: bool = false
+
+func reset():
+	speed = 200.0
+	ability_speed = 12.0
+	ability_duration = 0.2
+	ability_cooldown = 0.5
+
+	bullet_damage = 10.0
+	bullet_speed = 400.0
+	bullet_range = 500.0
+	bullet_size = 1.0
+	bullet_count = 1
+	bullet_spread = 0.0
+
+	auto_fire_active = false
+	free_dash = false

@@ -1,53 +1,71 @@
 extends CharacterBody2D
 
-@export var speed: float = 200.0
-
-@export var ability_speed: float = 12.0
-@export var ability_duration: float = 0.2
-@export var ability_cooldown: float = 0.5
-
-var ability_active: bool = false
-var dash_direction: Vector2 = Vector2.ZERO
-var ability_timer: float = 0.0
-var can_ability: bool = true
-var cooldown_timer: float = 0.0
-var free_dash: bool = false
-
 @export var bullet_scene: PackedScene
-@export var bullet_size: float = 1.0
-@export var bullet_speed: float = 400.0
-@export var bullet_damage: float = 10.0
-@export var bullet_range: float = 500.0
-@export var bullet_spread: float = 0.0
-@export var bullet_count: int = 1
-@export var auto_fire_active: bool = false
-@export var fire_rate: float = 0.2
 
-var fire_timer: float = 0.0
+var speed
+var ability_speed
+var ability_duration
+var ability_cooldown
+
+var bullet_damage
+var bullet_speed
+var bullet_range
+var bullet_size
+var bullet_count
+var bullet_spread
+
+var auto_fire_active
+var free_dash
+
+var ability_active = false
+var dash_direction = Vector2.ZERO
+var ability_timer = 0.0
+var can_ability = true
+var cooldown_timer = 0.0
+
+var fire_timer = 0.0
 
 func _ready():
 	add_to_group("player")
-	randomize()
+	load_from_global()
+
+func load_from_global():
+
+	speed = Global.speed
+	ability_speed = Global.ability_speed
+	ability_duration = Global.ability_duration
+	ability_cooldown = Global.ability_cooldown
+
+	bullet_damage = Global.bullet_damage
+	bullet_speed = Global.bullet_speed
+	bullet_range = Global.bullet_range
+	bullet_size = Global.bullet_size
+	bullet_count = Global.bullet_count
+	bullet_spread = Global.bullet_spread
+
+	auto_fire_active = Global.auto_fire_active
+	free_dash = Global.free_dash
 
 func _physics_process(delta):
-	var input_direction = Input.get_vector("left", "right", "up", "down")
 
-	if Input.is_action_just_pressed("shift") and input_direction != Vector2.ZERO and can_ability:
+	var input = Input.get_vector("left", "right", "up", "down")
+
+	if Input.is_action_just_pressed("shift") and input != Vector2.ZERO and can_ability:
 		ability_active = true
 		can_ability = false
 		ability_timer = ability_duration
 		cooldown_timer = ability_cooldown
-		dash_direction = input_direction.normalized()
+		dash_direction = input.normalized()
 
 	var current_speed = speed * ability_speed if ability_active else speed
 
 	if ability_active:
 		if free_dash:
-			velocity = input_direction * current_speed
+			velocity = input * current_speed
 		else:
 			velocity = dash_direction * current_speed
 	else:
-		velocity = input_direction * speed
+		velocity = input * speed
 
 	if ability_active:
 		ability_timer -= delta
@@ -66,44 +84,47 @@ func _physics_process(delta):
 
 	if auto_fire_active:
 		if Input.is_action_pressed("Shoot") and fire_timer <= 0:
-			shoot_bullet()
-			fire_timer = fire_rate
+			shoot()
+			fire_timer = 0.2
 	else:
 		if Input.is_action_just_pressed("Shoot") and fire_timer <= 0:
-			shoot_bullet()
-			fire_timer = fire_rate
+			shoot()
+			fire_timer = 0.2
 
-func shoot_bullet():
-	if bullet_scene == null:
-		print("No bullet scene assigned")
-		return
+func shoot():
 
 	for i in range(bullet_count):
+
 		var bullet = bullet_scene.instantiate()
-		bullet.global_position = global_position
+		get_tree().current_scene.add_child(bullet)
 
 		var dir = (get_global_mouse_position() - global_position).normalized()
 
 		var spread = deg_to_rad(randf_range(-bullet_spread, bullet_spread))
 		dir = dir.rotated(spread)
 
-		bullet.rotation = dir.angle()
+		bullet.global_position = global_position + dir * 20
+
+		bullet.setup(dir)
 
 		bullet.speed = bullet_speed
 		bullet.damage = bullet_damage
-		bullet.bullet_range = bullet_range
+		bullet.max_range = bullet_range
+		bullet.team = "player"
 
-		if bullet.has_method("set_size"):
-			bullet.set_size(bullet_size)
+func save_to_global():
 
-		get_tree().current_scene.add_child(bullet)
+	Global.speed = speed
+	Global.ability_speed = ability_speed
+	Global.ability_duration = ability_duration
+	Global.ability_cooldown = ability_cooldown
 
-func reset_after_shop():
-	ability_active = false
-	ability_timer = 0.0
-	cooldown_timer = 0.0
-	can_ability = true
-	velocity = Vector2.ZERO
-	
-func player():
-	pass
+	Global.bullet_damage = bullet_damage
+	Global.bullet_speed = bullet_speed
+	Global.bullet_range = bullet_range
+	Global.bullet_size = bullet_size
+	Global.bullet_count = bullet_count
+	Global.bullet_spread = bullet_spread
+
+	Global.auto_fire_active = auto_fire_active
+	Global.free_dash = free_dash
