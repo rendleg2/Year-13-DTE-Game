@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" format=3 uid="uid://l1h8ugkslp6e"]
 
-[ext_resource type="Texture2D" uid="uid://1224207wrp1c" path="res://Assets/tilesheet/floortiles.png" id="1_fnafi"]
+[ext_resource type="Texture2D" uid="uid://1224207wrp1c" path="res://assets/tilesheet/floortiles.png" id="1_fnafi"]
 [ext_resource type="Texture2D" uid="uid://d1hakuusrf86g" path="res://Assets/tilesheet/wallstiles.png" id="2_nnpnk"]
-[ext_resource type="Texture2D" uid="uid://3hmqge5oqve0" path="res://Assets/tilesheet/Arrows.png" id="3_b7d0c"]
-[ext_resource type="Texture2D" uid="uid://q8qykf8fm0fq" path="res://Assets/tilesheet/Untitled.png" id="4_ixg8y"]
-[ext_resource type="Texture2D" uid="uid://b8yltjbamg41o" path="res://Assets/tilesheet/minimap.png" id="4_ng21y"]
+[ext_resource type="Texture2D" uid="uid://3hmqge5oqve0" path="res://assets/tilesheet/Arrows.png" id="3_b7d0c"]
+[ext_resource type="Texture2D" uid="uid://q8qykf8fm0fq" path="res://assets/tilesheet/Untitled.png" id="4_ixg8y"]
+[ext_resource type="Texture2D" uid="uid://b8yltjbamg41o" path="res://assets/tilesheet/minimap.png" id="4_ng21y"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fnafi"]
 

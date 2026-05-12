@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://brsa54khmnao3" path="res://scenes/rooms/start_end_room.tscn" id="2_w86qf"]
 [ext_resource type="PackedScene" uid="uid://dvvmefu7sxi83" path="res://scenes/rooms/Corridors/9.tscn" id="3_cx8ss"]
 [ext_resource type="PackedScene" uid="uid://u501rwx83ykb" path="res://scenes/rooms/Corridors/3.tscn" id="3_hsbbs"]
-[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://Assets/tilesheet/Main_Tile_set.tres" id="3_jva5r"]
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="3_jva5r"]
 [ext_resource type="PackedScene" uid="uid://dokbbdbqswk2v" path="res://scenes/rooms/Corridors/6.tscn" id="4_8hypp"]
 [ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="4_irqvm"]
 [ext_resource type="PackedScene" uid="uid://b0v037fer7wv2" path="res://scenes/rooms/Corridors/7.tscn" id="5_ugvp8"]
@@ -42,6 +42,7 @@ tile_set = ExtResource("3_jva5r")
 z_index = 1
 position = Vector2(52, 139)
 collision_mask = 0
+bullet_speed = 100.0
 
 [node name="MiniMap" parent="Player" unique_id=762029457 instance=ExtResource("16_cjm58")]
 position = Vector2(100, 0)

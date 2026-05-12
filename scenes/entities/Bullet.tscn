@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3d5qpcxfqy7y" path="res://scripts/game/bullet.gd" id="1_84hgj"]
 [ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="1_o0hai"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_62288"]
-size = Vector2(30, 30)
+[ext_resource type="Texture2D" uid="uid://24qd3c4x3frj" path="res://assets/tilesheet/bullet.png" id="3_62288"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62288"]
 atlas = ExtResource("1_o0hai")
@@ -66,6 +64,34 @@ region = Rect2(32, 32, 32, 32)
 atlas = ExtResource("1_o0hai")
 region = Rect2(64, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hq7q"]
+atlas = ExtResource("3_62288")
+region = Rect2(0, 0, 32, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vma48"]
+atlas = ExtResource("3_62288")
+region = Rect2(0, 13, 32, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k034"]
+atlas = ExtResource("3_62288")
+region = Rect2(0, 26, 32, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3a8u"]
+atlas = ExtResource("3_62288")
+region = Rect2(0, 39, 32, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ujkq"]
+atlas = ExtResource("3_62288")
+region = Rect2(0, 52, 32, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6yp0u"]
+atlas = ExtResource("3_62288")
+region = Rect2(0, 65, 32, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwg2g"]
+atlas = ExtResource("3_62288")
+region = Rect2(0, 78, 32, 13)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5hq7q"]
 animations = [{
 "frames": [{
@@ -117,14 +143,107 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 120.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hq7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vma48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k034")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3a8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ujkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6yp0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwg2g")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 12.0
 }]
 
+[sub_resource type="Curve" id="Curve_62288"]
+_limits = [-360.0, 360.0, -6.35, 559.55]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.47297305, 133.48318), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2y60i"]
+curve = SubResource("Curve_62288")
+
+[sub_resource type="Gradient" id="Gradient_62288"]
+offsets = PackedFloat32Array(0, 0.43382353, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.16176471, 0.16176471, 0.16176471, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2y60i"]
+gradient = SubResource("Gradient_62288")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r4ks0"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-7, -3, 0)
+angle_min = -147.09999
+angle_max = 15.5000105
+angle_curve = SubResource("CurveTexture_2y60i")
+gravity = Vector3(0, 9.8, 0)
+linear_accel_min = 29.029997
+linear_accel_max = 99.99999
+tangential_accel_min = -35.48
+tangential_accel_max = 16.139997
+color_ramp = SubResource("GradientTexture1D_2y60i")
+turbulence_enabled = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62288"]
+size = Vector2(8, 7.999999)
+
+[sub_resource type="Environment" id="Environment_62288"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 2.0
+glow_blend_mode = 2
+
 [node name="Bullet" type="Area2D" unique_id=931990022]
+rotation = -1.5707964
 script = ExtResource("1_84hgj")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1210596671]
+self_modulate = Color(1.324323, 1.7534367, 1.6604441, 1)
+position = Vector2(-6, -1.0000006)
+rotation = 3.1415925
+scale = Vector2(0.58207333, 0.58864844)
+sprite_frames = SubResource("SpriteFrames_5hq7q")
+animation = &"new_animation"
+autoplay = "new_animation"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="AnimatedSprite2D" unique_id=858817969]
+modulate = Color(0, 2.154278, 2.2241454, 1)
+position = Vector2(-8.589982, -5.0964174)
+rotation = -3.1415925
+scale = Vector2(1.7179966, 1.6988066)
+amount = 20
+lifetime = 1.6500000000000001
+process_material = SubResource("ParticleProcessMaterial_r4ks0")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="AnimatedSprite2D" unique_id=10296937]
+modulate = Color(0, 2.154278, 2.2241454, 1)
+position = Vector2(-8.589982, -5.0964174)
+rotation = -3.1415925
+scale = Vector2(1.7179966, 1.6988066)
+amount = 20
+lifetime = 0.86
+process_material = SubResource("ParticleProcessMaterial_r4ks0")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1425218840]
+position = Vector2(-1.0000001, -1)
+rotation = -1.5707964
 shape = SubResource("RectangleShape2D_62288")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1210596671]
-sprite_frames = SubResource("SpriteFrames_5hq7q")
-autoplay = "default"
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1565721974]
+environment = SubResource("Environment_62288")

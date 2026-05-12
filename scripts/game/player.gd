@@ -14,13 +14,6 @@ var can_ability: bool = true
 var cooldown_timer: float = 0.0
 var free_dash: bool = false
 
-# Auto fire
-var auto_fire_active: bool = false
-
-# Fire rate
-@export var fire_rate: float = 0.2
-var fire_timer: float = 0.0
-
 # Bullet stats
 @export var bullet_scene: PackedScene
 @export var bullet_size: float = 1.0
@@ -29,6 +22,9 @@ var fire_timer: float = 0.0
 @export var bullet_range: float = 500.0
 @export var bullet_spread: float = 0.0
 @export var bullet_count: int = 1
+@export var auto_fire_active: bool = false
+@export var fire_rate: float = 0.2
+var fire_timer: float = 0.0
 
 func _ready():
 	add_to_group("Cards")
