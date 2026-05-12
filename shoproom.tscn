@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bkpto28w60vrr"]
+
+[ext_resource type="PackedScene" uid="uid://cvrbiyqm8pn28" path="res://scenes/entities/Player.tscn" id="1_yyany"]
+[ext_resource type="PackedScene" uid="uid://tioe5fmnprxw" path="res://shop.tscn" id="2_d7adn"]
+[ext_resource type="PackedScene" uid="uid://opswl0ugdyye" path="res://scenes/UI/Card_Template.tscn" id="3_d7adn"]
+[ext_resource type="PackedScene" uid="uid://dth5d7dto4j23" path="res://scenes/UI/Mini_map.tscn" id="4_x8m8j"]
+
+[node name="Shoproom" type="Node2D" unique_id=1432331955]
+
+[node name="Player" parent="." unique_id=249557870 instance=ExtResource("1_yyany")]
+position = Vector2(421, 225)
+
+[node name="Shop" parent="." unique_id=156240637 instance=ExtResource("2_d7adn")]
+card_scene = ExtResource("3_d7adn")
+
+[node name="MiniMap" parent="." unique_id=762029457 instance=ExtResource("4_x8m8j")]
+position = Vector2(145, 459)

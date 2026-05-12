@@ -2,10 +2,53 @@
 
 [ext_resource type="Script" uid="uid://cj0ncxwxkwekf" path="res://scripts/game/player.gd" id="1_vm2lv"]
 [ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://scenes/entities/Bullet.tscn" id="2_24gqh"]
-[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="2_e8cle"]
+[ext_resource type="Texture2D" uid="uid://bbktnl4mbp1pk" path="res://assets/tilesheet/slime.png" id="3_24gqh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7et6"]
 radius = 5.3851647
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjynp"]
+atlas = ExtResource("3_24gqh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1g85"]
+atlas = ExtResource("3_24gqh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jddb"]
+atlas = ExtResource("3_24gqh")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfoco"]
+atlas = ExtResource("3_24gqh")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h683u"]
+atlas = ExtResource("3_24gqh")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xq0cc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjynp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1g85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jddb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfoco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h683u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=249557870]
 script = ExtResource("1_vm2lv")
@@ -24,7 +67,8 @@ shape = SubResource("CircleShape2D_o7et6")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1279737256]
 zoom = Vector2(3, 3)
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=41205236]
-position = Vector2(-1, 1)
-scale = Vector2(0.063, 0.063)
-texture = ExtResource("2_e8cle")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1403824900]
+position = Vector2(-0.75, 1.25)
+scale = Vector2(0.359375, 0.359375)
+sprite_frames = SubResource("SpriteFrames_xq0cc")
+autoplay = "default"

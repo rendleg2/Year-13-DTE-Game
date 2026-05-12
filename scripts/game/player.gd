@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @export var speed: float = 200.0
 
-# Dash
 @export var ability_speed: float = 12.0
 @export var ability_duration: float = 0.2
 @export var ability_cooldown: float = 0.5
@@ -14,7 +13,6 @@ var can_ability: bool = true
 var cooldown_timer: float = 0.0
 var free_dash: bool = false
 
-# Bullet stats
 @export var bullet_scene: PackedScene
 @export var bullet_size: float = 1.0
 @export var bullet_speed: float = 400.0
@@ -24,16 +22,16 @@ var free_dash: bool = false
 @export var bullet_count: int = 1
 @export var auto_fire_active: bool = false
 @export var fire_rate: float = 0.2
+
 var fire_timer: float = 0.0
 
 func _ready():
-	add_to_group("Cards")
+	add_to_group("player")
 	randomize()
 
 func _physics_process(delta):
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 
-	# DASH
 	if Input.is_action_just_pressed("shift") and input_direction != Vector2.ZERO and can_ability:
 		ability_active = true
 		can_ability = false
@@ -53,23 +51,19 @@ func _physics_process(delta):
 
 	if ability_active:
 		ability_timer -= delta
-
 		if ability_timer <= 0:
 			ability_active = false
 
 	if not can_ability:
 		cooldown_timer -= delta
-
 		if cooldown_timer <= 0:
 			can_ability = true
 
 	move_and_slide()
 
-	# FIRE TIMER
 	if fire_timer > 0:
 		fire_timer -= delta
 
-	# SHOOT
 	if auto_fire_active:
 		if Input.is_action_pressed("Shoot") and fire_timer <= 0:
 			shoot_bullet()
@@ -79,26 +73,19 @@ func _physics_process(delta):
 			shoot_bullet()
 			fire_timer = fire_rate
 
-
 func shoot_bullet():
 	if bullet_scene == null:
-		print("No bullet scene assigned!")
+		print("No bullet scene assigned")
 		return
 
 	for i in range(bullet_count):
-
 		var bullet = bullet_scene.instantiate()
-
 		bullet.global_position = global_position
 
 		var dir = (get_global_mouse_position() - global_position).normalized()
 
-		# Spread
-		var spread_radians = deg_to_rad(
-			randf_range(-bullet_spread, bullet_spread)
-		)
-
-		dir = dir.rotated(spread_radians)
+		var spread = deg_to_rad(randf_range(-bullet_spread, bullet_spread))
+		dir = dir.rotated(spread)
 
 		bullet.rotation = dir.angle()
 
@@ -110,3 +97,10 @@ func shoot_bullet():
 			bullet.set_size(bullet_size)
 
 		get_tree().current_scene.add_child(bullet)
+
+func reset_after_shop():
+	ability_active = false
+	ability_timer = 0.0
+	cooldown_timer = 0.0
+	can_ability = true
+	velocity = Vector2.ZERO
