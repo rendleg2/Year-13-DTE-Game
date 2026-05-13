@@ -66,6 +66,9 @@ func on_card_picked(card):
 
 	if state:
 		state.save_to_player()
-
+	GlobalVaribles.ballance()
 	await get_tree().create_timer(0.2).timeout
+	
+	
 	get_tree().change_scene_to_file("res://Scenes/game_loop/map_generator.tscn")
+	

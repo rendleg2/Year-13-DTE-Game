@@ -33,8 +33,6 @@ script = ExtResource("1_cp4sw")
 start_rooms = Array[PackedScene]([ExtResource("2_xvaj8"), ExtResource("3_giikr"), ExtResource("4_7pj78"), ExtResource("5_jmo5r")])
 end_rooms = Array[PackedScene]([ExtResource("3_kcfww"), ExtResource("7_dldp2"), ExtResource("8_jnqpe"), ExtResource("9_t8r3y")])
 room_scenes = Array[PackedScene]([ExtResource("3_eys1y"), ExtResource("4_gss0k"), ExtResource("5_aat86"), ExtResource("6_8wiwl"), ExtResource("7_t6h3e"), ExtResource("8_45jcm"), ExtResource("9_xe7wt"), ExtResource("10_8msd1"), ExtResource("11_3ra5k"), ExtResource("12_nei0f"), ExtResource("13_ouesx"), ExtResource("15_o40j1"), ExtResource("16_lkks7"), ExtResource("17_kutdf"), ExtResource("18_154fx")])
-rooms_grid_size_start = Vector2i(10, 10)
-max_attempts = 100
 max_windingness = 75
 room_size = 21
 
