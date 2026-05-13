@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var bullet_scene: PackedScene
-
+var health
 var speed
 var ability_speed
 var ability_duration
@@ -30,7 +30,8 @@ func _ready():
 	load_from_global()
 
 func load_from_global():
-
+	health = Global.health
+	$ProgressBar.max_value = health
 	speed = Global.speed
 	ability_speed = Global.ability_speed
 	ability_duration = Global.ability_duration
@@ -47,6 +48,9 @@ func load_from_global():
 	free_dash = Global.free_dash
 
 func _physics_process(delta):
+	$ProgressBar.value = health
+	if health <= 0:
+		get_tree().change_scene_to_file("res://Scenes/game_loop/end.tscn")
 
 	var input = Input.get_vector("left", "right", "up", "down")
 
@@ -128,6 +132,9 @@ func save_to_global():
 
 	Global.auto_fire_active = auto_fire_active
 	Global.free_dash = free_dash
+
+func hit(damege):
+	health -= damege
 
 func player():
 	pass

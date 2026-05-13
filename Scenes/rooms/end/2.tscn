@@ -26,6 +26,7 @@ tile_set = ExtResource("1_uf5vf")
 
 [node name="Enemy Template" parent="room_data" unique_id=896060041 instance=ExtResource("2_7qg27")]
 position = Vector2(67, 130)
+type = "shotgun"
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="room_data" unique_id=2080651291]
 position = Vector2(-117, 120)

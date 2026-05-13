@@ -1,7 +1,7 @@
 extends Area2D
 
 var speed: float = 400.0
-var damage: float = 10.0
+var damage: int = 10
 var max_range: float = 500.0
 
 var team: String = "player"

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cj0ncxwxkwekf" path="res://scripts/game/player.gd" id="1_vm2lv"]
 [ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://Scenes/entities/Bullet.tscn" id="2_24gqh"]
 [ext_resource type="Texture2D" uid="uid://bn72e4rknxvwb" path="res://assets/tilesheet/slime.png" id="3_24gqh"]
+[ext_resource type="Texture2D" uid="uid://bqcxjn8wm1fno" path="res://assets/hud/heathbar.png" id="4_p3bqa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7et6"]
 radius = 5.3851647
@@ -58,6 +59,9 @@ point_count = 1
 texture_mode = 1
 curve = SubResource("Curve_kcm4n")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3bqa"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="Player" type="CharacterBody2D" unique_id=249557870]
 script = ExtResource("1_vm2lv")
 bullet_scene = ExtResource("2_24gqh")
@@ -80,3 +84,16 @@ z_index = -1
 position = Vector2(-9.536743e-06, 3.5)
 scale = Vector2(1.5, 221.00002)
 texture = SubResource("CurveTexture_p3bqa")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=83577884]
+offset_left = -192.0
+offset_top = 87.0
+offset_right = -36.0
+offset_bottom = 107.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_p3bqa")
+show_percentage = false
+
+[node name="Heathbar" type="Sprite2D" parent="ProgressBar" unique_id=1596872671]
+position = Vector2(78.50001, 10)
+scale = Vector2(0.6132813, 0.6875)
+texture = ExtResource("4_p3bqa")

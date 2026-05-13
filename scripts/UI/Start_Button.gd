@@ -46,6 +46,7 @@ func _update_sprite_position() -> void:
 		animated_sprite.position = size / 2
 
 func _on_button_pressed() -> void:
+	await get_tree().physics_frame
 	_button_press()
 
 	await get_tree().create_timer(0.15).timeout

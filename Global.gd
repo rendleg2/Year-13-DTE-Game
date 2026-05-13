@@ -1,5 +1,6 @@
 extends Node
 
+var health: float = 100
 var speed: float = 200.0
 var ability_speed: float = 12.0
 var ability_duration: float = 0.2
@@ -16,6 +17,7 @@ var auto_fire_active: bool = false
 var free_dash: bool = false
 
 func reset():
+	health = 100
 	speed = 200.0
 	ability_speed = 12.0
 	ability_duration = 0.2

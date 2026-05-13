@@ -3,6 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="1_lk408"]
 [ext_resource type="Script" uid="uid://balcgc75d2wwc" path="res://scripts/UI/Start_Button.gd" id="1_o2jor"]
 
+[sub_resource type="GDScript" id="GDScript_f3c0k"]
+script/source = "extends Control
+
+
+
+
+func _on_start_game_pressed() -> void:
+	Global.reset()
+	GlobalVaribles.reset()
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_f3c0k"]
+font_size = 36
+font_color = Color(1, 0, 0, 1)
+
 [node name="Main Menu" type="Control" unique_id=1033264865]
 layout_mode = 3
 anchors_preset = 15
@@ -14,9 +29,10 @@ offset_right = 14.0
 offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_f3c0k")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=139653280]
-position = Vector2(576, 323)
+position = Vector2(576, 322)
 
 [node name="Start_Game" type="TextureButton" parent="." unique_id=1637456646]
 layout_mode = 0
@@ -27,3 +43,14 @@ offset_bottom = 190.0
 texture_normal = ExtResource("1_lk408")
 script = ExtResource("1_o2jor")
 scene_change = "res://Scenes/game_loop/map_generator.tscn"
+
+[node name="Label" type="Label" parent="Start_Game" unique_id=5408945]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 38.0
+offset_right = 110.0
+offset_bottom = 96.0
+text = "Start"
+label_settings = SubResource("LabelSettings_f3c0k")
+
+[connection signal="pressed" from="Start_Game" to="." method="_on_start_game_pressed"]

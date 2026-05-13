@@ -28,7 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://bl0y4723vjqcn" path="res://Scenes/rooms/Corridors/4.tscn" id="17_kutdf"]
 [ext_resource type="PackedScene" uid="uid://cnsivl2puddyl" path="res://Scenes/rooms/Corridors/8.tscn" id="18_154fx"]
 
-[node name="TestMapGenerationVerson2" type="Node2D" unique_id=1067783149]
+[node name="map_generator" type="Node2D" unique_id=1067783149]
 script = ExtResource("1_cp4sw")
 start_rooms = Array[PackedScene]([ExtResource("2_xvaj8"), ExtResource("3_giikr"), ExtResource("4_7pj78"), ExtResource("5_jmo5r")])
 end_rooms = Array[PackedScene]([ExtResource("3_kcfww"), ExtResource("7_dldp2"), ExtResource("8_jnqpe"), ExtResource("9_t8r3y")])
@@ -51,7 +51,6 @@ tile_set = ExtResource("14_j6mur")
 [node name="Player" parent="." unique_id=249557870 instance=ExtResource("15_mcifw")]
 y_sort_enabled = true
 position = Vector2(52, 139)
-bullet_speed = 100.0
 
 [node name="MiniMap" parent="Player" unique_id=762029457 instance=ExtResource("16_318ss")]
 position = Vector2(-192, -108)

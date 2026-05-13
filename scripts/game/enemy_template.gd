@@ -7,6 +7,7 @@ var HP = 100
 var Target_Position
 var Current_Position
 @export var Movement_Speed = 60 # exported for testing purpuses, once good value found set it in code
+@export var type: String = "normal"
 var Next_Step
 var Velocity
 var aggro = false
@@ -15,15 +16,19 @@ var can_shoot = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: #spawn in the enemys weapon
-	pass
+	GlobalVaribles.enemy_total +=1
+	$Timer.wait_time = GlobalVaribles.enemy_stats[type]["firerate"]
 	#if weapon:
 	#	weaponInstance = weapon.instantiate()
 	#	add_child(weaponInstance)
+	HP = GlobalVaribles.enemy_stats[type]["health"]
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 
 	if HP <= 0:
+		GlobalVaribles.enemy_total -=1
 		die()
 		return
 
@@ -62,16 +67,19 @@ func _on_area_2d_body_entered(body): # if target enters detection range, attack
 
 func shoot():
 	if can_shoot == true:
-		can_shoot = false
-		var bullet = weapon.instantiate()
-		bullet.global_position = global_position
-
-		var dir = (Target.global_position - self.global_position)#.angle()
-		bullet.speed = 400
-		#bullet.rotation = dir
-		bullet.team = "enemy"
-		bullet.setup(dir)
-		get_tree().current_scene.add_child(bullet)
+		for i in range(GlobalVaribles.enemy_stats[type]["bullets"]):
+			var spread = deg_to_rad(randf_range(-GlobalVaribles.enemy_stats[type]["spread"], GlobalVaribles.enemy_stats[type]["spread"]))
+			can_shoot = false
+			var bullet = weapon.instantiate()
+			bullet.global_position = global_position
+			bullet.damage = GlobalVaribles.enemy_stats[type]["damage"]
+			var dir = (Target.global_position - self.global_position)#.angle()
+			dir = dir.rotated(spread)
+			bullet.speed = GlobalVaribles.enemy_stats[type]["bullet_speed"]
+			#bullet.rotation = dir
+			bullet.team = "enemy"
+			bullet.setup(dir)
+			get_tree().current_scene.add_child(bullet)
 
 func hit(damage):
 	HP -= damage

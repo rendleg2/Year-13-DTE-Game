@@ -67,7 +67,6 @@ sprite_frames = SubResource("SpriteFrames_vy2uu")
 shape = SubResource("CircleShape2D_g4dba")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1634124390]
-path_postprocessing = 2
 path_search_max_polygons = 100
 debug_enabled = true
 

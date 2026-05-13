@@ -5,18 +5,22 @@ var start_coord = Vector2i.ZERO
 var end_coord = Vector2i.ZERO
 var player_pos = Vector2i.ZERO
 var map_loaded = false
+var enemy_total = 0
 
-var speed: float = 200.0
-var ability_speed: float = 12.0
-var ability_duration: float = 0.2
-var ability_cooldown: float = 0.5
+var enemy_stats = {
+	"normal": {"damage": 10, "health": 100, "bullets": 1, "spread": 0, "bullet_speed": 200, "firerate": 0.3},
+	"shotgun": {"damage": 2, "health": 100, "bullets": 5, "spread": 20, "bullet_speed": 200, "firerate": 0.6}
+}
 
-var bullet_damage: float = 10.0
-var bullet_speed: float = 400.0
-var bullet_range: float = 500.0
-var bullet_size: float = 1.0
-var bullet_count: int = 1
-var bullet_spread: float = 0.0
 
-var auto_fire_active: bool = false
-var free_dash: bool = false
+func reset():
+	enemy_stats = {
+	"normal": {"damage": 10, "health": 100, "bullets": 1, "spread": 0, "bullet_speed": 200, "firerate": 0.3},
+	"shotgun": {"damage": 2, "health": 100, "bullets": 5, "spread": 20, "bullet_speed": 200, "firerate": 0.6}
+}
+	enemy_total = 0
+	room_grid = []
+	start_coord = Vector2i.ZERO
+	end_coord = Vector2i.ZERO
+	player_pos = Vector2i.ZERO
+	map_loaded = false
