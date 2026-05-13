@@ -1,10 +1,9 @@
 [gd_resource type="TileSet" format=3 uid="uid://l1h8ugkslp6e"]
 
-[ext_resource type="Texture2D" uid="uid://1224207wrp1c" path="res://Assets/tilesheet/floortiles.png" id="1_fnafi"]
-[ext_resource type="Texture2D" uid="uid://d1hakuusrf86g" path="res://Assets/tilesheet/wallstiles.png" id="2_nnpnk"]
-[ext_resource type="Texture2D" uid="uid://3hmqge5oqve0" path="res://Assets/tilesheet/Arrows.png" id="3_b7d0c"]
-[ext_resource type="Texture2D" uid="uid://q8qykf8fm0fq" path="res://Assets/tilesheet/Untitled.png" id="4_ixg8y"]
-[ext_resource type="Texture2D" uid="uid://b8yltjbamg41o" path="res://Assets/tilesheet/minimap.png" id="4_ng21y"]
+[ext_resource type="Texture2D" uid="uid://1224207wrp1c" path="res://assets/tilesheet/floortiles.png" id="1_fnafi"]
+[ext_resource type="Texture2D" uid="uid://3hmqge5oqve0" path="res://assets/tilesheet/Arrows.png" id="3_b7d0c"]
+[ext_resource type="Texture2D" uid="uid://q8qykf8fm0fq" path="res://assets/tilesheet/Untitled.png" id="4_ixg8y"]
+[ext_resource type="Texture2D" uid="uid://b8yltjbamg41o" path="res://assets/tilesheet/minimap.png" id="4_ng21y"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fnafi"]
 
@@ -89,28 +88,16 @@ separation = Vector2i(1, 0)
 14:0/0 = 0
 15:0/0 = 0
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_nnpnk"]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b7d0c"]
-texture = ExtResource("2_nnpnk")
+texture = ExtResource("4_ixg8y")
 texture_region_size = Vector2i(32, 35)
 0:0/0 = 0
-0:0/0/texture_origin = Vector2i(0, 10)
-0:0/0/z_index = 1
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_nnpnk")
 1:0/0 = 0
-1:0/0/texture_origin = Vector2i(0, 10)
-1:0/0/z_index = 1
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -8.523819, -3.7380905, 7.444665, 4.2776675, 16, 0)
 2:0/0 = 0
-2:0/0/texture_origin = Vector2i(0, 10)
-2:0/0/z_index = 1
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, -7.8043833, 4.0978084, 8.523818, -3.738091)
 3:0/0 = 0
-3:0/0/texture_origin = Vector2i(0, 10)
-3:0/0/z_index = 1
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
 
 [resource]
 tile_shape = 1
