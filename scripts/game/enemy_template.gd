@@ -6,7 +6,7 @@ var weaponInstance
 var HP = 100
 var Target_Position
 var Current_Position
-@export var Movement_Speed = 60 # exported for testing purpuses, once good value found set it in code
+@export var Movement_Speed = 60.0  # exported for testing purpuses, once good value found set it in code
 @export var type: String = "normal"
 var Next_Step
 var Velocity
@@ -14,17 +14,27 @@ var aggro = false
 @onready var navigation_agent_2d = $NavigationAgent2D
 var can_shoot = false
 
-# Called when the node enters the scene tree for the first time.
+var data = {}
+
 func _ready() -> void: #spawn in the enemys weapon
 	GlobalVaribles.enemy_total +=1
-	$Timer.wait_time = GlobalVaribles.enemy_stats[type]["firerate"]
-	#if weapon:
-	#	weaponInstance = weapon.instantiate()
-	#	add_child(weaponInstance)
-	HP = GlobalVaribles.enemy_stats[type]["health"]
+
+	if not GlobalVaribles.enemy_stats.has(type):
+		type = "normal"
+
+	data = GlobalVaribles.enemy_stats[type]
+
+	if not data.has("movement_speed"):
+		data["movement_speed"] = 60.0
+
+	if not data.has("health"):
+		data["health"] = 100
+
+	$Timer.wait_time = data["firerate"]
+	HP = data["health"]
+	Movement_Speed = data["movement_speed"]
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 
 	if HP <= 0:
@@ -73,10 +83,9 @@ func shoot():
 			var bullet = weapon.instantiate()
 			bullet.global_position = global_position
 			bullet.damage = GlobalVaribles.enemy_stats[type]["damage"]
-			var dir = (Target.global_position - self.global_position)#.angle()
+			var dir = (Target.global_position - self.global_position)
 			dir = dir.rotated(spread)
 			bullet.speed = GlobalVaribles.enemy_stats[type]["bullet_speed"]
-			#bullet.rotation = dir
 			bullet.team = "enemy"
 			bullet.setup(dir)
 			get_tree().current_scene.add_child(bullet)

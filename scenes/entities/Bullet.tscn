@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://on5pyixgjhrl"]
 
 [ext_resource type="Script" uid="uid://d3d5qpcxfqy7y" path="res://scripts/game/bullet.gd" id="1_84hgj"]
-[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="1_o0hai"]
-[ext_resource type="Texture2D" uid="uid://24qd3c4x3frj" path="res://assets/tilesheet/bullet.png" id="3_62288"]
+[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://Assets/Sprites/icon.svg" id="1_o0hai"]
+[ext_resource type="Texture2D" uid="uid://24qd3c4x3frj" path="res://Assets/tilesheet/bullet.png" id="3_62288"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62288"]
 atlas = ExtResource("1_o0hai")
@@ -190,7 +190,7 @@ scale_min = 0.29999998
 color_ramp = SubResource("GradientTexture1D_2y60i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62288"]
-size = Vector2(8, 7.999999)
+size = Vector2(5, 5.999999)
 
 [sub_resource type="Environment" id="Environment_62288"]
 resource_local_to_scene = true
@@ -205,9 +205,9 @@ script = ExtResource("1_84hgj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1210596671]
 self_modulate = Color(1.324323, 1.7534367, 1.6604441, 1)
-position = Vector2(-6, -1.0000006)
+position = Vector2(-5, 1.9999996)
 rotation = 3.1415925
-scale = Vector2(0.58207333, 0.58864844)
+scale = Vector2(0.48767972, 0.40147474)
 sprite_frames = SubResource("SpriteFrames_5hq7q")
 animation = &"new_animation"
 autoplay = "new_animation"
@@ -224,7 +224,7 @@ preprocess = 0.3
 process_material = SubResource("ParticleProcessMaterial_r4ks0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1425218840]
-position = Vector2(-1.0000001, -1)
+position = Vector2(-1.0000001, 2)
 rotation = -1.5707964
 shape = SubResource("RectangleShape2D_62288")
 

@@ -6,6 +6,7 @@ var end_coord: Vector2i
 var player_pos: Vector2i
 var map_loaded: bool
 var enemy_total: int
+var enemy_movement_speed = 60
 
 var enemy_stats: Dictionary
 var level: int
@@ -13,8 +14,9 @@ var level: int
 
 func reset():
 	enemy_stats = {
-	"normal": {"damage": 10, "health": 100, "bullets": 1, "spread": 0, "bullet_speed": 200, "firerate": 0.3},
-	"shotgun": {"damage": 2, "health": 100, "bullets": 5, "spread": 20, "bullet_speed": 200, "firerate": 0.6}
+	"normal": {"damage": 10, "health": 100, "bullets": 1, "spread": 0, "movement_speed": 60,"bullet_speed": 200, "firerate": 0.3},
+	"boss": {"damage": 10, "health": 1000, "bullets": 10^10, "spread": 360, "movement_speed": 1, "bullet_speed": 2, "firerate": 0.01},
+	"shotgun": {"damage": 2, "health": 100, "bullets": 5, "spread": 20, "movement_speed": 60, "bullet_speed": 200, "firerate": 0.6}
 }
 	level = 0
 	enemy_total = 0
