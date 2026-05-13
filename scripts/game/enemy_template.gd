@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var weapon: PackedScene = load("res://Scenes/entities/Bullet.tscn") #select weapon
+@export var weapon: PackedScene = preload("res://Scenes/entities/Bullet.tscn") #select weapon
 var weaponInstance
 @onready var Target = $"../../Player"
 var HP = 100

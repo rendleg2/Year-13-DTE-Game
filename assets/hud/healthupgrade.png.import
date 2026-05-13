@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvmq8la3bjc2j"
-path="res://.godot/imported/base.png-dac87bdfb6ad49c2fed7c3dc872a6ca4.ctex"
+uid="uid://dmnyldqy12ftv"
+path="res://.godot/imported/healthupgrade.png-d04e8a08c198769dfc736a2e7b076adc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesheet/base.png"
-dest_files=["res://.godot/imported/base.png-dac87bdfb6ad49c2fed7c3dc872a6ca4.ctex"]
+source_file="res://assets/hud/healthupgrade.png"
+dest_files=["res://.godot/imported/healthupgrade.png-d04e8a08c198769dfc736a2e7b076adc.ctex"]
 
 [params]
 

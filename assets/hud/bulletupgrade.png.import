@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvmq8la3bjc2j"
-path="res://.godot/imported/base.png-dac87bdfb6ad49c2fed7c3dc872a6ca4.ctex"
+uid="uid://dvnclnfjm72pm"
+path="res://.godot/imported/bulletupgrade.png-77f2b44cbbc1abdb4818b0419221f253.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesheet/base.png"
-dest_files=["res://.godot/imported/base.png-dac87bdfb6ad49c2fed7c3dc872a6ca4.ctex"]
+source_file="res://assets/hud/bulletupgrade.png"
+dest_files=["res://.godot/imported/bulletupgrade.png-77f2b44cbbc1abdb4818b0419221f253.ctex"]
 
 [params]
 

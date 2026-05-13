@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bh6bvig2tbyxk"]
 
-[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="1_lk408"]
+[ext_resource type="Texture2D" uid="uid://jti2psptslca" path="res://assets/hud/button.png" id="1_f3c0k"]
 [ext_resource type="Script" uid="uid://balcgc75d2wwc" path="res://scripts/UI/Start_Button.gd" id="1_o2jor"]
+[ext_resource type="Texture2D" uid="uid://dxt1r71cjha20" path="res://assets/screens/screens.png" id="3_1dce6"]
 
 [sub_resource type="GDScript" id="GDScript_f3c0k"]
 script/source = "extends Control
@@ -15,7 +16,7 @@ func _on_start_game_pressed() -> void:
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_f3c0k"]
-font_size = 36
+font_size = 32
 font_color = Color(1, 0, 0, 1)
 
 [node name="Main Menu" type="Control" unique_id=1033264865]
@@ -34,23 +35,34 @@ script = SubResource("GDScript_f3c0k")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=139653280]
 position = Vector2(576, 322)
 
+[node name="Screens" type="Sprite2D" parent="." unique_id=174005671]
+z_index = -2
+position = Vector2(574.5, 322)
+scale = Vector2(4.4960938, 4.513889)
+texture = ExtResource("3_1dce6")
+
 [node name="Start_Game" type="TextureButton" parent="." unique_id=1637456646]
 layout_mode = 0
 offset_left = 316.0
 offset_top = 62.0
-offset_right = 444.0
-offset_bottom = 190.0
-texture_normal = ExtResource("1_lk408")
+offset_right = 397.0
+offset_bottom = 110.0
 script = ExtResource("1_o2jor")
 scene_change = "res://Scenes/game_loop/map_generator.tscn"
 
 [node name="Label" type="Label" parent="Start_Game" unique_id=5408945]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 38.0
-offset_right = 110.0
-offset_bottom = 96.0
+offset_left = 1.0
+offset_top = -1.375
+offset_right = 30.0
+offset_bottom = 15.625
 text = "Start"
 label_settings = SubResource("LabelSettings_f3c0k")
+
+[node name="Button" type="Sprite2D" parent="Start_Game/Label" unique_id=34171526]
+z_index = -1
+position = Vector2(39, 25.375)
+scale = Vector2(2.8125, 3.1875)
+texture = ExtResource("1_f3c0k")
 
 [connection signal="pressed" from="Start_Game" to="." method="_on_start_game_pressed"]

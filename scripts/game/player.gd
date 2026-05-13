@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var bullet_scene: PackedScene
+@export var bullet_scene: PackedScene = load("res://Scenes/entities/Bullet.tscn")
 var health
 var speed
 var ability_speed

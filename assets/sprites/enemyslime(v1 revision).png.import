@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvmq8la3bjc2j"
-path="res://.godot/imported/base.png-dac87bdfb6ad49c2fed7c3dc872a6ca4.ctex"
+uid="uid://drr4dfus6bv10"
+path="res://.godot/imported/enemyslime(v1 revision).png-cbe33ab28f3f69fa750d616623451bbd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesheet/base.png"
-dest_files=["res://.godot/imported/base.png-dac87bdfb6ad49c2fed7c3dc872a6ca4.ctex"]
+source_file="res://assets/sprites/enemyslime(v1 revision).png"
+dest_files=["res://.godot/imported/enemyslime(v1 revision).png-cbe33ab28f3f69fa750d616623451bbd.ctex"]
 
 [params]
 
