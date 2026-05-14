@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dth5d7dto4j23"]
 
 [ext_resource type="Script" uid="uid://b0j8dvuryorg1" path="res://scripts/UI/mini_map.gd" id="1_q3e7f"]
-[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://Assets/tilesheet/Main_Tile_set.tres" id="2_l8gle"]
-[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://Assets/Sprites/icon.svg" id="2_pi568"]
-[ext_resource type="Texture2D" uid="uid://b8yltjbamg41o" path="res://Assets/tilesheet/minimap.png" id="4_irm5o"]
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="2_l8gle"]
+[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/Sprites/icon.svg" id="2_pi568"]
+[ext_resource type="Texture2D" uid="uid://b8yltjbamg41o" path="res://assets/tilesheet/minimap.png" id="4_irm5o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pi568"]
 texture = ExtResource("4_irm5o")

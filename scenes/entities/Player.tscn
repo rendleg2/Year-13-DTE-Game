@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cj0ncxwxkwekf" path="res://scripts/game/player.gd" id="1_vm2lv"]
 [ext_resource type="PackedScene" uid="uid://on5pyixgjhrl" path="res://scenes/entities/Bullet.tscn" id="2_24gqh"]
-[ext_resource type="Texture2D" uid="uid://bn72e4rknxvwb" path="res://Assets/tilesheet/slime.png" id="3_24gqh"]
-[ext_resource type="Texture2D" uid="uid://bqcxjn8wm1fno" path="res://Assets/hud/heathbar.png" id="4_p3bqa"]
+[ext_resource type="Texture2D" uid="uid://bn72e4rknxvwb" path="res://assets/tilesheet/slime.png" id="3_24gqh"]
+[ext_resource type="Texture2D" uid="uid://bqcxjn8wm1fno" path="res://assets/hud/heathbar.png" id="4_p3bqa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7et6"]
 radius = 5.3851647

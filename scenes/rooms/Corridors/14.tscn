@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://blh0ufixxw77j"]
 
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_ssteu"]
-[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="2_jmyqh"]
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="2_jmyqh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mtbwm"]
 vertices = PackedVector2Array(135, 58, 235, 108, 112, 167, 16, 121, 231, 227, 137, 275, -190, 102, -104, 58)

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://b8npunm0riyug"]
 
-[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://Assets/tilesheet/Main_Tile_set.tres" id="1_uf5vf"]
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_uf5vf"]
 [ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="2_7qg27"]
 [ext_resource type="PackedScene" uid="uid://bsrgwq4p1op4i" path="res://scenes/game_loop/end_of_level.tscn" id="3_7qg27"]
 

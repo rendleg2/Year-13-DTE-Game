@@ -12,7 +12,7 @@ var upgrades = [
 			{"type": "bullet_damage", "value": 20},
 			{"type": "auto_fire_toggle"}
 		],
-		"image": "res://assets/tilesheet/healthupgrade.png"
+		"image": "res://assets/tilesheet/movementupgrade.png"
 	},
 
 	{
@@ -26,9 +26,10 @@ var upgrades = [
 	{
 		"effects": [
 			{"type": "bullet_count", "value": 8},
+			{"type": "auto_fire_toggle"},
 			{"type": "bullet_spread", "value": 20}
 		],
-		"image": "res://assets/tilesheet/healthupgrade.png"
+		"image": "res://assets/tilesheet/bulletupgrade.png"
 	}
 ]
 
