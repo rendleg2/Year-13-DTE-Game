@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bh6bvig2tbyxk"]
 
-[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://Assets/Sprites/icon.svg" id="1_lk408"]
+[ext_resource type="Texture2D" uid="uid://wm1bfj0f4ikb" path="res://Assets/screens.png" id="1_lk408"]
 [ext_resource type="Script" uid="uid://balcgc75d2wwc" path="res://scripts/UI/Start_Button.gd" id="1_o2jor"]
 
 [sub_resource type="GDScript" id="GDScript_f3c0k"]
@@ -31,26 +31,63 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_f3c0k")
 
+[node name="Screens" type="Sprite2D" parent="." unique_id=295537193]
+position = Vector2(568, 319)
+scale = Vector2(4.5585938, 4.5659723)
+texture = ExtResource("1_lk408")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=139653280]
 position = Vector2(576, 322)
 
 [node name="Start_Game" type="TextureButton" parent="." unique_id=1637456646]
 layout_mode = 0
-offset_left = 316.0
-offset_top = 62.0
-offset_right = 444.0
-offset_bottom = 190.0
-texture_normal = ExtResource("1_lk408")
+offset_left = 509.0
+offset_top = 236.0
+offset_right = 659.0
+offset_bottom = 330.0
 script = ExtResource("1_o2jor")
 scene_change = "res://Scenes/game_loop/map_generator.tscn"
 
 [node name="Label" type="Label" parent="Start_Game" unique_id=5408945]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 38.0
-offset_right = 110.0
-offset_bottom = 96.0
+offset_left = 30.0
+offset_top = 20.0
+offset_right = 119.0
+offset_bottom = 70.0
 text = "Start"
 label_settings = SubResource("LabelSettings_f3c0k")
 
+[node name="Start_Game2" type="TextureButton" parent="." unique_id=1732447017]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 358.0
+offset_right = 660.0
+offset_bottom = 401.0
+script = ExtResource("1_o2jor")
+scene_change = "res://Settings.tscn"
+
+[node name="Label" type="Label" parent="Start_Game2" unique_id=1400934669]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 135.0
+offset_bottom = 44.0
+text = "Settings"
+label_settings = SubResource("LabelSettings_f3c0k")
+
+[node name="Label2" type="Label" parent="." unique_id=206744449]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23300001
+anchor_top = 0.11400001
+anchor_right = 0.416
+anchor_bottom = 0.19800001
+offset_left = 35.583984
+offset_top = -16.872002
+offset_right = 466.768
+offset_bottom = -13.304016
+text = "TITLE SOMETHING WHAT NAME??????"
+label_settings = SubResource("LabelSettings_f3c0k")
+
 [connection signal="pressed" from="Start_Game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Start_Game2" to="." method="_on_start_game_pressed"]
