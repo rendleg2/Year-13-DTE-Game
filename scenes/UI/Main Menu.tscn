@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://wm1bfj0f4ikb" path="res://assets/screens.png" id="1_lk408"]
 [ext_resource type="Script" uid="uid://balcgc75d2wwc" path="res://scripts/UI/Start_Button.gd" id="1_o2jor"]
+[ext_resource type="Texture2D" uid="uid://mqaqsu3upbnt" path="res://assets/hud/button.png" id="3_1dce6"]
 
 [sub_resource type="GDScript" id="GDScript_f3c0k"]
 script/source = "extends Control
@@ -16,7 +17,10 @@ func _on_start_game_pressed() -> void:
 
 [sub_resource type="LabelSettings" id="LabelSettings_f3c0k"]
 font_size = 36
-font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1dce6"]
+font_size = 36
+font_color = Color(0, 0, 0, 1)
 
 [node name="Main Menu" type="Control" unique_id=1033264865]
 layout_mode = 3
@@ -32,6 +36,7 @@ grow_vertical = 2
 script = SubResource("GDScript_f3c0k")
 
 [node name="Screens" type="Sprite2D" parent="." unique_id=295537193]
+z_index = -2
 position = Vector2(568, 319)
 scale = Vector2(4.5585938, 4.5659723)
 texture = ExtResource("1_lk408")
@@ -56,6 +61,12 @@ offset_bottom = 50.0
 text = "Start"
 label_settings = SubResource("LabelSettings_f3c0k")
 
+[node name="Button" type="Sprite2D" parent="Start_Game/Label" unique_id=9263037]
+z_index = -1
+position = Vector2(42, 29)
+scale = Vector2(3, 3.25)
+texture = ExtResource("3_1dce6")
+
 [node name="Start_Game2" type="TextureButton" parent="." unique_id=1732447017]
 layout_mode = 0
 offset_left = 521.0
@@ -73,6 +84,12 @@ offset_bottom = 41.0
 text = "Settings"
 label_settings = SubResource("LabelSettings_f3c0k")
 
+[node name="Button2" type="Sprite2D" parent="Start_Game2/Label" unique_id=787990983]
+z_index = -1
+position = Vector2(71, 28.5)
+scale = Vector2(4.9375, 3.1875)
+texture = ExtResource("3_1dce6")
+
 [node name="Label2" type="Label" parent="." unique_id=206744449]
 layout_mode = 1
 anchors_preset = -1
@@ -85,7 +102,7 @@ offset_top = 109.128
 offset_right = 670.768
 offset_bottom = 112.695984
 text = "Slime RPG"
-label_settings = SubResource("LabelSettings_f3c0k")
+label_settings = SubResource("LabelSettings_1dce6")
 
 [connection signal="pressed" from="Start_Game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="Start_Game2" to="." method="_on_start_game_pressed"]
