@@ -18,6 +18,6 @@ scene_change = "res://Scenes/UI/Main Menu.tscn"
 metadata/_custom_type_script = "uid://c2marpov2evqa"
 
 [node name="Screens" type="Sprite2D" parent="." unique_id=843383356]
-position = Vector2(580, 328)
+position = Vector2(579, 326.00003)
 scale = Vector2(4.5078125, 4.513889)
 texture = ExtResource("1_7dx28")

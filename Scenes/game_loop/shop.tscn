@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://tioe5fmnprxw"]
 
 [ext_resource type="Script" uid="uid://cwdfsvdi2h3en" path="res://scripts/game/shop.gd" id="1_viryw"]
-[ext_resource type="PackedScene" uid="uid://opswl0ugdyye" path="res://Scenes/UI/Card_Template.tscn" id="2_ly6vv"]
+[ext_resource type="PackedScene" uid="uid://opswl0ugdyye" path="res://scenes/UI/Card_Template.tscn" id="2_ly6vv"]
 
 [node name="Shop" type="CanvasLayer" unique_id=156240637]
 script = ExtResource("1_viryw")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bh6bvig2tbyxk"]
 
-[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://assets/sprites/icon.svg" id="1_lk408"]
+[ext_resource type="Texture2D" uid="uid://cea21xdfh17tj" path="res://Assets/Sprites/icon.svg" id="1_lk408"]
 [ext_resource type="Script" uid="uid://balcgc75d2wwc" path="res://scripts/UI/Start_Button.gd" id="1_o2jor"]
 
 [sub_resource type="GDScript" id="GDScript_f3c0k"]

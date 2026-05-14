@@ -41,20 +41,20 @@ func open_shop():
 	visible = true
 	get_tree().paused = true
 
-	for c in container.get_children():
+	for c in container.get_children(): #Clears old cards
 		c.queue_free()
 
-	var picks = upgrades.duplicate()
-	picks.shuffle()
+	var picks = upgrades.duplicate() #Duplicates card list to not shuffle original
+	picks.shuffle() #Picks from the upgrades based on the ammount set
 
-	for i in range(min(3, picks.size())):
+	for i in range(min(3, picks.size())): # Picks a certain number card
 
-		var card = card_scene.instantiate()
+		var card = card_scene.instantiate() 
 
 		card.data = picks[i]
 		card.shop = self
 
-		container.add_child(card)
+		container.add_child(card) #Places the card in the V container 
 
 func on_card_picked(card):
 

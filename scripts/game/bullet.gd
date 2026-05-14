@@ -30,7 +30,7 @@ func _physics_process(delta):
 	if distance_travelled >= max_range:
 		queue_free()
 
-func _on_body_entered(body) -> void:
+func _on_body_entered(body) -> void: #Triggers when entering the area 2d assigned on the bullet scene
 
 	#if not can_hit:
 	#	return
@@ -38,14 +38,14 @@ func _on_body_entered(body) -> void:
 	if body == null:
 		return
 
-	if team != "player" and body.has_method("Pathfind"):
+	if team != "player" and body.has_method("Pathfind"): #Prevents hitting your own entity with bullet
 		return
 
-	if team == "player" and body.has_method("player"):
+	if team == "player" and body.has_method("player"): 
 		return
 
 
-	if body.has_method("hit"):
+	if body.has_method("hit"): # Runs hit function
 		body.hit(damage)
 
 	queue_free()
