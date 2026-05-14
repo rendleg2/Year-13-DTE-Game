@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bh6bvig2tbyxk"]
 
-[ext_resource type="Texture2D" uid="uid://jti2psptslca" path="res://assets/hud/button.png" id="1_f3c0k"]
+[ext_resource type="Texture2D" uid="uid://wm1bfj0f4ikb" path="res://assets/screens.png" id="1_lk408"]
 [ext_resource type="Script" uid="uid://balcgc75d2wwc" path="res://scripts/UI/Start_Button.gd" id="1_o2jor"]
-[ext_resource type="Texture2D" uid="uid://dxt1r71cjha20" path="res://assets/screens/screens.png" id="3_1dce6"]
 
 [sub_resource type="GDScript" id="GDScript_f3c0k"]
 script/source = "extends Control
@@ -16,7 +15,7 @@ func _on_start_game_pressed() -> void:
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_f3c0k"]
-font_size = 32
+font_size = 36
 font_color = Color(1, 0, 0, 1)
 
 [node name="Main Menu" type="Control" unique_id=1033264865]
@@ -32,37 +31,61 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_f3c0k")
 
+[node name="Screens" type="Sprite2D" parent="." unique_id=295537193]
+position = Vector2(568, 319)
+scale = Vector2(4.5585938, 4.5659723)
+texture = ExtResource("1_lk408")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=139653280]
 position = Vector2(576, 322)
 
-[node name="Screens" type="Sprite2D" parent="." unique_id=174005671]
-z_index = -2
-position = Vector2(574.5, 322)
-scale = Vector2(4.4960938, 4.513889)
-texture = ExtResource("3_1dce6")
-
 [node name="Start_Game" type="TextureButton" parent="." unique_id=1637456646]
 layout_mode = 0
-offset_left = 316.0
-offset_top = 62.0
-offset_right = 397.0
-offset_bottom = 110.0
+offset_left = 539.0
+offset_top = 264.0
+offset_right = 632.0
+offset_bottom = 315.0
 script = ExtResource("1_o2jor")
 scene_change = "res://Scenes/game_loop/map_generator.tscn"
 
 [node name="Label" type="Label" parent="Start_Game" unique_id=5408945]
 layout_mode = 0
-offset_left = 1.0
-offset_top = -1.375
-offset_right = 30.0
-offset_bottom = 15.625
+offset_left = 4.0
+offset_right = 93.0
+offset_bottom = 50.0
 text = "Start"
 label_settings = SubResource("LabelSettings_f3c0k")
 
-[node name="Button" type="Sprite2D" parent="Start_Game/Label" unique_id=34171526]
-z_index = -1
-position = Vector2(39, 25.375)
-scale = Vector2(2.8125, 3.1875)
-texture = ExtResource("1_f3c0k")
+[node name="Start_Game2" type="TextureButton" parent="." unique_id=1732447017]
+layout_mode = 0
+offset_left = 521.0
+offset_top = 344.0
+offset_right = 660.0
+offset_bottom = 383.0
+script = ExtResource("1_o2jor")
+scene_change = "res://Settings.tscn"
+
+[node name="Label" type="Label" parent="Start_Game2" unique_id=1400934669]
+layout_mode = 0
+offset_top = -9.0
+offset_right = 139.0
+offset_bottom = 41.0
+text = "Settings"
+label_settings = SubResource("LabelSettings_f3c0k")
+
+[node name="Label2" type="Label" parent="." unique_id=206744449]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23300001
+anchor_top = 0.11400001
+anchor_right = 0.416
+anchor_bottom = 0.19800001
+offset_left = 239.58398
+offset_top = 109.128
+offset_right = 670.768
+offset_bottom = 112.695984
+text = "Slime RPG"
+label_settings = SubResource("LabelSettings_f3c0k")
 
 [connection signal="pressed" from="Start_Game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Start_Game2" to="." method="_on_start_game_pressed"]

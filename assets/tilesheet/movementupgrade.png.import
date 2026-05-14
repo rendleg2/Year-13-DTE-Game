@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1j244iifpckk"
-path="res://.godot/imported/sand.png-c7418e92ac7052b2e4212e638c33d799.ctex"
+uid="uid://mv8au24lk0i0"
+path="res://.godot/imported/movementupgrade.png-2a9cc8e457495b40a6303a16004c5785.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/sand.png"
-dest_files=["res://.godot/imported/sand.png-c7418e92ac7052b2e4212e638c33d799.ctex"]
+source_file="res://assets/tilesheet/movementupgrade.png"
+dest_files=["res://.godot/imported/movementupgrade.png-2a9cc8e457495b40a6303a16004c5785.ctex"]
 
 [params]
 

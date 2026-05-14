@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1j244iifpckk"
-path="res://.godot/imported/sand.png-c7418e92ac7052b2e4212e638c33d799.ctex"
+uid="uid://mqaqsu3upbnt"
+path="res://.godot/imported/button.png-4b9424be546fae1ffbe4df5997125ea5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/sand.png"
-dest_files=["res://.godot/imported/sand.png-c7418e92ac7052b2e4212e638c33d799.ctex"]
+source_file="res://scenes/rooms/Corridors/button.png"
+dest_files=["res://.godot/imported/button.png-4b9424be546fae1ffbe4df5997125ea5.ctex"]
 
 [params]
 

@@ -100,21 +100,21 @@ func shoot():
 	for i in range(bullet_count):
 
 		var bullet = bullet_scene.instantiate()
-		get_tree().current_scene.add_child(bullet)
+		get_tree().current_scene.add_child(bullet) # Where we assign the bullet scene
 
-		var dir = (get_global_mouse_position() - global_position).normalized()
+		var dir = (get_global_mouse_position() - global_position).normalized()  # Shoots bullet towards the mouse
 
 		var spread = deg_to_rad(randf_range(-bullet_spread, bullet_spread))
-		dir = dir.rotated(spread)
+		dir = dir.rotated(spread) # This adds spread to the bullet based on the spread value given
 
 		bullet.global_position = global_position + dir * 20
 
-		bullet.setup(dir)
+		bullet.setup(dir) # Direction based on line 105
 
-		bullet.speed = bullet_speed
+		bullet.speed = bullet_speed # Code handling bullet behaviour
 		bullet.damage = bullet_damage
 		bullet.max_range = bullet_range
-		bullet.team = "player"
+		bullet.team = "player" 
 
 func save_to_global():
 

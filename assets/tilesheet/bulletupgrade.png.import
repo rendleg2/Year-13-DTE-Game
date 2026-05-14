@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1j244iifpckk"
-path="res://.godot/imported/sand.png-c7418e92ac7052b2e4212e638c33d799.ctex"
+uid="uid://cey50sbd875se"
+path="res://.godot/imported/bulletupgrade.png-8bcbcc6a9fa909ce7adb9f2cd326efa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/sand.png"
-dest_files=["res://.godot/imported/sand.png-c7418e92ac7052b2e4212e638c33d799.ctex"]
+source_file="res://assets/tilesheet/bulletupgrade.png"
+dest_files=["res://.godot/imported/bulletupgrade.png-8bcbcc6a9fa909ce7adb9f2cd326efa9.ctex"]
 
 [params]
 

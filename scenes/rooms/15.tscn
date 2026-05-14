@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://c35jlawcuiaxv"]
 
-[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://Assets/tilesheet/Main_Tile_set.tres" id="1_vnm4o"]
+[ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_vnm4o"]
 [ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="2_2gtws"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hgr5b"]
