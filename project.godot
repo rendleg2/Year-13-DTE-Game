@@ -25,10 +25,6 @@ Global="*uid://cft0xl0l1ksyn"
 
 window/stretch/mode="viewport"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg", "res://addons/py4godot/plugin.cfg")
-
 [input]
 
 left={
