@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://dokbbdbqswk2v"]
 
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_bfp36"]
-[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="2_31ft6"]
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="2_31ft6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mtbwm"]
-vertices = PackedVector2Array(137, -32, 242, 22, 16, 137, 16, 28, -206, 20, -102, -32)
+vertices = PackedVector2Array(137, -32, 242, 22, 16, 130, 16, 35, -206, 20, -102, -32)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 4, 5, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(137, -32, 242, 22, 16, 137, -206, 20, -102, -32, 16, 28)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(137, -32, 242, 22, 16, 130, -206, 20, -102, -32, 16, 35)])
 agent_radius = 0.0
 
 [node name="Upup" type="Node2D" unique_id=1980715701]

@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="2_llrvd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mtbwm"]
-vertices = PackedVector2Array(349, -14, 13, 155, -79, 107, 251, -63)
+vertices = PackedVector2Array(349, -14, 13, 155, -82, 108, 251, -63)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(251, -63, 349, -14, 13, 155, -79, 107)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(251, -63, 349, -14, 13, 155, -82, 108)])
 agent_radius = 0.0
 
 [node name="Upup" type="Node2D" unique_id=1980715701]

@@ -1,3 +1,129 @@
 [gd_scene format=3 uid="uid://bs33x6ff4un58"]
 
+[ext_resource type="Texture2D" uid="uid://dxt1r71cjha20" path="res://assets/screens/screens.png" id="1_hjbu5"]
+[ext_resource type="Script" uid="uid://c2marpov2evqa" path="res://scripts/UI/Button_Template.gd" id="2_jqym6"]
+[ext_resource type="Texture2D" uid="uid://mqaqsu3upbnt" path="res://assets/hud/button.png" id="3_7kckx"]
+[ext_resource type="FontFile" uid="uid://djlah531gyo6f" path="res://assets/PixelPurl.ttf" id="4_silyr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0m3pb"]
+font = ExtResource("4_silyr")
+font_size = 120
+
 [node name="SelectDificulty" type="Node2D" unique_id=1909735426]
+
+[node name="Screens" type="Sprite2D" parent="." unique_id=1353374285]
+position = Vector2(576, 323.99997)
+scale = Vector2(4.5, 4.4999995)
+texture = ExtResource("1_hjbu5")
+
+[node name="Button_Template4" type="TextureButton" parent="." unique_id=2006022684]
+offset_left = 325.0
+offset_top = 485.0
+offset_right = 788.0
+offset_bottom = 591.0
+script = ExtResource("2_jqym6")
+scene_change = "res://Scenes/game_loop/map_generator.tscn"
+comand = "impossible"
+metadata/_custom_type_script = "uid://c2marpov2evqa"
+
+[node name="Button" type="Sprite2D" parent="Button_Template4" unique_id=1940861885]
+position = Vector2(229.25, 51.1875)
+scale = Vector2(14.421875, 7.3515625)
+texture = ExtResource("3_7kckx")
+
+[node name="Label" type="Label" parent="Button_Template4" unique_id=847355922]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06776994
+anchor_top = 0.020833334
+anchor_right = 1.1638659
+anchor_bottom = 0.8541667
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Impossible"
+label_settings = SubResource("LabelSettings_0m3pb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_Template3" type="TextureButton" parent="." unique_id=905489950]
+offset_left = 395.0
+offset_top = 354.0
+offset_right = 728.0
+offset_bottom = 460.0
+script = ExtResource("2_jqym6")
+scene_change = "res://Scenes/game_loop/map_generator.tscn"
+comand = "hard"
+metadata/_custom_type_script = "uid://c2marpov2evqa"
+
+[node name="Button" type="Sprite2D" parent="Button_Template3" unique_id=978246290]
+position = Vector2(167.25, 51.1875)
+scale = Vector2(10.546876, 7.3515625)
+texture = ExtResource("3_7kckx")
+
+[node name="Label" type="Label" parent="Button_Template3" unique_id=96911873]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23050936
+anchor_top = 0.020833334
+anchor_right = 0.96768886
+anchor_bottom = 0.8541667
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Hard"
+label_settings = SubResource("LabelSettings_0m3pb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_Template2" type="TextureButton" parent="." unique_id=1614005356]
+offset_left = 391.0
+offset_top = 75.0
+offset_right = 730.0
+offset_bottom = 179.0
+script = ExtResource("2_jqym6")
+scene_change = "res://Scenes/game_loop/map_generator.tscn"
+comand = "easy"
+metadata/_custom_type_script = "uid://c2marpov2evqa"
+
+[node name="Button" type="Sprite2D" parent="Button_Template2" unique_id=68824092]
+position = Vector2(168.25, 45.1875)
+scale = Vector2(10.546876, 7.3515625)
+texture = ExtResource("3_7kckx")
+
+[node name="Label" type="Label" parent="Button_Template2" unique_id=409644575]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2319605
+anchor_top = -0.0897436
+anchor_right = 0.96914
+anchor_bottom = 0.74358976
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Easy"
+label_settings = SubResource("LabelSettings_0m3pb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_Template" type="TextureButton" parent="." unique_id=111425413]
+offset_left = 392.0
+offset_top = 198.0
+offset_right = 731.0
+offset_bottom = 317.0
+script = ExtResource("2_jqym6")
+scene_change = "res://Scenes/game_loop/map_generator.tscn"
+comand = "normal"
+metadata/_custom_type_script = "uid://c2marpov2evqa"
+
+[node name="Button" type="Sprite2D" parent="Button_Template" unique_id=1487733085]
+position = Vector2(168.25, 63.1875)
+scale = Vector2(10.546876, 7.3515625)
+texture = ExtResource("3_7kckx")
+
+[node name="Label" type="Label" parent="Button_Template" unique_id=1253797042]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.10511685
+anchor_top = 0.12902659
+anchor_right = 0.8422963
+anchor_bottom = 0.96236
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Normal"
+label_settings = SubResource("LabelSettings_0m3pb")
+metadata/_edit_use_anchors_ = true

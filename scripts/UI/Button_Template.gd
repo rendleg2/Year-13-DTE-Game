@@ -19,7 +19,7 @@ class_name Button_Template
 
 @export_category("Scene Navigation")
 @export var scene_change: String = "" #the scene change
-
+@export var comand: String = ""
 var animation_tween: Tween
 
 func _ready() -> void:
@@ -47,7 +47,8 @@ func _update_sprite_position() -> void:
 
 func _on_button_pressed() -> void:
 	_button_press()
-
+	if comand != "":
+		GlobalVaribles.difficlty(comand)
 	await get_tree().create_timer(0.15).timeout
 	get_tree().change_scene_to_file(scene_change)
 

@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bsrgwq4p1op4i" path="res://Scenes/game_loop/end_of_level.tscn" id="3_7qg27"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mtbwm"]
-vertices = PackedVector2Array(457, 50, 135, 216, -194, 52, 133, -113)
+vertices = PackedVector2Array(466, 48, 135, 216, -194, 52, 140, -122)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(133, -113, 457, 50, 135, 216, -194, 52)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(140, -122, 466, 48, 135, 216, -194, 52)])
 agent_radius = 0.0
 
 [node name="Upup" type="Node2D" unique_id=1980715701]

@@ -25,12 +25,13 @@ func _ready() -> void: #spawn in the enemys weapon
 	HP = data["health"]
 	Movement_Speed = data["movement_speed"]
 	if type == 'boss':
-		$AnimatedSprite2D.animation = "purple"
+		$AnimatedSprite2D.play("purple")
 		$AnimatedSprite2D.scale = Vector2(1, 1)
 	elif  type == "shotgun":
-		$AnimatedSprite2D.animation = "purple"
+		$AnimatedSprite2D.play("purple")
 	elif type == "normal":
-		$AnimatedSprite2D.animation = "red"
+		$AnimatedSprite2D.play("red")
+	
 func _physics_process(delta: float) -> void:
 
 	if aggro == true:

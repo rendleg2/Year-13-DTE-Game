@@ -95,7 +95,7 @@ offset_top = 152.0
 offset_right = 237.0
 offset_bottom = 264.0
 script = ExtResource("1_o2jor")
-scene_change = "res://Scenes/game_loop/map_generator.tscn"
+scene_change = "res://Scenes/UI/select dificulty.tscn"
 
 [node name="Label" type="Label" parent="Start_Game" unique_id=5408945]
 layout_mode = 0
