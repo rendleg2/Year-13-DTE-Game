@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://cnsivl2puddyl"]
 
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_dsoks"]
-[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="2_17w1p"]
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="2_17w1p"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mtbwm"]
 vertices = PackedVector2Array(457, 50, 135, 216, -203, 46, 130, -120)
@@ -24,22 +24,28 @@ tile_set = ExtResource("1_dsoks")
 [node name="room_data" type="Node2D" parent="." unique_id=1258144003]
 
 [node name="Enemy Template" parent="room_data" unique_id=896060041 instance=ExtResource("2_17w1p")]
+visible = false
 position = Vector2(67, 130)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="room_data" unique_id=2080651291]
+visible = false
 position = Vector2(-117, 120)
 navigation_polygon = SubResource("NavigationPolygon_mtbwm")
 
 [node name="Enemy Template2" parent="room_data" unique_id=1562265468 instance=ExtResource("2_17w1p")]
+visible = false
 position = Vector2(-62, 117)
 
 [node name="Enemy Template3" parent="room_data" unique_id=1345814641 instance=ExtResource("2_17w1p")]
+visible = false
 position = Vector2(26, 218)
 
 [node name="Enemy Template4" parent="room_data" unique_id=1473950062 instance=ExtResource("2_17w1p")]
+visible = false
 position = Vector2(9, 151)
 type = "boss"
 
 [node name="Enemy Template5" parent="room_data" unique_id=1552599773 instance=ExtResource("2_17w1p")]
+visible = false
 position = Vector2(-57, 192)
 type = "shotgun"
