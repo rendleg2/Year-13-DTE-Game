@@ -22,6 +22,7 @@ var dash_direction = Vector2.ZERO
 var ability_timer = 0.0
 var can_ability = true
 var cooldown_timer = 0.0
+var fire_rate = 0.4
 
 var fire_timer = 0.0
 
@@ -30,6 +31,7 @@ func _ready():
 	load_from_global()
 
 func load_from_global():
+	fire_rate = Global.fire_rate
 	health = Global.health
 	$ProgressBar.max_value = health
 	speed = Global.speed
@@ -89,11 +91,11 @@ func _physics_process(delta):
 	if auto_fire_active:
 		if Input.is_action_pressed("Shoot") and fire_timer <= 0:
 			shoot()
-			fire_timer = 0.2
+			fire_timer = fire_rate
 	else:
 		if Input.is_action_just_pressed("Shoot") and fire_timer <= 0:
 			shoot()
-			fire_timer = 0.2
+			fire_timer = fire_rate
 
 func shoot():
 

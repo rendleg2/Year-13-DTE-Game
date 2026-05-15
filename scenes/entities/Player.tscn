@@ -55,7 +55,7 @@ animations = [{
 bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="Curve" id="Curve_kcm4n"]
-_data = [Vector2(0.49222803, 0.5191546), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.08333333, 0.033707857), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [sub_resource type="CurveTexture" id="CurveTexture_p3bqa"]

@@ -126,3 +126,6 @@ func _apply_upgrade():
 
 			"free_dash_toggle":
 				Global.free_dash = true
+				
+			"fire_rate":
+				Global.fire_rate += e.value

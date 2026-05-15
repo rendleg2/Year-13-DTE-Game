@@ -6,6 +6,8 @@ var ability_speed: float = 2.0
 var ability_duration: float = 0.2
 var ability_cooldown: float = 0.5
 
+var fire_rate = 0.4
+
 var bullet_damage: float = 100.0
 var bullet_speed: float = 400.0
 var bullet_range: float = 500.0
@@ -22,7 +24,9 @@ func reset():
 	ability_speed = 2.0
 	ability_duration = 0.2
 	ability_cooldown = 0.5
-
+	
+	fire_rate = 0.4
+	
 	bullet_damage = 100.0
 	bullet_speed = 400.0
 	bullet_range = 500.0

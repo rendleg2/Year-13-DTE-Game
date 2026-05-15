@@ -26,8 +26,9 @@ var upgrades = [
 	{
 		"effects": [
 			{"type": "bullet_count", "value": 8},
+			{"type": "fire_rate", "value": -0.2},
 			{"type": "auto_fire_toggle"},
-			{"type": "bullet_spread", "value": 20}
+			{"type": "bullet_spread", "value": 10}
 		],
 		"image": "res://assets/tilesheet/bulletupgrade.png"
 	}
