@@ -37,20 +37,12 @@ func _ready() -> void: #spawn in the enemys weapon
 
 func _physics_process(delta: float) -> void:
 
-	if HP <= 0:
-		GlobalVaribles.enemy_total -=1
-		die()
-		return
-
 	if aggro == true:
 		shoot()
 		_on_follow_follow()
 		Pathfind(delta)
 
 func _on_follow_follow(): # will set pathfind desination to player
-	if Target == null:
-		return
-
 	if Target_Position != Target.global_position:
 		Target_Position = Target.global_position
 		navigation_agent_2d.target_position = Target_Position
@@ -71,7 +63,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 
 func _on_area_2d_body_entered(body): # if target enters detection range, attack
-	if body != null and body.is_in_group("player"):
+	if body.is_in_group("player"):
 		aggro = true
 		$Timer.start()
 
@@ -81,23 +73,23 @@ func shoot():
 			var spread = deg_to_rad(randf_range(-GlobalVaribles.enemy_stats[type]["spread"], GlobalVaribles.enemy_stats[type]["spread"]))
 			can_shoot = false
 			var bullet = weapon.instantiate()
-			bullet.global_position = global_position
+			
 			bullet.damage = GlobalVaribles.enemy_stats[type]["damage"]
 			var dir = (Target.global_position - self.global_position)
 			dir = dir.rotated(spread)
+			bullet.global_position = global_position
 			bullet.speed = GlobalVaribles.enemy_stats[type]["bullet_speed"]
 			bullet.team = "enemy"
 			bullet.setup(dir)
+			
 			get_tree().current_scene.add_child(bullet)
 
 func hit(damage):
 	HP -= damage
-
 	if HP <= 0:
-		die()
+		GlobalVaribles.enemy_total -=1
+		queue_free()
 
-func die():
-	queue_free()
 
 func _on_timer_timeout():
 	can_shoot = true

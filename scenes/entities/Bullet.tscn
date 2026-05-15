@@ -79,7 +79,7 @@ scale_min = 0.29999998
 color_ramp = SubResource("GradientTexture1D_2y60i")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62288"]
-size = Vector2(5, 5.999999)
+size = Vector2(5, 19)
 
 [sub_resource type="Environment" id="Environment_62288"]
 resource_local_to_scene = true
@@ -113,7 +113,7 @@ preprocess = 0.3
 process_material = SubResource("ParticleProcessMaterial_r4ks0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1425218840]
-position = Vector2(-1.0000001, 2)
+position = Vector2(-7.5, 2.0000002)
 rotation = -1.5707964
 shape = SubResource("RectangleShape2D_62288")
 

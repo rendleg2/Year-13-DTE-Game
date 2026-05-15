@@ -1,34 +1,42 @@
 [gd_scene format=3 uid="uid://f5745h73ftau"]
 
 [ext_resource type="Script" uid="uid://c2marpov2evqa" path="res://scripts/UI/Button_Template.gd" id="1_2elgs"]
-[ext_resource type="Texture2D" uid="uid://wm1bfj0f4ikb" path="res://assets/screens.png" id="1_7dx28"]
+[ext_resource type="Texture2D" uid="uid://d17egs2a1320m" path="res://assets/screens/Death screen.png" id="1_3atld"]
+[ext_resource type="Texture2D" uid="uid://mqaqsu3upbnt" path="res://assets/hud/button.png" id="3_3atld"]
+[ext_resource type="FontFile" uid="uid://djlah531gyo6f" path="res://assets/PixelPurl.ttf" id="3_yd65i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ie3h8"]
-font_size = 36
-font_color = Color(1, 0, 0, 1)
+font = ExtResource("3_yd65i")
+font_size = 53
 
 [node name="End" type="Node2D" unique_id=1411099969]
 
 [node name="Screens" type="Sprite2D" parent="." unique_id=843383356]
-position = Vector2(577, 327.00003)
-scale = Vector2(4.5078125, 4.513889)
-texture = ExtResource("1_7dx28")
+position = Vector2(573.99994, 326)
+scale = Vector2(7.6933317, 6.4199986)
+texture = ExtResource("1_3atld")
 
 [node name="Button_Template" type="TextureButton" parent="." unique_id=931779198]
 z_index = 1
-offset_left = 512.0
-offset_top = 265.0
-offset_right = 640.0
-offset_bottom = 309.0
+offset_left = 359.0
+offset_top = 560.0
+offset_right = 764.0
+offset_bottom = 648.0
 script = ExtResource("1_2elgs")
 scene_change = "res://Scenes/UI/Main Menu.tscn"
 metadata/_custom_type_script = "uid://c2marpov2evqa"
 
 [node name="Label" type="Label" parent="Button_Template" unique_id=1613539927]
 layout_mode = 0
-offset_top = -8.0
-offset_right = 131.0
-offset_bottom = 95.0
-text = "Restart
-"
+offset_left = 34.0
+offset_top = 14.0
+offset_right = 371.0
+offset_bottom = 117.0
+text = "Back to main menu"
 label_settings = SubResource("LabelSettings_ie3h8")
+
+[node name="Button" type="Sprite2D" parent="Button_Template" unique_id=1335622938]
+z_index = -1
+position = Vector2(203, 39)
+scale = Vector2(12.25, 5.1875014)
+texture = ExtResource("3_3atld")

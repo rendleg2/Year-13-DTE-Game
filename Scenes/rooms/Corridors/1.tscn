@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dxcrra4g1up1w"]
 
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_g8gsp"]
-[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="2_2hji8"]
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="2_2hji8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mtbwm"]
 vertices = PackedVector2Array(457, 50, 135, 216, -194, 52, 133, -113)
@@ -29,3 +29,17 @@ position = Vector2(67, 130)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="room_data" unique_id=2080651291]
 position = Vector2(-117, 120)
 navigation_polygon = SubResource("NavigationPolygon_mtbwm")
+
+[node name="Enemy Template2" parent="room_data" unique_id=1974063629 instance=ExtResource("2_2hji8")]
+position = Vector2(-62, 117)
+
+[node name="Enemy Template3" parent="room_data" unique_id=818440401 instance=ExtResource("2_2hji8")]
+position = Vector2(26, 218)
+
+[node name="Enemy Template4" parent="room_data" unique_id=1745579154 instance=ExtResource("2_2hji8")]
+position = Vector2(9, 151)
+type = "boss"
+
+[node name="Enemy Template5" parent="room_data" unique_id=304680321 instance=ExtResource("2_2hji8")]
+position = Vector2(-57, 192)
+type = "shotgun"

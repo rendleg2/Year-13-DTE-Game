@@ -1,8 +1,8 @@
 [gd_scene format=4 uid="uid://l2re5643nmmd"]
 
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_5oxe6"]
-[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="2_wdo3j"]
-[ext_resource type="PackedScene" uid="uid://bsrgwq4p1op4i" path="res://scenes/game_loop/end_of_level.tscn" id="3_i8fne"]
+[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="2_wdo3j"]
+[ext_resource type="PackedScene" uid="uid://bsrgwq4p1op4i" path="res://Scenes/game_loop/end_of_level.tscn" id="3_i8fne"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mtbwm"]
 vertices = PackedVector2Array(457, 50, 135, 216, -194, 52, 133, -113)
@@ -34,3 +34,17 @@ navigation_polygon = SubResource("NavigationPolygon_mtbwm")
 
 [node name="EndOfLevel" parent="room_data" unique_id=1754245511 instance=ExtResource("3_i8fne")]
 position = Vector2(-64, 191)
+
+[node name="Enemy Template2" parent="room_data" unique_id=39068200 instance=ExtResource("2_wdo3j")]
+position = Vector2(-62, 117)
+
+[node name="Enemy Template3" parent="room_data" unique_id=672574565 instance=ExtResource("2_wdo3j")]
+position = Vector2(26, 218)
+
+[node name="Enemy Template4" parent="room_data" unique_id=475675452 instance=ExtResource("2_wdo3j")]
+position = Vector2(9, 151)
+type = "boss"
+
+[node name="Enemy Template5" parent="room_data" unique_id=228166380 instance=ExtResource("2_wdo3j")]
+position = Vector2(-57, 192)
+type = "shotgun"
