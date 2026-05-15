@@ -20,22 +20,17 @@ func _ready() -> void: #spawn in the enemys weapon
 	aggro = false
 	GlobalVaribles.enemy_total +=1
 
-	if not GlobalVaribles.enemy_stats.has(type):
-		type = "normal"
-
 	data = GlobalVaribles.enemy_stats[type]
-
-	if not data.has("movement_speed"):
-		data["movement_speed"] = 60.0
-
-	if not data.has("health"):
-		data["health"] = 100
-
 	$Timer.wait_time = data["firerate"]
 	HP = data["health"]
 	Movement_Speed = data["movement_speed"]
-	
-
+	if type == 'boss':
+		$AnimatedSprite2D.animation = "purple"
+		$AnimatedSprite2D.scale = Vector2(1, 1)
+	elif  type == "shotgun":
+		$AnimatedSprite2D.animation = "purple"
+	elif type == "normal":
+		$AnimatedSprite2D.animation = "red"
 func _physics_process(delta: float) -> void:
 
 	if aggro == true:
@@ -64,7 +59,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 
 func _on_area_2d_body_entered(body): # if target enters detection range, attack
-	if body.is_in_group("player"):
+	if body.has_method("player"):
 		aggro = true
 		$Timer.start()
 

@@ -14,9 +14,9 @@ var level: int
 
 func reset():
 	enemy_stats = {
-	"normal": {"damage": 10, "health": 100, "bullets": 1, "spread": 0, "movement_speed": 60,"bullet_speed": 200, "firerate": 0.3},
-	"boss": {"damage": 10, "health": 1000, "bullets": 20, "spread": 360, "movement_speed": 10, "bullet_speed": 150, "firerate": 0.5},
-	"shotgun": {"damage": 2, "health": 100, "bullets": 5, "spread": 20, "movement_speed": 60, "bullet_speed": 200, "firerate": 0.6}
+	"normal": {"damage": 10, "health": 100, "bullets": 1, "spread": 0, "movement_speed": 60,"bullet_speed": 100, "firerate": 0.6},
+	"boss": {"damage": 10, "health": 1000, "bullets": 20, "spread": 360, "movement_speed": 10, "bullet_speed": 75, "firerate": 1},
+	"shotgun": {"damage": 2, "health": 100, "bullets": 5, "spread": 20, "movement_speed": 60, "bullet_speed": 100, "firerate": 1}
 }
 	level = 0
 	enemy_total = 0

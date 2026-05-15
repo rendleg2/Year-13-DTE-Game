@@ -78,10 +78,11 @@ sprite_frames = SubResource("SpriteFrames_xq0cc")
 autoplay = "default"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1279737256]
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 position_smoothing_speed = 6.0
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=83577884]
+z_index = 3
 offset_left = -192.0
 offset_top = 87.0
 offset_right = -36.0
@@ -90,6 +91,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_p3bqa")
 show_percentage = false
 
 [node name="Heathbar" type="Sprite2D" parent="ProgressBar" unique_id=1596872671]
+z_index = 2
 position = Vector2(78.50001, 10)
 scale = Vector2(0.6132813, 0.6875)
 texture = ExtResource("4_p3bqa")

@@ -1,7 +1,28 @@
 [gd_scene format=3 uid="uid://bl440ciqsmgst"]
 
 [ext_resource type="Script" uid="uid://dpx37j3431ev5" path="res://scripts/game/enemy_template.gd" id="1_g4dba"]
+[ext_resource type="Texture2D" uid="uid://bo4fei50nnvvx" path="res://assets/sprites/bosslime(v1 revision).png" id="2_3u3al"]
 [ext_resource type="Texture2D" uid="uid://bu54w7pyggya" path="res://assets/tilesheet/enemyslime.temp.png" id="2_te406"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wmms"]
+atlas = ExtResource("2_3u3al")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qydb0"]
+atlas = ExtResource("2_3u3al")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksk5w"]
+atlas = ExtResource("2_3u3al")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vki5g"]
+atlas = ExtResource("2_3u3al")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhsk2"]
+atlas = ExtResource("2_3u3al")
+region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3u3al"]
 atlas = ExtResource("2_te406")
@@ -27,6 +48,26 @@ region = Rect2(0, 128, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2wmms")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qydb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksk5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vki5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhsk2")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_3u3al")
 }, {
 "duration": 1.0,
@@ -42,7 +83,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_2uys6")
 }],
 "loop": true,
-"name": &"default",
+"name": &"red",
 "speed": 5.0
 }]
 
@@ -60,6 +101,8 @@ script = ExtResource("1_g4dba")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1759928974]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vy2uu")
+animation = &"purple"
+frame_progress = 0.05859556
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1193334922]
 
