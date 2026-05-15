@@ -89,6 +89,7 @@ glow_strength = 2.0
 glow_blend_mode = 2
 
 [node name="Bullet" type="Area2D" unique_id=931990022]
+y_sort_enabled = true
 rotation = -1.5707964
 script = ExtResource("1_84hgj")
 

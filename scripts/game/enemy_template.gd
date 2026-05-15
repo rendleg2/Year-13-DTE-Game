@@ -17,6 +17,7 @@ var can_shoot = false
 var data = {}
 
 func _ready() -> void: #spawn in the enemys weapon
+	aggro = false
 	GlobalVaribles.enemy_total +=1
 
 	if not GlobalVaribles.enemy_stats.has(type):

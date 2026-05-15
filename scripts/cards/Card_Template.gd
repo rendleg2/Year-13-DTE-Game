@@ -122,7 +122,7 @@ func _apply_upgrade():
 				Global.bullet_spread += e.value
 
 			"auto_fire_toggle":
-				Global.auto_fire_active = !Global.auto_fire_active
+				Global.auto_fire_active = true
 
 			"free_dash_toggle":
-				Global.free_dash = !Global.free_dash
+				Global.free_dash = true
