@@ -29,6 +29,9 @@ func _physics_process(delta):
 
 	if distance_travelled >= max_range:
 		queue_free()
+	elif distance_travelled >= 10:
+		$CollisionShape2D.shape.size = Vector2(5, 2)
+		$CollisionShape2D.position = Vector2(1, 2.0)
 
 func _on_body_entered(body) -> void: #Triggers when entering the area 2d assigned on the bullet scene
 

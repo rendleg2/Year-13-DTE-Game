@@ -8,8 +8,8 @@ extends CanvasLayer
 var upgrades = [
 	{
 		"effects": [
-			{"type": "speed", "value": 200},
-			{"type": "bullet_damage", "value": 20},
+			{"type": "speed", "value": 100},
+			{"type": "bullet_damage", "value": 5},
 			{"type": "auto_fire_toggle"}
 		],
 		"image": "res://assets/tilesheet/movementupgrade.png"
@@ -17,7 +17,7 @@ var upgrades = [
 
 	{
 		"effects": [
-			{"type": "health", "value": 100},
+			{"type": "health", "value": 200},
 			{"type": "free_dash_toggle"}
 		],
 		"image": "res://assets/tilesheet/healthupgrade.png"
@@ -25,8 +25,8 @@ var upgrades = [
 
 	{
 		"effects": [
-			{"type": "bullet_count", "value": 8},
-			{"type": "fire_rate", "value": -0.2},
+			{"type": "bullet_count", "value": 4},
+			{"type": "fire_rate", "value": 0.1},
 			{"type": "auto_fire_toggle"},
 			{"type": "bullet_spread", "value": 10}
 		],

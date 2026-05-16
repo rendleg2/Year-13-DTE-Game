@@ -87,11 +87,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_g4dba"]
-radius = 201.55893
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_joqk6"]
+resource_local_to_scene = true
 radius = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u3al"]
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="Enemy Template" type="CharacterBody2D" unique_id=896060041]
 y_sort_enabled = true
@@ -103,11 +108,6 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vy2uu")
 animation = &"red"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1193334922]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1743298802]
-shape = SubResource("CircleShape2D_g4dba")
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1634124390]
 path_search_max_polygons = 100
 
@@ -117,6 +117,15 @@ shape = SubResource("CircleShape2D_joqk6")
 [node name="Timer" type="Timer" parent="." unique_id=942976417]
 wait_time = 0.25
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=346865671]
+visible = false
+offset_left = -8.0
+offset_top = 7.0
+offset_right = 8.0
+offset_bottom = 11.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_3u3al")
+value = 50.0
+show_percentage = false
+
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

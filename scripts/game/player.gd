@@ -50,6 +50,7 @@ func load_from_global():
 	free_dash = Global.free_dash
 
 func _physics_process(delta):
+	$"Enemy count".text = str(GlobalVaribles.enemy_total)
 	$ProgressBar.value = health
 	if health <= 0:
 		get_tree().change_scene_to_file("res://Scenes/game_loop/end.tscn")

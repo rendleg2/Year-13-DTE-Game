@@ -70,7 +70,8 @@ func _ready() -> void:
 	for i in range(0, len(start_rooms)):
 		if start_rooms[i].resource_path.get_file().get_basename() == str(rooms_grid[start_coords.x][start_coords.y]):
 			stamp_room(i, Vector2i(start_coords.x*room_size, start_coords.y*room_size), 1)
-
+	var end = rooms_grid[end_coords.x][end_coords.y]
+	var start = rooms_grid[start_coords.x][start_coords.y]
 	rooms_grid[end_coords.x][end_coords.y] = 0
 	rooms_grid[start_coords.x][start_coords.y] = 0
 	await off_shoot_rooms()
@@ -82,6 +83,8 @@ func _ready() -> void:
 	#rooms_grid[end_coords.x][end_coords.y] = end_rooms[randi_range(0, len(end_rooms) - 1)]
 	$Player.global_position = $Floor.map_to_local(Vector2i(start_coords.x*room_size+5, start_coords.y*room_size+5))
 	print($Player.position)	
+	rooms_grid[end_coords.x][end_coords.y] = end
+	rooms_grid[start_coords.x][start_coords.y] = start
 	GlobalVaribles.room_grid = rooms_grid
 	GlobalVaribles.start_coord = start_coords
 	GlobalVaribles.end_coord = end_coords

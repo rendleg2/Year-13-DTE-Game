@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dkhr6mwtbtq70"]
 
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_uj1me"]
+[ext_resource type="Script" uid="uid://cnchfrmik3j7" path="res://scripts/game/room_data.gd" id="2_0svjt"]
 [ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="2_ptvbr"]
 [ext_resource type="PackedScene" uid="uid://bsrgwq4p1op4i" path="res://Scenes/game_loop/end_of_level.tscn" id="3_ptvbr"]
 
@@ -23,6 +24,7 @@ tile_map_data = PackedByteArray("AAAAAAAABgAAAAEAAAAHABQABgABAAAAAAANABQABgABAAA
 tile_set = ExtResource("1_uj1me")
 
 [node name="room_data" type="Node2D" parent="." unique_id=1258144003]
+script = ExtResource("2_0svjt")
 
 [node name="Enemy Template" parent="room_data" unique_id=896060041 instance=ExtResource("2_ptvbr")]
 position = Vector2(67, 130)
@@ -48,3 +50,11 @@ type = "boss"
 [node name="Enemy Template5" parent="room_data" unique_id=1955856168 instance=ExtResource("2_ptvbr")]
 position = Vector2(-57, 192)
 type = "shotgun"
+
+[node name="Area2D" type="Area2D" parent="room_data" unique_id=1783281027]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_data/Area2D" unique_id=117108794]
+position = Vector2(46.035522, -5.3378525)
+polygon = PackedVector2Array(-31.035522, 23.337852, 270.96448, 174.33786, -29.035522, 326.33786, -330.03552, 177.33786)
+
+[connection signal="body_entered" from="room_data/Area2D" to="room_data" method="_on_area_2d_body_entered"]

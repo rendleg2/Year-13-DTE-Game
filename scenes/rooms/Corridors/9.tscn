@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_qfo7f"]
 [ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://Scenes/entities/EnemyTemplate.tscn" id="2_3wkof"]
+[ext_resource type="Script" uid="uid://cnchfrmik3j7" path="res://scripts/game/room_data.gd" id="2_l0i4e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mtbwm"]
 vertices = PackedVector2Array(16, 60, 231, 167, 135, 215, 15, 135, -103, 215, -198, 168)
@@ -22,6 +23,7 @@ tile_map_data = PackedByteArray("AAAAAAAABgAFAAIAAAANAA4ABgADAAAAAAANAA8ABgADAAA
 tile_set = ExtResource("1_qfo7f")
 
 [node name="room_data" type="Node2D" parent="." unique_id=1258144003]
+script = ExtResource("2_l0i4e")
 
 [node name="Enemy Template" parent="room_data" unique_id=896060041 instance=ExtResource("2_3wkof")]
 position = Vector2(12, 154)
@@ -29,3 +31,11 @@ position = Vector2(12, 154)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="room_data" unique_id=2080651291]
 position = Vector2(0, 60)
 navigation_polygon = SubResource("NavigationPolygon_mtbwm")
+
+[node name="Area2D" type="Area2D" parent="room_data" unique_id=1678817007]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="room_data/Area2D" unique_id=1466167099]
+position = Vector2(46.035522, -5.3378525)
+polygon = PackedVector2Array(-31.035522, 23.337852, 270.96448, 174.33786, -29.035522, 326.33786, -330.03552, 177.33786)
+
+[connection signal="body_entered" from="room_data/Area2D" to="room_data" method="_on_area_2d_body_entered"]

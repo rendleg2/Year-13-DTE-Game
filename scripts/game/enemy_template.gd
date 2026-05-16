@@ -11,6 +11,8 @@ var Current_Position
 var Next_Step
 var Velocity
 var aggro = false
+var timer = false
+
 @onready var navigation_agent_2d = $NavigationAgent2D
 var can_shoot = false
 
@@ -27,14 +29,23 @@ func _ready() -> void: #spawn in the enemys weapon
 	if type == 'boss':
 		$AnimatedSprite2D.play("purple")
 		$AnimatedSprite2D.scale = Vector2(1, 1)
+		$CollisionShape2D.shape.radius = 12
 	elif  type == "shotgun":
 		$AnimatedSprite2D.play("purple")
 	elif type == "normal":
 		$AnimatedSprite2D.play("red")
 	
 func _physics_process(delta: float) -> void:
-
+	$ProgressBar.value = HP
+	if HP <= 0:
+		GlobalVaribles.enemy_total -=1
+		queue_free()
 	if aggro == true:
+		if timer == false:
+			$Timer.start()
+			$ProgressBar.max_value = HP
+			$ProgressBar.visible = true
+			timer = true
 		shoot()
 		_on_follow_follow()
 		Pathfind(delta)
@@ -82,10 +93,9 @@ func shoot():
 			get_tree().current_scene.add_child(bullet)
 
 func hit(damage):
-	HP -= damage
-	if HP <= 0:
-		GlobalVaribles.enemy_total -=1
-		queue_free()
+	if aggro == true:
+		HP -= damage
+	
 
 
 func _on_timer_timeout():

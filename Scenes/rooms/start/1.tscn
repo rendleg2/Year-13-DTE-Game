@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://34qb3oj62oxl"]
 
 [ext_resource type="TileSet" uid="uid://l1h8ugkslp6e" path="res://assets/tilesheet/Main_Tile_set.tres" id="1_bbhb3"]
-[ext_resource type="PackedScene" uid="uid://bl440ciqsmgst" path="res://scenes/entities/EnemyTemplate.tscn" id="2_0kixd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mtbwm"]
 vertices = PackedVector2Array(457, 50, 135, 216, -194, 52, 133, -113)
@@ -22,9 +21,6 @@ tile_map_data = PackedByteArray("AAAAAAAABgAAAAEAAAAHABQABgAEAAEAAAANABQABgAEAAA
 tile_set = ExtResource("1_bbhb3")
 
 [node name="room_data" type="Node2D" parent="." unique_id=1258144003]
-
-[node name="Enemy Template" parent="room_data" unique_id=896060041 instance=ExtResource("2_0kixd")]
-position = Vector2(67, 130)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="room_data" unique_id=2080651291]
 position = Vector2(-117, 120)
