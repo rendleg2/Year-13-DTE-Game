@@ -90,6 +90,8 @@ func _apply_upgrade():
 	for e in data.effects:
 
 		match e.type:
+			"health":
+				Global.health += e.value
 
 			"speed":
 				Global.speed += e.value

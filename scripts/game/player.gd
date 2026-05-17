@@ -99,7 +99,8 @@ func _physics_process(delta):
 			fire_timer = fire_rate
 
 func shoot():
-
+	if health < 0:
+		return
 	for i in range(bullet_count):
 
 		var bullet = bullet_scene.instantiate()
